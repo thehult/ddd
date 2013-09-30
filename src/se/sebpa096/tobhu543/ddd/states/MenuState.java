@@ -14,14 +14,11 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 public class MenuState extends State {
     private UI menuUI;
 
-<<<<<<< HEAD
     private final int componentWidth = 250;
     private final int componentHeight = 50;
     private final int componentMargin = 10;
     private final int topMargin = 100;
 
-=======
->>>>>>> origin/OptionsState
     @Override
     public void init(GameContainer gameContainer) {
         try {
@@ -29,7 +26,6 @@ public class MenuState extends State {
 
             Label header = new Label("Dungeon Derring-Do's");
             menuUI.addComponent(header);
-<<<<<<< HEAD
             header.setWidth(componentWidth);
             header.setHeight(componentHeight);
             header.setX((gameContainer.getWidth() - componentWidth) / 2);
@@ -41,19 +37,6 @@ public class MenuState extends State {
             startGame.setHeight(componentHeight);
             startGame.setX((gameContainer.getWidth() - componentWidth) / 2);
             startGame.setY(1 * (componentHeight + componentMargin) + topMargin);
-=======
-            header.setWidth(UI.STD_COMPONENT_WIDTH);
-            header.setHeight(UI.STD_COMPONENT_HEIGHT);
-            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            header.updateRenderPos();
-
-            MenuButton startGame = new MenuButton("Start New Game");
-
-            startGame.setWidth(UI.STD_COMPONENT_WIDTH);
-            startGame.setHeight(UI.STD_COMPONENT_HEIGHT);
-            startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            startGame.setY(1 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN));
->>>>>>> origin/OptionsState
             menuUI.addComponent(startGame);
             menuUI.addMouseListener(startGame.getMouseListener());
             startGame.updateRenderPos();
@@ -61,17 +44,10 @@ public class MenuState extends State {
 
 
             MenuButton exit = new MenuButton("Exit Game");
-<<<<<<< HEAD
             exit.setWidth(componentWidth);
             exit.setHeight(componentHeight);
             exit.setX((gameContainer.getWidth() - componentWidth) / 2);
             exit.setY(2 * (componentHeight + componentMargin) + topMargin);
-=======
-            exit.setWidth(UI.STD_COMPONENT_WIDTH);
-            exit.setHeight(UI.STD_COMPONENT_HEIGHT);
-            exit.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            exit.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN));
->>>>>>> origin/OptionsState
             exit.setMouseListener(new ButtonMouseListener(exit) {
                 @Override
                 public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
