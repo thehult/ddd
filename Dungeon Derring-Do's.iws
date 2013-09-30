@@ -9,10 +9,15 @@
     <file path="/State.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380558941141" ignored="false" />
     <file path="/States.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380532276786" ignored="false" />
     <file path="/GameState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541575113" ignored="false" />
+<<<<<<< HEAD
     <file path="/MenuState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380559757317" ignored="false" />
     <file path="/Button.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380556718960" ignored="false" />
+=======
+    <file path="/MenuState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380556959517" ignored="false" />
+    <file path="/Button.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380555786953" ignored="false" />
+>>>>>>> origin/OptionsState
     <file path="/IClickListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380535140372" ignored="false" />
-    <file path="/UI.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380549549120" ignored="false" />
+    <file path="/UI.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380556910792" ignored="false" />
     <file path="/MouseEvent.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380537531056" ignored="false" />
     <file path="/Component.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380549471713" ignored="false" />
     <file path="/MenuButton.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541796164" ignored="false" />
@@ -23,9 +28,16 @@
     <file path="/ButtonMouseEvent.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380544880402" ignored="false" />
     <file path="/IMouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380551738797" ignored="false" />
     <file path="/FontResources.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380553182827" ignored="false" />
+<<<<<<< HEAD
     <file path="/MouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380554477338" ignored="false" />
     <file path="/ButtonMouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380554559077" ignored="false" />
     <file path="/BackgroundResources.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380558704210" ignored="false" />
+=======
+    <file path="/MouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380552659272" ignored="false" />
+    <file path="/ButtonMouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380552600650" ignored="false" />
+    <file path="/OptionState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380558745250" ignored="false" />
+    <file path="/OptionsState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380558609188" ignored="false" />
+>>>>>>> origin/OptionsState
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +57,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -82,6 +93,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -91,19 +103,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="57" column="27" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0">
               <folding />
+=======
+      <file leaf-file-name="Component.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#setX#0;class#Component#0" expanded="true" />
+              </folding>
+>>>>>>> origin/OptionsState
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="MenuState.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="49" column="73" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.6862385">
+=======
+      <file leaf-file-name="MenuState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="0" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
               <folding />
             </state>
           </provider>
@@ -112,14 +141,20 @@
       <file leaf-file-name="BackgroundResources.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/BackgroundResources.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="6" column="62" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+            <state line="43" column="24" selection-start="1082" selection-end="1082" vertical-scroll-proportion="0.0">
+              <folding />
+>>>>>>> origin/OptionsState
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="ButtonImageResources.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,6 +162,13 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="State.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+              <folding />
+>>>>>>> origin/OptionsState
             </state>
           </provider>
         </entry>
@@ -134,16 +176,57 @@
       <file leaf-file-name="GlobalResources.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="14" column="23" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
+=======
+            <state line="10" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MouseListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java">
+      <file leaf-file-name="OptionsState.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/OptionsState.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="47" column="47" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.0">
+=======
+            <state line="85" column="50" selection-start="3417" selection-end="3417" vertical-scroll-proportion="2.5276382">
+>>>>>>> origin/OptionsState
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state line="19" column="13" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+=======
+            <state line="16" column="54" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
+              <folding>
+                <element signature="e#735#751#0" expanded="true" />
+                <element signature="e#809#820#0" expanded="true" />
+                <element signature="method#setHeight#0;class#UI#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="State.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="1" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+=======
+      <file leaf-file-name="GameState.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/GameState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
               <folding />
             </state>
           </provider>
@@ -152,19 +235,15 @@
       <file leaf-file-name="ButtonMouseListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="13" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+            <state line="88" column="23" selection-start="2571" selection-end="2571" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="State.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="1" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+=======
+            <state line="10" column="32" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
               <folding />
+>>>>>>> origin/OptionsState
             </state>
           </provider>
         </entry>
@@ -172,21 +251,15 @@
       <file leaf-file-name="Button.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="23" selection-start="2571" selection-end="2571" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FontResources.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java">
-          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="25" column="5" selection-start="190" selection-end="780" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+=======
+            <state line="94" column="16" selection-start="2694" selection-end="2694" vertical-scroll-proportion="0.0">
+              <folding />
+>>>>>>> origin/OptionsState
             </state>
           </provider>
         </entry>
@@ -203,11 +276,16 @@
       <list>
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseEvent.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseEvent.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java" />
+=======
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java" />
+>>>>>>> origin/OptionsState
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/IMouseListener.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Label.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java" />
@@ -216,15 +294,25 @@
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/BackgroundResources.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java" />
+=======
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Label.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/OptionState.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java" />
+>>>>>>> origin/OptionsState
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/OptionsState.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="5" />
-    <option name="width" value="1900" />
-    <option name="height" value="1040" />
+    <option name="x" value="18" />
+    <option name="y" value="48" />
+    <option name="width" value="1533" />
+    <option name="height" value="1062" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -252,7 +340,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -267,7 +354,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -277,7 +364,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -295,7 +382,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -317,7 +404,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -343,7 +430,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -369,7 +456,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -391,7 +478,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dungeon Derring-Do's" />
+              <option name="myItemId" value="ddd" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -410,6 +497,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -426,12 +514,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.Dungeon Derring Do's">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -446,6 +534,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -473,19 +574,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -573,7 +661,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="10" y="5" width="1900" height="1040" extended-state="1" />
+=======
+    <frame x="18" y="48" width="1533" height="1062" extended-state="0" />
+>>>>>>> origin/OptionsState
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -581,20 +673,20 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5003399" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24972796" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972796" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24972796" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24949014" sideWeight="0.67133623" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286638" sideWeight="0.4996601" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24972796" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -663,6 +755,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="99" column="29" selection-start="2894" selection-end="2894" vertical-scroll-proportion="0.0">
@@ -691,46 +784,87 @@
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Label.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="24" selection-start="1082" selection-end="1082" vertical-scroll-proportion="0.0">
+=======
+    <entry file="jar://$PROJECT_DIR$/lib/slick1.jar!/org/newdawn/slick/util/ResourceLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="884" selection-end="884" vertical-scroll-proportion="-14.28" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="55" selection-start="993" selection-end="993" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="19" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
+=======
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="7" column="54" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
+          <folding />
+>>>>>>> origin/OptionsState
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/IMouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="13" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="47" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.0">
+        <state line="31" column="40" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="32" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
+          <folding />
+>>>>>>> origin/OptionsState
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state line="47" column="47" selection-start="1878" selection-end="1878" vertical-scroll-proportion="0.0">
+=======
+        <state line="6" column="22" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="27" selection-start="1690" selection-end="1690" vertical-scroll-proportion="0.0">
@@ -744,53 +878,99 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
+          <folding />
+>>>>>>> origin/OptionsState
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="25" column="5" selection-start="190" selection-end="780" vertical-scroll-proportion="0.0">
+=======
+        <state line="23" column="0" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#setX#0;class#Component#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="18" column="55" selection-start="993" selection-end="993" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+        <state line="94" column="16" selection-start="2694" selection-end="2694" vertical-scroll-proportion="0.0">
+          <folding />
+>>>>>>> origin/OptionsState
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="14" column="23" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
+=======
+        <state line="43" column="24" selection-start="1082" selection-end="1082" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/BackgroundResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="62" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="54" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#735#751#0" expanded="true" />
+            <element signature="e#809#820#0" expanded="true" />
+            <element signature="method#setHeight#0;class#UI#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="1" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2557" selection-end="2557" vertical-scroll-proportion="0.0">
+>>>>>>> origin/OptionsState
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="73" selection-start="2005" selection-end="2005" vertical-scroll-proportion="0.6862385">
+=======
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/OptionsState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="50" selection-start="3417" selection-end="3417" vertical-scroll-proportion="2.5276382">
+>>>>>>> origin/OptionsState
           <folding />
         </state>
       </provider>
