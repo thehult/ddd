@@ -5,9 +5,10 @@ import java.util.HashMap;
 public class GlobalResources {
     private static HashMap<String, ResourceManager> resourceManagers;
 
-    static {
+    public static void init() {
         resourceManagers = new HashMap<String, ResourceManager>();
         addResourceManager("buttonImage", new ButtonImageResources());
+        System.out.println("RESOURCES INITIERADE!");
     }
 
     public static void addResourceManager(String name, ResourceManager resourceManager) {

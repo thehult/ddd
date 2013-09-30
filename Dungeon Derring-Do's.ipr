@@ -169,5 +169,35 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="" />
   </component>
+  <component name="libraryTable">
+    <library name="jinput">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/jinput1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="lwjgl">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/lwjgl1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="lwjgl_util">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/lwjgl_util1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="slick">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/slick1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+  </component>
 </project>
 

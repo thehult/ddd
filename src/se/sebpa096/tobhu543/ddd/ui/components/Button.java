@@ -4,6 +4,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.ui.UI;
+import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseEvent;
 import se.sebpa096.tobhu543.ddd.ui.listeners.IMouseListener;
 import se.sebpa096.tobhu543.ddd.ui.listeners.MouseEvent;
 
@@ -22,30 +23,7 @@ public class Button extends Component implements IMouseListener {
         this.currentImage = standardImage;
         this.setWidth(standardImage.getWidth());
         this.setHeight(standardImage.getHeight());
-        this.mouseEvent = new MouseEvent() {
-            @Override
-            public void mouseDownLeft(Component sender, int x, int y) {
-                if(getClickedImage() != null)
-                    setCurrentImage(getClickedImage());
-            }
-
-            @Override
-            public void mouseUpLeft(Component sender, int x, int y) {
-                setCurrentImage(getStandardImage());
-            }
-
-            @Override
-            public void mouseIn(Component sender, int x, int y) {
-                if(getHoverImage() != null)
-                    setCurrentImage(getHoverImage());
-            }
-
-            @Override
-            public void mouseOut(Component sender, int x, int y) {
-                super.mouseOut(sender, x, y);
-                setCurrentImage(getStandardImage());
-            }
-        };
+        this.mouseEvent = new ButtonMouseEvent(this);
     }
 
     public Button(String label, Image standardImage, Image hoverImage, Image clickedImage) {

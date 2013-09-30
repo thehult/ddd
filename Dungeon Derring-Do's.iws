@@ -4,13 +4,13 @@
     <list default="true" id="64e24254-c11f-4450-81cc-4615ac4b9014" name="Default" comment="" />
     <ignored path="Dungeon Derring-Do's.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Game.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541702873" ignored="false" />
+    <file path="/Game.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380545554732" ignored="false" />
     <file path="/fragment.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380530692575" ignored="false" />
     <file path="/State.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541553103" ignored="false" />
     <file path="/States.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380532276786" ignored="false" />
     <file path="/GameState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541575113" ignored="false" />
-    <file path="/MenuState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380542678882" ignored="false" />
-    <file path="/Button.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541839199" ignored="false" />
+    <file path="/MenuState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380545284123" ignored="false" />
+    <file path="/Button.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380544925953" ignored="false" />
     <file path="/IClickListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380535140372" ignored="false" />
     <file path="/UI.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380542800537" ignored="false" />
     <file path="/MouseEvent.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380537531056" ignored="false" />
@@ -18,8 +18,9 @@
     <file path="/MenuButton.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541796164" ignored="false" />
     <file path="/DefaultButtonImages.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380540820353" ignored="false" />
     <file path="/ResourceManager.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380540410677" ignored="false" />
-    <file path="/GlobalResources.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541694284" ignored="false" />
+    <file path="/GlobalResources.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380545793853" ignored="false" />
     <file path="/Label.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380542471430" ignored="false" />
+    <file path="/ButtonMouseEvent.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380544880402" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,34 +84,25 @@
       <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1420" selection-end="1420" vertical-scroll-proportion="0.0">
+            <state line="46" column="0" selection-start="1360" selection-end="1360" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuState.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MenuState.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="0.2572759">
+            <state line="33" column="0" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ResourceManager.java">
+      <file leaf-file-name="MouseEvent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="30" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalResources.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="17" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
+            <state line="43" column="29" selection-start="1634" selection-end="1634" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,10 +111,19 @@
       <file leaf-file-name="ButtonImageResources.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="5" selection-start="1634" selection-end="1634" vertical-scroll-proportion="0.0">
+            <state line="27" column="32" selection-start="1413" selection-end="1413" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlobalResources.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="67" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,22 +137,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="33" selection-start="1978" selection-end="1978" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#525#541#0" expanded="true" />
-                <element signature="e#599#610#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuButton.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MenuButton.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0">
+            <state line="13" column="63" selection-start="569" selection-end="569" vertical-scroll-proportion="0.39045936">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,7 +151,18 @@
       <file leaf-file-name="Button.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="13" selection-start="2032" selection-end="2032" vertical-scroll-proportion="0.0">
+            <state line="16" column="34" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ButtonMouseEvent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="5" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,22 +189,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseEvent.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/DefaultButtonImages.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/DefaultButtonImageFactory.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/DefaultButtonImageCollection.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ResourceManager.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/DefaultButtonImageResources.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/GameState.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Label.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseEvent.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java" />
       </list>
     </option>
   </component>
@@ -407,9 +407,9 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Java" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../slick2d_lib/lib/slick.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/slick.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -572,16 +572,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24972796" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972796" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -651,16 +651,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="52" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#525#541#0" expanded="true" />
-            <element signature="e#599#610#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/State.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="80" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0">
@@ -671,13 +661,6 @@
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/IMouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="10" selection-start="1009" selection-end="1009" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -696,51 +679,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="17" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="5" selection-start="1634" selection-end="1634" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ResourceManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="30" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1420" selection-end="1420" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="13" selection-start="2032" selection-end="2032" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -768,10 +710,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="29" selection-start="1634" selection-end="1634" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="5" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="34" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/ButtonImageResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="32" selection-start="1413" selection-end="1413" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="0" selection-start="1360" selection-end="1360" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="536" selection-end="536" vertical-scroll-proportion="0.2572759">
+        <state line="33" column="0" selection-start="1139" selection-end="1139" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/GlobalResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="67" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="63" selection-start="569" selection-end="569" vertical-scroll-proportion="0.39045936">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -33,21 +33,19 @@ public class Game extends BasicGame {
     private State state;
     private final MenuState MENU_STATE = new MenuState();
     private final GameState GAME_STATE = new GameState();
-    private GlobalResources globalResources;
 
     public Game(String gameName) {
        super(gameName);
-        globalResources = new GlobalResources();
+
        state = MENU_STATE;
     }
 
-    public GlobalResources getGlobalResources() {
-        return globalResources;
-    }
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
+        GlobalResources.init();
         state.init(gameContainer);
+
     }
 
     @Override
