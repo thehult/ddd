@@ -7,6 +7,7 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.MouseListener;
 
 
 public class Button extends Component {
+
     private Image standardImage = null;
     private Image hoverImage = null;
     private Image clickedImage = null;
