@@ -92,17 +92,13 @@ public class Button extends Component {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        graphics.drawImage(getCurrentImage(),
-                getRenderX(),
-                getRenderY());
-        graphics.setFont(this.font);
-        graphics.drawString(this.getLabel(),
-                getRenderX() + getLabelOffsetX(),
-                getRenderY() + getLabelOffsetY()
-                );
-        graphics.resetFont();
-
-
+        getCurrentImage().draw(getRenderX(),
+                getRenderY(),
+                getWidth(),
+                getHeight());
+        font.drawString(getRenderX() + getLabelOffsetX(),
+                getRenderY() + getLabelOffsetY(),
+                this.getLabel());
     }
 
     private void updateLabelOffset() {
