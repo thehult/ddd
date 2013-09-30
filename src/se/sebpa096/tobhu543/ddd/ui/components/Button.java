@@ -1,29 +1,31 @@
 package se.sebpa096.tobhu543.ddd.ui.components;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
-import se.sebpa096.tobhu543.ddd.ui.UI;
-import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseEvent;
-import se.sebpa096.tobhu543.ddd.ui.listeners.IMouseListener;
-import se.sebpa096.tobhu543.ddd.ui.listeners.MouseEvent;
+import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
+import se.sebpa096.tobhu543.ddd.ui.listeners.MouseListener;
 
-public class Button extends Component implements IMouseListener {
+
+public class Button extends Component {
     private Image standardImage = null;
     private Image hoverImage = null;
     private Image clickedImage = null;
     private Image currentImage = null;
     private String label;
-    private MouseEvent mouseEvent;
+    private MouseListener mouseListener;
+    private float labelOffsetX;
+    private float labelOffsetY;
+    private Font font;
 
     public Button(String label, Image standardImage) {
         super();
-        this.label = label;
+        this.font = (Font)GlobalResources.getResource("font", "menuFont");
+        setLabel(label);
         this.standardImage = standardImage;
         this.currentImage = standardImage;
         this.setWidth(standardImage.getWidth());
         this.setHeight(standardImage.getHeight());
-        this.mouseEvent = new ButtonMouseEvent(this);
+        this.mouseListener = new ButtonMouseListener(this);
     }
 
     public Button(String label, Image standardImage, Image hoverImage, Image clickedImage) {
@@ -44,6 +46,7 @@ public class Button extends Component implements IMouseListener {
 
     public void setLabel(String label) {
         this.label = label;
+        updateLabelOffset();
     }
 
     public Image getStandardImage() {
@@ -78,16 +81,48 @@ public class Button extends Component implements IMouseListener {
         this.currentImage = currentImage;
     }
 
+
+    public MouseListener getMouseListener() {
+        return mouseListener;
+    }
+
+    public void setMouseListener(MouseListener mouseListener) {
+        this.mouseListener = mouseListener;
+    }
+
     @Override
-    public void mouseEvent(int x, int y, boolean leftClick, boolean rightClick) {
-        this.mouseEvent.mouseEvent(this, x - this.getWidth(), y - this.getHeight(), leftClick, rightClick);
+    public void render(GameContainer gameContainer, Graphics graphics) {
+        graphics.drawImage(getCurrentImage(),
+                getRenderX(),
+                getRenderY());
+        graphics.setFont(this.font);
+        graphics.drawString(this.getLabel(),
+                getRenderX() + getLabelOffsetX(),
+                getRenderY() + getLabelOffsetY()
+                );
+        graphics.resetFont();
+
+
     }
 
-    public MouseEvent getMouseEvent() {
-        return mouseEvent;
+    private void updateLabelOffset() {
+        this.labelOffsetX = (this.getWidth() - font.getWidth(this.getLabel())) / 2;
+        this.labelOffsetY = (this.getHeight() - font.getHeight(this.getLabel())) / 2;
     }
 
-    public void setMouseEvent(MouseEvent mouseEvent) {
-        this.mouseEvent = mouseEvent;
+    private float getLabelOffsetX() {
+        return this.labelOffsetX;
     }
+
+    private float getLabelOffsetY() {
+        return this.labelOffsetY;
+    }
+
+    @Override
+    public void updateRenderPos() {
+        super.setRenderX(this.getX() + this.getParentUI().getX());
+        super.setRenderY(this.getY() + this.getParentUI().getY());
+        updateLabelOffset();
+    }
+
 }

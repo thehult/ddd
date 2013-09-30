@@ -11,12 +11,12 @@ public class ButtonImageResources extends ResourceManager<Image> {
     private final String menuHoverName = "menuHover";
     private final String menuClickedName = "menuClicked";
 
-    private final String defaultStandardPath = "res/default_button_standard.gif";
-    private final String defaultHoverPath = "res/default_button_hover.gif";
-    private final String defaultClickedPath = "res/default_button_clicked.gif";
-    private final String menuStandardPath = "res/menu_button_standard.gif";
-    private final String menuHoverPath = "res/menu_button_hover.gif";
-    private final String menuClickedPath = "res/menu_button_clicked.gif";
+    private final String defaultStandardPath = "res/buttons/default/standard.gif";
+    private final String defaultHoverPath = "res/buttons/default/hover.gif";
+    private final String defaultClickedPath = "res/buttons/default/clicked.gif";
+    private final String menuStandardPath = "res/buttons/menu/standard.gif";
+    private final String menuHoverPath = "res/buttons/menu/hover.gif";
+    private final String menuClickedPath = "res/buttons/menu/clicked.gif";
 
     public ButtonImageResources() {
         super();

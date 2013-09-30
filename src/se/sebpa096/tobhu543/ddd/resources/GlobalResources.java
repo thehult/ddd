@@ -8,6 +8,7 @@ public class GlobalResources {
     public static void init() {
         resourceManagers = new HashMap<String, ResourceManager>();
         addResourceManager("buttonImage", new ButtonImageResources());
+        addResourceManager("font", new FontResources());
         System.out.println("RESOURCES INITIERADE!");
     }
 

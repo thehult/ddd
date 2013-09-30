@@ -1,16 +1,13 @@
 package se.sebpa096.tobhu543.ddd.states;
 
-import javafx.scene.image.Image;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
 import se.sebpa096.tobhu543.ddd.ui.components.Label;
 import se.sebpa096.tobhu543.ddd.ui.components.MenuButton;
-import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseEvent;
-import se.sebpa096.tobhu543.ddd.ui.listeners.MouseEvent;
+import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 
 public class MenuState extends State {
     private UI menuUI;
@@ -25,20 +22,23 @@ public class MenuState extends State {
         try {
             menuUI = new UI(this, gameContainer);
 
-            Label header = new Label("MENU");
+            Label header = new Label("Dungeon Derring-Do's");
+            menuUI.addComponent(header);
             header.setWidth(componentWidth);
             header.setHeight(componentHeight);
             header.setX((gameContainer.getWidth() - componentWidth) / 2);
-            menuUI.addComponent(header);
+            header.updateRenderPos();
 
             MenuButton startGame = new MenuButton("Start New Game");
+
             startGame.setWidth(componentWidth);
             startGame.setHeight(componentHeight);
             startGame.setX((gameContainer.getWidth() - componentWidth) / 2);
             startGame.setY(1 * (componentHeight + componentMargin));
-
             menuUI.addComponent(startGame);
-            menuUI.addMouseListener(startGame);
+            menuUI.addMouseListener(startGame.getMouseListener());
+            startGame.updateRenderPos();
+
 
 
             MenuButton exit = new MenuButton("Exit Game");
@@ -46,15 +46,17 @@ public class MenuState extends State {
             exit.setHeight(componentHeight);
             exit.setX((gameContainer.getWidth() - componentWidth) / 2);
             exit.setY(2 * (componentHeight + componentMargin));
-            exit.setMouseEvent(new ButtonMouseEvent(exit) {
+            exit.setMouseListener(new ButtonMouseListener(exit) {
                 @Override
-                public void mouseDownLeft(Component sender, int x, int y) {
+                public void mouseUpLeft(Component sender, float x, float y) {
                     super.mouseDownLeft(sender, x, y);
                     System.exit(0);
                 }
             });
             menuUI.addComponent(exit);
-            menuUI.addMouseListener(exit);
+            menuUI.addMouseListener(exit.getMouseListener());
+            exit.updateRenderPos();
+
 
         } catch (SlickException e) {
             e.printStackTrace();
@@ -69,6 +71,6 @@ public class MenuState extends State {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        graphics.drawString("MENU", 200, 200);
+        menuUI.render(gameContainer, graphics);
     }
 }

@@ -1,6 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ui;
 
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.states.State;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
@@ -10,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UI {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+    private float x;
+    private float y;
+    private float width;
+    private float height;
     private State parentState;
 
     private List<IMouseListener> mouseListeners = new ArrayList<IMouseListener>();
@@ -23,7 +24,7 @@ public class UI {
         this(parentState, gameContainer, 0, 0, gameContainer.getWidth(), gameContainer.getHeight());
     }
 
-    public UI(State parentState, GameContainer gameContainer,  int x, int y, int width, int height) {
+    public UI(State parentState, GameContainer gameContainer,  float x, float y, float width, float height) {
         this.parentState = parentState;
         this.x = x;
         this.y = y;
@@ -32,16 +33,17 @@ public class UI {
     }
 
     public void update(GameContainer gameContainer, int delta) {
-        int x = gameContainer.getInput().getMouseX();
-        int y = gameContainer.getInput().getMouseY();
-        boolean leftClick = gameContainer.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON);
-        boolean rightClick = gameContainer.getInput().isMousePressed(Input.MOUSE_RIGHT_BUTTON);
+        float x = gameContainer.getInput().getMouseX();
+        float y = gameContainer.getInput().getMouseY();
+        boolean leftClick = gameContainer.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON);
+        boolean rightClick = gameContainer.getInput().isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON);
         for(IMouseListener object : mouseListeners)
             object.mouseEvent(x - this.x, y - this.y, leftClick, rightClick);
     }
 
-    private boolean withinBounds(int x, int y) {
-        return x < this.x + this.width && x >= this.x && y < this.y + this.height && y >= this.y;
+    public void render(GameContainer gameContainer, Graphics graphics) {
+        for(Component component : components)
+            component.render(gameContainer, graphics);
     }
 
     public void addMouseListener(IMouseListener object) {
@@ -62,4 +64,39 @@ public class UI {
         components.remove(object);
     }
 
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+        for(Component component : components)
+            component.updateRenderPos();
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+        for(Component component : components)
+            component.updateRenderPos();
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
 }

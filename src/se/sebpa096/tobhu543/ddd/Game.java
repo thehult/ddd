@@ -11,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.SEVERE;
+import static org.lwjgl.opengl.GL11.glBlendFunc;
+import static org.lwjgl.opengl.GL11.glEnable;
 
 public class Game extends BasicGame {
     public static final String GAME_NAME = "Dungeon Derring-Do's";
@@ -36,7 +38,6 @@ public class Game extends BasicGame {
 
     public Game(String gameName) {
        super(gameName);
-
        state = MENU_STATE;
     }
 
