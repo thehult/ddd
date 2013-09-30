@@ -142,7 +142,7 @@
       <file leaf-file-name="OptionsState.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/OptionsState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="50" selection-start="3417" selection-end="3417" vertical-scroll-proportion="2.5276382">
+            <state line="64" column="54" selection-start="2789" selection-end="2789" vertical-scroll-proportion="0.42713568">
               <folding />
             </state>
           </provider>
@@ -570,7 +570,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="18" y="48" width="1533" height="1062" extended-state="0" />
+    <frame x="18" y="48" width="1533" height="1062" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -773,7 +773,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/OptionsState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="50" selection-start="3417" selection-end="3417" vertical-scroll-proportion="2.5276382">
+        <state line="64" column="54" selection-start="2789" selection-end="2789" vertical-scroll-proportion="0.42713568">
           <folding />
         </state>
       </provider>
