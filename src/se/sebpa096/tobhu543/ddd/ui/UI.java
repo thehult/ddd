@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UI {
+
+    public static final int STD_COMPONENT_MARGIN = 10;
+    public static final int STD_COMPONENT_HEIGHT = 50;
+    public static final int STD_COMPONENT_WIDTH = 250;
+
     private float x;
     private float y;
     private float width;
