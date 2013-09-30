@@ -1,0 +1,10 @@
+# Compiled sources #
+
+out/
+*.class
+
+# Old merged files #
+*.orig
+
+# FUCKING iws file... IDEA creates new one each save... #
+*.iws

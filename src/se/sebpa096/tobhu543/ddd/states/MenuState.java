@@ -13,6 +13,7 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 
 public class MenuState extends State {
     private UI menuUI;
+    private final int topMargin = 100;
 
     @Override
     public void init(GameContainer gameContainer) {
@@ -24,13 +25,14 @@ public class MenuState extends State {
             header.setWidth(UI.STD_COMPONENT_WIDTH);
             header.setHeight(UI.STD_COMPONENT_HEIGHT);
             header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
+            header.setY(topMargin);
             header.updateRenderPos();
 
             MenuButton startGame = new MenuButton("Start New Game");
             startGame.setWidth(UI.STD_COMPONENT_WIDTH);
             startGame.setHeight(UI.STD_COMPONENT_HEIGHT);
             startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            startGame.setY(1 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN));
+            startGame.setY(1 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + topMargin);
             menuUI.addComponent(startGame);
             menuUI.addMouseListener(startGame.getMouseListener());
             startGame.updateRenderPos();
@@ -41,7 +43,7 @@ public class MenuState extends State {
             exit.setWidth(UI.STD_COMPONENT_WIDTH);
             exit.setHeight(UI.STD_COMPONENT_HEIGHT);
             exit.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            exit.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN));
+            exit.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
             exit.setMouseListener(new ButtonMouseListener(exit) {
                 @Override
                 public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
