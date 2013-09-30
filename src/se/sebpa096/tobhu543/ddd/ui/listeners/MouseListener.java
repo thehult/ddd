@@ -4,9 +4,9 @@ import se.sebpa096.tobhu543.ddd.ui.components.Component;
 
 public class MouseListener implements IMouseListener{
     public void mouseDownLeft(Component sender, float x, float y) {}
-    public void mouseUpLeft(Component sender, float x, float y) {}
+    public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {}
     public void mouseDownRight(Component sender, float x, float y) {}
-    public void mouseUpRight(Component sender, float x, float y) {}
+    public void mouseUpRight(Component sender, float x, float y, boolean stillOver) {}
     public void mouseIn(Component sender, float x, float y) {}
     public void mouseOut(Component sender, float x, float y) {}
     public void mouseOver(Component sender, float x, float y) {}
@@ -27,18 +27,18 @@ public class MouseListener implements IMouseListener{
         y = y - sender.getY();
         if(isLeftDown && !leftClick) {
             isLeftDown = false;
-            this.mouseUpLeft(sender, x, y);
+            this.mouseUpLeft(sender, x, y, validPosition(sender, x, y));
         }
         if(isRightDown && !rightClick) {
             isRightDown = false;
-            this.mouseUpRight(sender, x, y);
+            this.mouseUpRight(sender, x, y, validPosition(sender, x, y));
         }
         if(validPosition(sender, x, y)) {
-            if(leftClick) {
+            if(leftClick && !this.isLeftDown) {
                 this.isLeftDown = true;
                 this.mouseDownLeft(sender, x, y);
             }
-            else if(rightClick) {
+            else if(rightClick && !this.isRightDown) {
                 this.isRightDown = true;
                 this.mouseDownRight(sender, x, y);
             }

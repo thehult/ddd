@@ -30,7 +30,6 @@ public class MenuState extends State {
             header.updateRenderPos();
 
             MenuButton startGame = new MenuButton("Start New Game");
-
             startGame.setWidth(componentWidth);
             startGame.setHeight(componentHeight);
             startGame.setX((gameContainer.getWidth() - componentWidth) / 2);
@@ -48,9 +47,10 @@ public class MenuState extends State {
             exit.setY(2 * (componentHeight + componentMargin));
             exit.setMouseListener(new ButtonMouseListener(exit) {
                 @Override
-                public void mouseUpLeft(Component sender, float x, float y) {
-                    super.mouseDownLeft(sender, x, y);
-                    System.exit(0);
+                public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
+                    super.mouseUpLeft(sender, x, y, stillOver);
+                    if(stillOver)
+                        System.exit(0);
                 }
             });
             menuUI.addComponent(exit);

@@ -18,7 +18,7 @@ public class ButtonMouseListener extends MouseListener {
     }
 
     @Override
-    public void mouseUpLeft(Component sender, float x, float y) {
+    public void mouseUpLeft(Component sender, float x, float y, boolean stillOVer) {
         button.setCurrentImage(button.getStandardImage());
     }
 

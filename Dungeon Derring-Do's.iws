@@ -9,7 +9,7 @@
     <file path="/State.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541553103" ignored="false" />
     <file path="/States.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380532276786" ignored="false" />
     <file path="/GameState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380541575113" ignored="false" />
-    <file path="/MenuState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380553516982" ignored="false" />
+    <file path="/MenuState.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380554625809" ignored="false" />
     <file path="/Button.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380551881886" ignored="false" />
     <file path="/IClickListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380535140372" ignored="false" />
     <file path="/UI.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380549549120" ignored="false" />
@@ -23,8 +23,8 @@
     <file path="/ButtonMouseEvent.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380544880402" ignored="false" />
     <file path="/IMouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380551738797" ignored="false" />
     <file path="/FontResources.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380553182827" ignored="false" />
-    <file path="/MouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380552659272" ignored="false" />
-    <file path="/ButtonMouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380552600650" ignored="false" />
+    <file path="/MouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380554477338" ignored="false" />
+    <file path="/ButtonMouseListener.java" changelist="64e24254-c11f-4450-81cc-4615ac4b9014" time="1380554559077" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,10 +90,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="51" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.78975266">
+            <state line="51" column="13" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,7 +124,7 @@
       <file leaf-file-name="MenuState.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
+            <state line="49" column="59" selection-start="1970" selection-end="1970" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,10 +141,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MouseListener.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MouseListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="40" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.0">
+            <state line="36" column="47" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.36042404">
               <folding />
             </state>
           </provider>
@@ -153,7 +153,7 @@
       <file leaf-file-name="ButtonMouseListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="32" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
+            <state line="19" column="13" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -212,11 +212,11 @@
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/IMouseListener.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java" />
-        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Label.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java" />
+        <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java" />
         <option value="$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java" />
       </list>
     </option>
@@ -712,15 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/IMouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
@@ -728,43 +719,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="32" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="40" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/resources/FontResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="54" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="19" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="8" selection-start="2865" selection-end="2893" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -780,16 +737,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="1137" selection-end="1137" vertical-scroll-proportion="0.0">
+        <state line="51" column="13" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="51" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.78975266">
+        <state line="35" column="19" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/MenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/components/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="8" selection-start="2865" selection-end="2893" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/ButtonMouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="13" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/states/MenuState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="59" selection-start="1970" selection-end="1970" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/sebpa096/tobhu543/ddd/ui/listeners/MouseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="47" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.36042404">
           <folding />
         </state>
       </provider>
