@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
@@ -12,12 +13,14 @@ import se.sebpa096.tobhu543.ddd.ui.components.MenuButton;
 import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 
 public class MenuState extends State {
+    private Game game;
     private UI menuUI;
     private final int topMargin = 100;
 
     @Override
-    public void init(GameContainer gameContainer) {
+    public void init(GameContainer gameContainer, Game game) {
         try {
+	    this.game = game;
             menuUI = new UI(this, gameContainer);
 
             Label header = new Label("Dungeon Derring-Do's");
@@ -37,13 +40,31 @@ public class MenuState extends State {
             menuUI.addMouseListener(startGame.getMouseListener());
             startGame.updateRenderPos();
 
+	    MenuButton options = new MenuButton("Options");
+	    options.setWidth(UI.STD_COMPONENT_WIDTH);
+	    options.setHeight(UI.STD_COMPONENT_HEIGHT);
+	    options.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
+	    options.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
+	    final Game context = game;
+	    options.setMouseListener(new ButtonMouseListener(options){
+		@Override
+	    	public void mouseUpLeft(Component sender, float x, float y, boolean stillOver){
+		    super.mouseUpLeft(sender, x, y, stillOver);
+		    if(stillOver)
+			context.setState(context.OPTIONS_STATE);
+		}
+	    });
+	    menuUI.addComponent(options);
+	    menuUI.addMouseListener(options.getMouseListener());
+	    options.updateRenderPos();
+
 
 
             MenuButton exit = new MenuButton("Exit Game");
             exit.setWidth(UI.STD_COMPONENT_WIDTH);
             exit.setHeight(UI.STD_COMPONENT_HEIGHT);
             exit.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            exit.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
+            exit.setY(3 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
             exit.setMouseListener(new ButtonMouseListener(exit) {
                 @Override
                 public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {

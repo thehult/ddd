@@ -5,6 +5,7 @@ import org.newdawn.slick.*;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.states.GameState;
 import se.sebpa096.tobhu543.ddd.states.MenuState;
+import se.sebpa096.tobhu543.ddd.states.OptionsState;
 import se.sebpa096.tobhu543.ddd.states.State;
 
 import java.util.logging.Level;
@@ -33,19 +34,29 @@ public class Game extends BasicGame {
     // CLASS IMPLEMENTATION BELOW
 
     private State state;
-    private final MenuState MENU_STATE = new MenuState();
-    private final GameState GAME_STATE = new GameState();
+    public static final MenuState MENU_STATE = new MenuState();
+    public static final GameState GAME_STATE = new GameState();
+    public static final OptionsState OPTIONS_STATE = new OptionsState();
 
     public Game(String gameName) {
-       super(gameName);
-       state = MENU_STATE;
+        super(gameName);
+        setState(MENU_STATE);
+    }
+
+    private void initMenuStates(GameContainer gameContainer){
+	MENU_STATE.init(gameContainer, this);
+	OPTIONS_STATE.init(gameContainer, this);
+    }
+
+    public void setState(State state){
+	this.state = state;
     }
 
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         GlobalResources.init();
-        state.init(gameContainer);
+        initMenuStates(gameContainer);
 
     }
 

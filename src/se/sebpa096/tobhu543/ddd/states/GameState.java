@@ -5,9 +5,11 @@ import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.Game;
 
 public class GameState extends State {
-    @Override
-    public void init(GameContainer gameContainer) {
+    private Game game;
 
+    @Override
+    public void init(GameContainer gameContainer, Game game) {
+	this.game = game;
     }
 
     @Override
