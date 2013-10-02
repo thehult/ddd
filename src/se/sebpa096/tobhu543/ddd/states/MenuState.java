@@ -23,6 +23,8 @@ public class MenuState extends State {
 	    this.game = game;
             menuUI = new UI(this, gameContainer);
 
+	    final Game context = game;
+
             Label header = new Label("Dungeon Derring-Do's");
             menuUI.addComponent(header);
             header.setWidth(UI.STD_COMPONENT_WIDTH);
@@ -36,6 +38,16 @@ public class MenuState extends State {
             startGame.setHeight(UI.STD_COMPONENT_HEIGHT);
             startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
             startGame.setY(1 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + topMargin);
+	    final GameContainer gameContainerContext = gameContainer;
+	    startGame.setMouseListener(new ButtonMouseListener(startGame){
+		@Override
+		public void mouseUpLeft(final Component sender, final float x, final float y, final boolean stillOver) {
+		    super.mouseUpLeft(sender, x, y,
+				      stillOver);
+		    if(stillOver)
+			context.setAndInitState( context.GAME_STATE, gameContainerContext);
+		}
+	    });
             menuUI.addComponent(startGame);
             menuUI.addMouseListener(startGame.getMouseListener());
             startGame.updateRenderPos();
@@ -45,7 +57,6 @@ public class MenuState extends State {
 	    options.setHeight(UI.STD_COMPONENT_HEIGHT);
 	    options.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
 	    options.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
-	    final Game context = game;
 	    options.setMouseListener(new ButtonMouseListener(options){
 		@Override
 	    	public void mouseUpLeft(Component sender, float x, float y, boolean stillOver){

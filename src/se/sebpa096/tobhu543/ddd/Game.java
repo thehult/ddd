@@ -52,6 +52,11 @@ public class Game extends BasicGame {
 	this.state = state;
     }
 
+    public void setAndInitState(State state, GameContainer gameContainer){
+	state.init(gameContainer, this); //TODO maybe fix a better solution. private pointer to gameContainer?
+	setState(state);
+    }
+
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
