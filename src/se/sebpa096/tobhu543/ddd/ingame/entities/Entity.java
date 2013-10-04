@@ -8,18 +8,21 @@ import org.newdawn.slick.Image;
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 20:52 To change this template use File | Settings | File
  * Templates.
  */
-public abstract class Entity
+public class Entity
 {
     protected Image sprite;
 
-    float x;
-    float y;
-    float z;
+    protected float x;
+    protected float y;
+    protected float z;
 
-    float renderX;
-    float renderY;
+    protected float renderX;
+    protected float renderY;
 
-    public abstract void update(GameContainer gameContainer, int delta);
+    public void update(GameContainer gameContainer, int delta) {
+
+    }
+
     public void render(GameContainer gameContainer, Graphics graphics){
 	    sprite.draw(x, y);
     }
