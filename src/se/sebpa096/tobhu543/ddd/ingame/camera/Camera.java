@@ -15,6 +15,21 @@ public class Camera {
         zoom = 1.0f;
     }
 
+    public float getCenterX() {
+        return x + width / 2.0f;
+    }
+
+    public void setCenterX(float centerX) {
+        this.x = centerX - width / 2.0f;
+    }
+
+    public float getCenterY() {
+        return y + height / 2.0f;
+    }
+
+    public void setCenterY(float centerY) {
+        this.y = centerY - height / 2.0f;
+    }
 
     public float getX() {
         return x;
