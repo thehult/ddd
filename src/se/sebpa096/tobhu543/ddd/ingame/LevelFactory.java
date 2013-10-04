@@ -11,9 +11,9 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 public class LevelFactory
 {
     public static Level makeTestLevel(){
-	Level level = new Level();
-	Room room = new Room(1, 1, (Image)GlobalResources.getResource("buttonImage", "defaultStandard"));
-	level.addRoom(room);
-	return level;
+        Level level = new Level();
+        Room room = new Room(1, 1, (Image)GlobalResources.getResource("buttonImage", "defaultStandard"));
+        level.addRoom(room);
+        return level;
     }
 }

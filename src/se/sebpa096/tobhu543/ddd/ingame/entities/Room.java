@@ -22,16 +22,16 @@ public class Room extends Entity //extend entity maybe?
     private int roomGridY;
 
     public Room(int inRoomGridX, int inRoomGridY){
-	super(inRoomGridX * ROOMTILE_WIDTH_IN_PX, inRoomGridY * ROOMTILE_HEIGHT_IN_PX, 0);
-	roomGridX = inRoomGridX;
-	roomGridY = inRoomGridY;
+        super(inRoomGridX * ROOMTILE_WIDTH_IN_PX, inRoomGridY * ROOMTILE_HEIGHT_IN_PX, 0);
+        roomGridX = inRoomGridX;
+        roomGridY = inRoomGridY;
 
     }
 
     public Room(int inRoomGridX, int inRoomGridY, Image inSprite){
-	super(inRoomGridX * ROOMTILE_WIDTH_IN_PX, inRoomGridY * ROOMTILE_HEIGHT_IN_PX, 0, inSprite);
-	roomGridX = inRoomGridX;
-	roomGridY = inRoomGridY;
+        super(inRoomGridX * ROOMTILE_WIDTH_IN_PX, inRoomGridY * ROOMTILE_HEIGHT_IN_PX, 0, inSprite);
+        roomGridX = inRoomGridX;
+        roomGridY = inRoomGridY;
     }
 
     @Override public void update(final GameContainer gameContainer, final int delta) {

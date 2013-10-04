@@ -13,44 +13,44 @@ import java.util.ArrayList;
  */
 public class Level
 {
-    public static int TILE_WIDTH_IN_PX = 74;
-    public static int TILE_HEIGHT_IN_PX = 74;
-    public static int PX_HEIGHT_PER_Z = 40; //TODO change this!
+    public static int TILE_WIDTH_IN_PX = 72;
+    public static int TILE_HEIGHT_IN_PX = 72;
+    public static int PX_HEIGHT_PER_Z = 24; //TODO change this!
 
     private ArrayList<Room> rooms;
     private ArrayList<Wall> walls;
 
 
     public Level(){
-	rooms = new ArrayList<Room>();
-	walls = new ArrayList<Wall>();
+        rooms = new ArrayList<Room>();
+        walls = new ArrayList<Wall>();
     }
 
     public void addRoom(Room room/*, int gridX, int gridY*/){
-	rooms.add(room);
+	    rooms.add(room);
     }
 
     public void addWall(Wall wall){
-	walls.add(wall);
+	    walls.add(wall);
     }
 
 
 
     public void update(GameContainer gameContainer, int delta){
-	for(Room r: rooms){
-	    r.update(gameContainer, delta);
-	}
-	for(Wall w: walls){
-	    w.update(gameContainer, delta);
-	}
+        for(Room r: rooms){
+            r.update(gameContainer, delta);
+        }
+        for(Wall w: walls){
+            w.update(gameContainer, delta);
+        }
     }
 
     public void render(GameContainer gameContainer, Graphics graphics){
-	for(Room r: rooms){
-	    r.render(gameContainer, graphics);
-	}
-	for(Wall w: walls){
-	    w.render(gameContainer, graphics);
-	}
+        for(Room r: rooms){
+            r.render(gameContainer, graphics);
+        }
+        for(Wall w: walls){
+            w.render(gameContainer, graphics);
+        }
     }
 }

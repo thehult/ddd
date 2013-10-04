@@ -21,28 +21,28 @@ public abstract class Entity
 
     public abstract void update(GameContainer gameContainer, int delta);
     public void render(GameContainer gameContainer, Graphics graphics){
-	sprite.draw(x, y);
+	    sprite.draw(x, y);
     }
 
     public Entity(){
-	x = 0;
-	y = 0;
-	z = 0;
-	renderX = 0;
-	renderY = 0;
+        x = 0;
+        y = 0;
+        z = 0;
+        renderX = 0;
+        renderY = 0;
     }
 
     public Entity(float inX, float inY, float inZ){
-	x = inX;
-	y = inY;
-	z = inZ;
-	renderX = x; //use some sort of camera offset
-	renderY = y;
+        x = inX;
+        y = inY;
+        z = inZ;
+        renderX = x; //use some sort of camera offset
+        renderY = y;
     }
 
     public Entity(float inX, float inY, float inZ, Image inSprite){
-	this(inX, inY, inZ);
-	sprite = inSprite;
+        this(inX, inY, inZ);
+        sprite = inSprite;
     }
 
 
