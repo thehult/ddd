@@ -5,6 +5,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.resources.BackgroundResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
@@ -20,10 +21,10 @@ public class MenuState extends State {
     @Override
     public void init(GameContainer gameContainer, Game game) {
         try {
-	    this.game = game;
-            menuUI = new UI(this, gameContainer);
+            this.game = game;
+                menuUI = new UI(this, gameContainer);
 
-	    final Game context = game;
+            final Game context = game;
 
             Label header = new Label("Dungeon Derring-Do's");
             menuUI.addComponent(header);
@@ -38,36 +39,36 @@ public class MenuState extends State {
             startGame.setHeight(UI.STD_COMPONENT_HEIGHT);
             startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
             startGame.setY(1 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + topMargin);
-	    final GameContainer gameContainerContext = gameContainer;
-	    startGame.setMouseListener(new ButtonMouseListener(startGame){
-		@Override
-		public void mouseUpLeft(final Component sender, final float x, final float y, final boolean stillOver) {
-		    super.mouseUpLeft(sender, x, y,
-				      stillOver);
-		    if(stillOver)
-			context.setAndInitState( context.GAME_STATE, gameContainerContext);
-		}
-	    });
+            final GameContainer gameContainerContext = gameContainer;
+            startGame.setMouseListener(new ButtonMouseListener(startGame){
+                @Override
+                public void mouseUpLeft(final Component sender, final float x, final float y, final boolean stillOver) {
+                    super.mouseUpLeft(sender, x, y,
+                              stillOver);
+                    if(stillOver)
+                    context.setAndInitState( context.GAME_STATE, gameContainerContext);
+                }
+                });
             menuUI.addComponent(startGame);
             menuUI.addMouseListener(startGame.getMouseListener());
             startGame.updateRenderPos();
 
-	    MenuButton options = new MenuButton("Options");
-	    options.setWidth(UI.STD_COMPONENT_WIDTH);
-	    options.setHeight(UI.STD_COMPONENT_HEIGHT);
-	    options.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-	    options.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
-	    options.setMouseListener(new ButtonMouseListener(options){
-		@Override
-	    	public void mouseUpLeft(Component sender, float x, float y, boolean stillOver){
-		    super.mouseUpLeft(sender, x, y, stillOver);
-		    if(stillOver)
-			context.setState(context.OPTIONS_STATE);
-		}
-	    });
-	    menuUI.addComponent(options);
-	    menuUI.addMouseListener(options.getMouseListener());
-	    options.updateRenderPos();
+            MenuButton options = new MenuButton("Options");
+            options.setWidth(UI.STD_COMPONENT_WIDTH);
+            options.setHeight(UI.STD_COMPONENT_HEIGHT);
+            options.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
+            options.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
+            options.setMouseListener(new ButtonMouseListener(options){
+            @Override
+                public void mouseUpLeft(Component sender, float x, float y, boolean stillOver){
+                super.mouseUpLeft(sender, x, y, stillOver);
+                if(stillOver)
+                context.setState(context.OPTIONS_STATE);
+            }
+            });
+            menuUI.addComponent(options);
+            menuUI.addMouseListener(options.getMouseListener());
+            options.updateRenderPos();
 
 
 
@@ -88,7 +89,7 @@ public class MenuState extends State {
             menuUI.addMouseListener(exit.getMouseListener());
             exit.updateRenderPos();
 
-            this.backgroundImage = (Image)GlobalResources.getResource("backgroundImage", "menuBackground");
+            this.backgroundImage = (Image)GlobalResources.getResource(GlobalResources.BACKGROUND_RESOURCES, BackgroundResources.MENU_BACKGROUND);
 
         } catch (SlickException e) {
             e.printStackTrace();

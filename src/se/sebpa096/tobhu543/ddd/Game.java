@@ -40,21 +40,21 @@ public class Game extends BasicGame {
 
     public Game(String gameName) {
         super(gameName);
-        setState(MENU_STATE);
+
     }
 
     private void initMenuStates(GameContainer gameContainer){
-	MENU_STATE.init(gameContainer, this);
-	OPTIONS_STATE.init(gameContainer, this);
+        MENU_STATE.init(gameContainer, this);
+        OPTIONS_STATE.init(gameContainer, this);
     }
 
     public void setState(State state){
-	this.state = state;
+	    this.state = state;
     }
 
     public void setAndInitState(State state, GameContainer gameContainer){
-	state.init(gameContainer, this); //TODO maybe fix a better solution. private pointer to gameContainer?
-	setState(state);
+        state.init(gameContainer, this); //TODO maybe fix a better solution. private pointer to gameContainer?
+        setState(state);
     }
 
 
@@ -62,6 +62,7 @@ public class Game extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         GlobalResources.init();
         initMenuStates(gameContainer);
+        setState(MENU_STATE);
 
     }
 
@@ -74,5 +75,4 @@ public class Game extends BasicGame {
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         state.render(gameContainer, graphics);
     }
-
 }

@@ -6,18 +6,16 @@ import org.newdawn.slick.font.effects.ColorEffect;
 
 
 public class FontResources extends ResourceManager<Font> {
-    private final String menuFontName = "menuFont";
-
-    private final String menuFontPath = "res/fonts/sketchedcassiusbroken.ttf";
+    public static final String MENU_FONT = "menuFont";
 
     public FontResources() {
         super();
         try {
-            UnicodeFont menuFont = new UnicodeFont(menuFontPath, 22, false, false);
+            UnicodeFont menuFont = new UnicodeFont("res/fonts/sketchedcassiusbroken.ttf", 22, false, false);
             menuFont.addAsciiGlyphs();
             menuFont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
             menuFont.loadGlyphs();
-            resources.put(menuFontName, menuFont);
+            resources.put(MENU_FONT, menuFont);
 
         } catch (SlickException e) {
             e.printStackTrace();

@@ -12,12 +12,15 @@ public class Entity
 {
     protected Image sprite;
 
+
+    public static float TILE_WIDTH_IN_PX = 72.0f;
+    public static float TILE_HEIGHT_IN_PX = 72.0f;
+    public static float PX_HEIGHT_PER_Z = TILE_HEIGHT_IN_PX / 3.0f; //TODO change this!
+    public static float TILE_RENDER_OFFSET_Y = -2.0f * PX_HEIGHT_PER_Z;
+
     protected float x;
     protected float y;
     protected float z;
-
-    protected float renderX;
-    protected float renderY;
 
     public void update(GameContainer gameContainer, int delta) {
 
@@ -31,16 +34,12 @@ public class Entity
         x = 0;
         y = 0;
         z = 0;
-        renderX = 0;
-        renderY = 0;
     }
 
     public Entity(float inX, float inY, float inZ){
         x = inX;
         y = inY;
         z = inZ;
-        renderX = x; //use some sort of camera offset
-        renderY = y;
     }
 
     public Entity(float inX, float inY, float inZ, Image inSprite){

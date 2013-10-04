@@ -5,6 +5,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.resources.BackgroundResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
@@ -46,13 +47,13 @@ public class OptionsState extends State
             back.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) * BACK_POSX_RAT);
             back.setY((gameContainer.getHeight() - UI.STD_COMPONENT_HEIGHT) * BACK_POSY_RAT);
 	    final Game context = game;
-	    back.setMouseListener(new ButtonMouseListener(back){
+	    back.setMouseListener(new ButtonMouseListener(back) {
             @Override
-		public void mouseUpLeft(Component sender, float x, float y, boolean stillOver){
-		    super.mouseDownLeft(sender, x, y);
-		    context.setState(context.MENU_STATE);
-		}
-	    });
+            public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
+                super.mouseDownLeft(sender, x, y);
+                context.setState(context.MENU_STATE);
+            }
+        });
             optionsUI.addComponent(back);
             optionsUI.addMouseListener(back.getMouseListener());
             back.updateRenderPos();
@@ -64,20 +65,19 @@ public class OptionsState extends State
             save.setHeight(UI.STD_COMPONENT_HEIGHT);
             save.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) * SAVE_POSX_RAT);
             save.setY((gameContainer.getHeight() - UI.STD_COMPONENT_HEIGHT) * SAVE_POSY_RAT);
-            save.setMouseListener(new ButtonMouseListener(save)
-	    {
-		@Override
-		public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
-		    super.mouseDownLeft(sender, x, y);
-		    //TODO: save current settings
-		    System.out.println("Settings saved!");
-		}
-	    });
+            save.setMouseListener(new ButtonMouseListener(save) {
+                @Override
+                public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
+                    super.mouseDownLeft(sender, x, y);
+                    //TODO: save current settings
+                    System.out.println("Settings saved!");
+                }
+            });
             optionsUI.addComponent(save);
             optionsUI.addMouseListener(save.getMouseListener());
             save.updateRenderPos();
 
-	    this.backgroundImage = (Image) GlobalResources.getResource("backgroundImage", "menuBackground");
+	    this.backgroundImage = (Image) GlobalResources.getResource(GlobalResources.BACKGROUND_RESOURCES, BackgroundResources.MENU_BACKGROUND);
 
 
         } catch (SlickException e) {

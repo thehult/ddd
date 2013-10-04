@@ -3,13 +3,21 @@ package se.sebpa096.tobhu543.ddd.resources;
 import java.util.HashMap;
 
 public class GlobalResources {
+
+    public static final String BUTTON_RESOURCES = "buttons";
+    public static final String FONT_RESOURCES = "font";
+    public static final String BACKGROUND_RESOURCES = "backgrounds";
+    public static final String TILE_RESOURCES = "tiles";
+
+
     private static HashMap<String, ResourceManager> resourceManagers;
 
     public static void init() {
         resourceManagers = new HashMap<String, ResourceManager>();
-        addResourceManager("buttonImage", new ButtonImageResources());
-        addResourceManager("font", new FontResources());
-        addResourceManager("backgroundImage", new BackgroundResources());
+        addResourceManager(BUTTON_RESOURCES, new ButtonImageResources());
+        addResourceManager(FONT_RESOURCES, new FontResources());
+        addResourceManager(BACKGROUND_RESOURCES, new BackgroundResources());
+        addResourceManager(TILE_RESOURCES, new TileResources());
     }
 
     public static void addResourceManager(String name, ResourceManager resourceManager) {

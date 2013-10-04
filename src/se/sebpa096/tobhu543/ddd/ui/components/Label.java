@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ui.components;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import se.sebpa096.tobhu543.ddd.resources.FontResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 
@@ -19,7 +20,7 @@ public class Label extends Component {
         this.setText(text);
         this.setX(x);
         this.setY(y);
-        this.font = (Font)GlobalResources.getResource("font", "menuFont");
+        this.font = (Font)GlobalResources.getResource(GlobalResources.FONT_RESOURCES, FontResources.MENU_FONT);
     }
 
     public String getText() {

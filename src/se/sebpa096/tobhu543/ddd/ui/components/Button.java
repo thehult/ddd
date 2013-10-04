@@ -1,6 +1,8 @@
 package se.sebpa096.tobhu543.ddd.ui.components;
 
 import org.newdawn.slick.*;
+import se.sebpa096.tobhu543.ddd.resources.ButtonImageResources;
+import se.sebpa096.tobhu543.ddd.resources.FontResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 import se.sebpa096.tobhu543.ddd.ui.listeners.MouseListener;
@@ -20,7 +22,7 @@ public class Button extends Component {
 
     public Button(String label, Image standardImage) {
         super();
-        this.font = (Font)GlobalResources.getResource("font", "menuFont");
+        this.font = (Font)GlobalResources.getResource(GlobalResources.FONT_RESOURCES, FontResources.MENU_FONT);
         setLabel(label);
         this.standardImage = standardImage;
         this.currentImage = standardImage;
@@ -36,9 +38,9 @@ public class Button extends Component {
     }
 
     public Button( String label) throws SlickException {
-        this(label, (Image)GlobalResources.getResource("buttonImage", "defaultStandard"));
-        this.hoverImage = (Image)GlobalResources.getResource("buttonImage", "defaultHover");
-        this.clickedImage = (Image)GlobalResources.getResource("buttonImage", "defaultClicked");
+        this(label, (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_STANDARD));
+        this.hoverImage = (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_HOVER);
+        this.clickedImage = (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_CLICKED);
     }
 
     public String getLabel() {
