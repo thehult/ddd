@@ -1,34 +1,17 @@
 package se.sebpa096.tobhu543.ddd.ingame.camera;
 
-import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.ingame.Room;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
+import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
 
-public class Camera {
+public class Camera implements IEntityListener {
     protected float x;
     protected float y;
-    protected float width;
-    protected float height;
-    protected float zoom;
+    private Entity followEntity = null;
 
     public Camera() {
-        width = Game.WINDOW_WIDTH;
-        height = Game.WINDOW_HEIGHT;
-        zoom = 1.0f;
-    }
-
-    public float getCenterX() {
-        return x + width / 2.0f;
-    }
-
-    public void setCenterX(float centerX) {
-        this.x = centerX - width / 2.0f;
-    }
-
-    public float getCenterY() {
-        return y + height / 2.0f;
-    }
-
-    public void setCenterY(float centerY) {
-        this.y = centerY - height / 2.0f;
+        this.y = 0;
+        this.x = 0;
     }
 
     public float getX() {
@@ -47,19 +30,29 @@ public class Camera {
         this.y = y;
     }
 
-    public float getWidth() {
-        return width;
+    public void lockRoom(Room room) {
+        this.setX(Room.ROOM_WIDTH_IN_PX / 2);
+        this.setY(Room.ROOM_HEIGHT_IN_PX / 2);
+        if(followEntity != null) {
+            this.followEntity.removeEntityListener(this);
+            this.followEntity = null;
+        }
     }
 
-    public float getHeight() {
-        return height;
+    public void setFollowEntity(Entity entity) {
+        this.followEntity = entity;
+        followEntity.addEntityListener(this);
     }
 
-    public float getZoom() {
-        return zoom;
+    public Entity getFollowEntity() {
+        return followEntity;
     }
 
-    public void setZoom(float zoom) {
-        this.zoom = zoom;
+    @Override
+    public void entityChanged() {
+        if(followEntity != null) {
+            this.setX(followEntity.getCenterX());
+            this.setY(followEntity.getCenterY());
+        }
     }
 }

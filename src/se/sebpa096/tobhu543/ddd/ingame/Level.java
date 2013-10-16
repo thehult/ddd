@@ -2,6 +2,7 @@ package se.sebpa096.tobhu543.ddd.ingame;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,6 @@ public class Level
     private Room startRoom;
     private ArrayList<Room> roomListeners = new ArrayList<Room>();
 
-
     public Level(){
     }
 
@@ -24,8 +24,8 @@ public class Level
         }
     }
 
-    public void render(GameContainer gameContainer, Graphics graphics){
-        startRoom.render(gameContainer, graphics);
+    public void render(GameContainer gameContainer, Graphics graphics, Camera camera){
+        startRoom.render(gameContainer, graphics, camera);
     }
 
 

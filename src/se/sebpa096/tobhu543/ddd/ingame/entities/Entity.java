@@ -4,6 +4,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
+import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 20:52 To change this template use File | Settings | File
  * Templates.
@@ -22,12 +24,16 @@ public class Entity
     protected float y;
     protected float z;
 
-    public void update(GameContainer gameContainer, int delta) {
+    private ArrayList<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
 
+
+    public void update(GameContainer gameContainer, int delta) {
+        for(IEntityListener listener : entityListeners)
+            listener.entityChanged();
     }
 
     public void render(GameContainer gameContainer, Graphics graphics){
-	    sprite.draw(x, y);
+	    sprite.draw(x, y - TILE_RENDER_OFFSET_Y);
     }
 
     public Entity(){
@@ -47,5 +53,59 @@ public class Entity
         sprite = inSprite;
     }
 
+    public void addEntityListener(IEntityListener listener) {
+        entityListeners.add(listener);
+    }
 
+    public void removeEntityListener(IEntityListener listener) {
+        entityListeners.remove(listener);
+    }
+
+    public Image getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(Image sprite) {
+        this.sprite = sprite;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public float getZ() {
+        return z;
+    }
+
+    public void setZ(float z) {
+        this.z = z;
+    }
+
+    public float getCenterX() {
+       return this.x + TILE_WIDTH_IN_PX / 2.0f;
+    }
+
+    public void setCenterX(float cx) {
+        this.x = cx - TILE_WIDTH_IN_PX / 2.0f;
+    }
+
+    public float getCenterY() {
+        return this.y + TILE_HEIGHT_IN_PX / 2.0f;
+    }
+
+    public void setCenterY(float cy) {
+        this.y = cy - TILE_HEIGHT_IN_PX / 2.0f;
+    }
 }

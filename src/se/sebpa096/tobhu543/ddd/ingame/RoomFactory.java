@@ -15,7 +15,10 @@ public class RoomFactory {
             }
         }
         build.setTiles(tiles);
-        build.setWallSprite((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1));
+        build.setWallSpriteTop((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1_TOP));
+        build.setWallSpriteBot((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1_BOT));
+        build.setWallSpriteLeft((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1_LEFT));
+        build.setWallSpriteRight((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1_RIGHT));
         return build;
     }
 }
