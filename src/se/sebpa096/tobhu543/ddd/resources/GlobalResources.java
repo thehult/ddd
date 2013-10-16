@@ -8,6 +8,7 @@ public class GlobalResources {
     public static final String FONT_RESOURCES = "font";
     public static final String BACKGROUND_RESOURCES = "backgrounds";
     public static final String TILE_RESOURCES = "tiles";
+    public static final String UNIT_RESOURCES = "units";
 
 
     private static HashMap<String, ResourceManager> resourceManagers;
@@ -18,6 +19,7 @@ public class GlobalResources {
         addResourceManager(FONT_RESOURCES, new FontResources());
         addResourceManager(BACKGROUND_RESOURCES, new BackgroundResources());
         addResourceManager(TILE_RESOURCES, new TileResources());
+        addResourceManager(UNIT_RESOURCES, new UnitResources());
     }
 
     public static void addResourceManager(String name, ResourceManager resourceManager) {

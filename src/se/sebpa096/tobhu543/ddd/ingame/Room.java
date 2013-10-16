@@ -28,6 +28,7 @@ public class Room
 
     private Tile[][] tiles = new Tile[ROOM_WIDTH_IN_TILES][ROOM_HEIGHT_IN_TILES];
     private ArrayList<Entity> entityListeners = new ArrayList<Entity>();
+    private ArrayList<Entity> entities = new ArrayList<Entity>();
     private Room topRoom = null;
     private Room rightRoom = null;
     private Room bottomRoom = null;
@@ -77,10 +78,11 @@ public class Room
         if(direction == Direction.DOWN)
             screenTopY += (Room.ROOM_HEIGHT_IN_PX + Tile.TILE_HEIGHT_IN_PX);
         if(direction == Direction.LEFT)
-            screenTopY -= (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
+            screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
         if(direction == Direction.RIGHT)
-            screenTopY += (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
+            screenLeftX += (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
 
+        System.out.println("");
         for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
             graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
         }
@@ -90,6 +92,12 @@ public class Room
             for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++)
                 graphics.drawImage(tiles[x][y].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
         }
+
+        //HÄR RENDREAR ALLT INOM RUMMET!
+        for(Entity entity : entities) {
+            entity.render(gameContainer, graphics, screenLeftX, screenTopY);
+        }
+
         for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
             graphics.drawImage(wallSpriteBot, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + ROOM_HEIGHT_IN_PX);
         }
@@ -210,5 +218,13 @@ public class Room
 
     public boolean hasBottomRoom() {
         return leftRoom != null;
+    }
+
+    public void addEntity(Entity e) {
+        entities.add(e);
+    }
+
+    public void removeEntity(Entity e) {
+        entities.remove(e);
     }
 }

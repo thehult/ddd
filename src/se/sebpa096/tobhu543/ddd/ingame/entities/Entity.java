@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame.entities;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import se.sebpa096.tobhu543.ddd.ingame.Room;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,8 @@ public class Entity
     protected float y;
     protected float z;
 
+    private Room currentRoom;
+
     private ArrayList<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
 
 
@@ -32,8 +35,8 @@ public class Entity
             listener.entityChanged();
     }
 
-    public void render(GameContainer gameContainer, Graphics graphics){
-	    sprite.draw(x, y - TILE_RENDER_OFFSET_Y);
+    public void render(GameContainer gameContainer, Graphics graphics, float screenX, float screenY){
+	    sprite.draw(screenX + x, screenY + y );
     }
 
     public Entity(){
@@ -107,5 +110,13 @@ public class Entity
 
     public void setCenterY(float cy) {
         this.y = cy - TILE_HEIGHT_IN_PX / 2.0f;
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 }
