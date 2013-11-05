@@ -84,11 +84,37 @@ public class Room
 
         System.out.println("");
         for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
-            graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+            if(hasTopRoom()) {
+                if(x == ROOM_WIDTH_IN_TILES / 2 - 1) {
+                    graphics.drawImage(wallSpriteLeft, screenLeftX + (x - 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+                    graphics.drawImage(tiles[x][0].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+
+                }
+                else if(x == ROOM_WIDTH_IN_TILES / 2) {
+                    graphics.drawImage(tiles[x][0].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+                    graphics.drawImage(wallSpriteRight, screenLeftX + (x + 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+                }
+                else
+                    graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+            } else
+                graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
         }
         for(int y = 0; y < ROOM_HEIGHT_IN_TILES; y++) {
             graphics.drawImage(wallSpriteLeft, screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
-            graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+            if(hasRightRoom()) {
+                if(y == ROOM_HEIGHT_IN_TILES / 2 - 1) {
+                    graphics.drawImage(wallSpriteTop, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + (y - 1) * Tile.TILE_HEIGHT_IN_PX);
+                    graphics.drawImage(tiles[ROOM_WIDTH_IN_TILES - 1][y].getSprite(), screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+                }
+                else if(y == ROOM_HEIGHT_IN_TILES / 2) {
+                    graphics.drawImage(tiles[ROOM_WIDTH_IN_TILES - 1][y].getSprite(),screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+                    graphics.drawImage(wallSpriteBot, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + (y + 1) * Tile.TILE_HEIGHT_IN_PX);
+                }
+                else
+                    graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+            }
+            else
+                graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
             for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++)
                 graphics.drawImage(tiles[x][y].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
         }
@@ -170,6 +196,26 @@ public class Room
 
     public void setLeftRoom(Room leftRoom) {
         this.leftRoom = leftRoom;
+    }
+
+    public void linkLeftRoom(Room room) {
+        this.setLeftRoom(room);
+        room.setRightRoom(this);
+    }
+
+    public void linkRightRoom(Room room) {
+        this.setRightRoom(room);
+        room.setLeftRoom(this);
+    }
+
+    public void linkTopRoom(Room room) {
+        this.setTopRoom(room);
+        room.setBottomRoom(this);
+    }
+
+    public void linkBottomRoom(Room room) {
+        this.setBottomRoom(room);
+        room.setTopRoom(this);
     }
 
     public Image getWallSpriteTop() {
