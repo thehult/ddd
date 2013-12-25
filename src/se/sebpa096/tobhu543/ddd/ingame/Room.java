@@ -27,6 +27,7 @@ public class Room
     private int y;
 
     private Tile[][] tiles = new Tile[ROOM_WIDTH_IN_TILES][ROOM_HEIGHT_IN_TILES];
+    private boolean[][] blockingTiles = new boolean[ROOM_WIDTH_IN_TILES + 2][ROOM_HEIGHT_IN_TILES + 2];
     private ArrayList<Entity> entityListeners = new ArrayList<Entity>();
     private ArrayList<Entity> entities = new ArrayList<Entity>();
     private Room topRoom = null;
@@ -46,6 +47,15 @@ public class Room
     public Room(int inRoomGridX, int inRoomGridY){
         x = inRoomGridX;
         y = inRoomGridY;
+        for(int i = 0; i < ROOM_WIDTH_IN_TILES + 2; i++) {
+            blockingTiles[i][0] = true;
+            blockingTiles[i][ROOM_HEIGHT_IN_TILES + 1] = true;
+        }
+        for(int i = 0; i < ROOM_HEIGHT_IN_TILES + 2; i++) {
+            blockingTiles[0][i] = true;
+            blockingTiles[ROOM_WIDTH_IN_TILES + 1][i] = true;
+        }
+
     }
 
     public Tile[][] getTiles() {
@@ -55,22 +65,53 @@ public class Room
     public void update(GameContainer gameContainer, int delta) {
         for(Entity e : entityListeners)
             e.update(gameContainer, delta);
+        for(int i = 0; i < entities.size() - 1; i++) {
+            if(entities.get(i).getCenterY() > entities.get(i + 1).getCenterY()) {
+                Entity tmp = entities.get(i);
+                entities.set(i, entities.get(i + 1));
+                entities.set(i + 1, tmp);
+            }
+        }
     }
 
     public void render(GameContainer gameContainer, Graphics graphics, Camera camera) {
+        float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
+        float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
+
+
         if(hasTopRoom())
-            topRoom.render(gameContainer, graphics, camera, Direction.UP);
+            topRoom.renderFloor(gameContainer, graphics, camera, Direction.UP);
         if(hasLeftRoom())
-            leftRoom.render(gameContainer, graphics, camera, Direction.LEFT);
+            leftRoom.renderFloor(gameContainer, graphics, camera, Direction.LEFT);
+        renderFloor(gameContainer, graphics, camera, Direction.NONE);
         if(hasRightRoom())
-            rightRoom.render(gameContainer, graphics, camera, Direction.RIGHT);
-        render(gameContainer, graphics, camera, Direction.NONE);
+            rightRoom.renderFloor(gameContainer, graphics, camera, Direction.RIGHT);
         if(hasBottomRoom())
-            bottomRoom.render(gameContainer, graphics, camera, Direction.DOWN);
+            bottomRoom.renderFloor(gameContainer, graphics, camera, Direction.DOWN);
+
+        if(hasTopRoom())
+            topRoom.renderEntities(gameContainer, graphics, camera, Direction.UP);
+        if(hasLeftRoom())
+            leftRoom.renderEntities(gameContainer, graphics, camera, Direction.LEFT);
+        renderEntities(gameContainer, graphics, camera, Direction.NONE);
+        if(hasRightRoom())
+            rightRoom.renderEntities(gameContainer, graphics, camera, Direction.RIGHT);
+        if(hasBottomRoom())
+            bottomRoom.renderEntities(gameContainer, graphics, camera, Direction.DOWN);
+
+        if(hasTopRoom())
+            topRoom.renderWalls(gameContainer, graphics, camera, Direction.UP);
+        if(hasLeftRoom())
+            leftRoom.renderWalls(gameContainer, graphics, camera, Direction.LEFT);
+        renderWalls(gameContainer, graphics, camera, Direction.NONE);
+        if(hasRightRoom())
+            rightRoom.renderWalls(gameContainer, graphics, camera, Direction.RIGHT);
+        if(hasBottomRoom())
+            bottomRoom.renderWalls(gameContainer, graphics, camera, Direction.DOWN);
+
     }
 
-    public void render(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
-
+    public void renderFloor(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
         float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
         float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
         if(direction == Direction.UP)
@@ -81,53 +122,85 @@ public class Room
             screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
         if(direction == Direction.RIGHT)
             screenLeftX += (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
+        if(direction == Direction.DOWN) {
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + (ROOM_WIDTH_IN_TILES / 2) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + (ROOM_WIDTH_IN_TILES / 2 - 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+        }
+        if(direction == Direction.UP) {
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + (ROOM_WIDTH_IN_TILES / 2) * Tile.TILE_WIDTH_IN_PX, screenTopY + ROOM_HEIGHT_IN_TILES * Tile.TILE_HEIGHT_IN_PX);
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + (ROOM_WIDTH_IN_TILES / 2 - 1) * Tile.TILE_WIDTH_IN_PX, screenTopY + ROOM_HEIGHT_IN_TILES * Tile.TILE_HEIGHT_IN_PX);
+        }
+        if(direction == Direction.RIGHT) {
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2) * Tile.TILE_HEIGHT_IN_PX);
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 - 1) * Tile.TILE_HEIGHT_IN_PX);
+        }
+        if(direction == Direction.LEFT) {
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + ROOM_WIDTH_IN_TILES * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2) * Tile.TILE_HEIGHT_IN_PX);
+            graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + ROOM_WIDTH_IN_TILES * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 - 1) * Tile.TILE_HEIGHT_IN_PX);
+        }
+        for(int y = 0; y < ROOM_HEIGHT_IN_TILES; y++)
+            for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++)
+                graphics.drawImage(tiles[x][y].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+    }
 
-        System.out.println("");
+    public void renderWalls(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
+        float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
+        float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
+        if(direction == Direction.UP)
+            screenTopY -= (Room.ROOM_HEIGHT_IN_PX + Tile.TILE_HEIGHT_IN_PX);
+        if(direction == Direction.DOWN)
+            screenTopY += (Room.ROOM_HEIGHT_IN_PX + Tile.TILE_HEIGHT_IN_PX);
+        if(direction == Direction.LEFT)
+            screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
+        if(direction == Direction.RIGHT)
+            screenLeftX += (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
         for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
-            if(hasTopRoom()) {
-                if(x == ROOM_WIDTH_IN_TILES / 2 - 1) {
-                    graphics.drawImage(wallSpriteLeft, screenLeftX + (x - 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-                    graphics.drawImage(tiles[x][0].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-
-                }
-                else if(x == ROOM_WIDTH_IN_TILES / 2) {
-                    graphics.drawImage(tiles[x][0].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-                    graphics.drawImage(wallSpriteRight, screenLeftX + (x + 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-                }
-                else
-                    graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-            } else
+            if(hasTopRoom() && (x == ROOM_WIDTH_IN_TILES / 2 - 1 || x == ROOM_WIDTH_IN_TILES / 2)) {
+                graphics.drawImage(wallSpriteLeft, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 - 2) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+                graphics.drawImage(wallSpriteRight, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 + 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+            }
+            else
                 graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
         }
         for(int y = 0; y < ROOM_HEIGHT_IN_TILES; y++) {
-            graphics.drawImage(wallSpriteLeft, screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
-            if(hasRightRoom()) {
-                if(y == ROOM_HEIGHT_IN_TILES / 2 - 1) {
-                    graphics.drawImage(wallSpriteTop, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + (y - 1) * Tile.TILE_HEIGHT_IN_PX);
-                    graphics.drawImage(tiles[ROOM_WIDTH_IN_TILES - 1][y].getSprite(), screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
-                }
-                else if(y == ROOM_HEIGHT_IN_TILES / 2) {
-                    graphics.drawImage(tiles[ROOM_WIDTH_IN_TILES - 1][y].getSprite(),screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
-                    graphics.drawImage(wallSpriteBot, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + (y + 1) * Tile.TILE_HEIGHT_IN_PX);
-                }
-                else
-                    graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+            if(hasLeftRoom() && (y == ROOM_HEIGHT_IN_TILES / 2 - 1 || y == ROOM_HEIGHT_IN_TILES / 2)) {
+                graphics.drawImage(wallSpriteTop, screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 - 2) * Tile.TILE_HEIGHT_IN_PX);
+                graphics.drawImage(wallSpriteBot, screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 + 1) * Tile.TILE_HEIGHT_IN_PX);
+            }
+            else
+                graphics.drawImage(wallSpriteLeft, screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
+
+            if(hasRightRoom() && (y == ROOM_HEIGHT_IN_TILES / 2 - 1 || y == ROOM_HEIGHT_IN_TILES / 2)) {
+                graphics.drawImage(wallSpriteTop, screenLeftX + ROOM_WIDTH_IN_TILES * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 - 2) * Tile.TILE_HEIGHT_IN_PX);
+                graphics.drawImage(wallSpriteBot, screenLeftX + ROOM_WIDTH_IN_TILES * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 + 1) * Tile.TILE_HEIGHT_IN_PX);
             }
             else
                 graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
-            for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++)
-                graphics.drawImage(tiles[x][y].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
         }
+        for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
+            if(hasBottomRoom() && (x == ROOM_WIDTH_IN_TILES / 2 - 1 || x == ROOM_WIDTH_IN_TILES / 2)) {
+                graphics.drawImage(wallSpriteLeft, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 - 2) * Tile.TILE_WIDTH_IN_PX, screenTopY + ROOM_HEIGHT_IN_TILES * Tile.TILE_HEIGHT_IN_PX);
+                graphics.drawImage(wallSpriteRight, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 + 1) * Tile.TILE_WIDTH_IN_PX, screenTopY + ROOM_HEIGHT_IN_TILES * Tile.TILE_HEIGHT_IN_PX);
+            }
+            else
+                graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES - 1) * Tile.TILE_HEIGHT_IN_PX);
+        }
+    }
 
-        //HÄR RENDREAR ALLT INOM RUMMET!
+    public void renderEntities(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
+        float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
+        float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
+        if(direction == Direction.UP)
+            screenTopY -= (Room.ROOM_HEIGHT_IN_PX + Tile.TILE_HEIGHT_IN_PX);
+        if(direction == Direction.DOWN)
+            screenTopY += (Room.ROOM_HEIGHT_IN_PX + Tile.TILE_HEIGHT_IN_PX);
+        if(direction == Direction.LEFT)
+            screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
+        if(direction == Direction.RIGHT)
+            screenLeftX += (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
         for(Entity entity : entities) {
             entity.render(gameContainer, graphics, screenLeftX, screenTopY);
         }
-
-        for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
-            graphics.drawImage(wallSpriteBot, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + ROOM_HEIGHT_IN_PX);
-        }
-
     }
 
     private void setRenderableBounds() {
@@ -149,6 +222,9 @@ public class Room
         this.tiles = tiles;
     }
 
+    public boolean getBlockingTile(int x, int y) {
+        return blockingTiles[x][y];
+    }
 
     public int getX() {
         return x;
@@ -172,6 +248,8 @@ public class Room
 
     public void setTopRoom(Room topRoom) {
         this.topRoom = topRoom;
+        blockingTiles[ROOM_WIDTH_IN_TILES / 2 + 1][0] = (topRoom == null);
+        blockingTiles[ROOM_WIDTH_IN_TILES / 2][0] = (topRoom == null);
     }
 
     public Room getRightRoom() {
@@ -180,6 +258,8 @@ public class Room
 
     public void setRightRoom(Room rightRoom) {
         this.rightRoom = rightRoom;
+        blockingTiles[0][ROOM_HEIGHT_IN_TILES / 2 + 1] = (rightRoom == null);
+        blockingTiles[0][ROOM_HEIGHT_IN_TILES / 2] = (rightRoom == null);
     }
 
     public Room getBottomRoom() {
@@ -188,6 +268,8 @@ public class Room
 
     public void setBottomRoom(Room bottomRoom) {
         this.bottomRoom = bottomRoom;
+        blockingTiles[ROOM_WIDTH_IN_TILES / 2 + 1][ROOM_HEIGHT_IN_TILES + 1] = (bottomRoom == null);
+        blockingTiles[ROOM_WIDTH_IN_TILES / 2][ROOM_HEIGHT_IN_TILES + 1] = (bottomRoom == null);
     }
 
     public Room getLeftRoom() {
@@ -196,6 +278,8 @@ public class Room
 
     public void setLeftRoom(Room leftRoom) {
         this.leftRoom = leftRoom;
+        blockingTiles[ROOM_WIDTH_IN_TILES + 1][ROOM_HEIGHT_IN_TILES / 2 + 1] = (leftRoom == null);
+        blockingTiles[ROOM_WIDTH_IN_TILES + 1][ROOM_HEIGHT_IN_TILES / 2] = (leftRoom == null);
     }
 
     public void linkLeftRoom(Room room) {
@@ -255,15 +339,15 @@ public class Room
     }
 
     public boolean hasTopRoom() {
-        return leftRoom != null;
+        return topRoom != null;
     }
 
     public boolean hasRightRoom() {
-        return leftRoom != null;
+        return rightRoom != null;
     }
 
     public boolean hasBottomRoom() {
-        return leftRoom != null;
+        return bottomRoom != null;
     }
 
     public void addEntity(Entity e) {
@@ -271,6 +355,7 @@ public class Room
     }
 
     public void removeEntity(Entity e) {
-        entities.remove(e);
+        if(entities.contains(e))
+            entities.remove(e);
     }
 }

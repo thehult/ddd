@@ -10,18 +10,12 @@ import java.util.ArrayList;
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 18:56 To change this template use File | Settings | File
  * Templates.
  */
-public class Level
+public class Level implements IUpdateListener
 {
     private Room startRoom;
     private ArrayList<Room> roomListeners = new ArrayList<Room>();
 
     public Level(){
-    }
-
-    public void update(GameContainer gameContainer, int delta){
-        for(Room r: roomListeners){
-            r.update(gameContainer, delta);
-        }
     }
 
     public void render(GameContainer gameContainer, Graphics graphics, Camera camera){
@@ -35,5 +29,12 @@ public class Level
 
     public void setStartRoom(Room startRoom) {
         this.startRoom = startRoom;
+    }
+
+    @Override
+    public void gameUpdate(GameContainer gameContainer, int delta) {
+        for(Room r: roomListeners){
+            r.update(gameContainer, delta);
+        }
     }
 }
