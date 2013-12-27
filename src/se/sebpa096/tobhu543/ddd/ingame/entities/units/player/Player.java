@@ -15,11 +15,14 @@ public class Player extends Unit implements IUpdateListener {
     public static int maxNoItems = 6;
 
     private EquippedItem[] equippedItems;
+    private int currentItemNo;
+    private EquippedItem unarmedItem;
 
     public Player() {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
         this.setMaxVelocity(300.0f);
 	equippedItems = new EquippedItem[maxNoItems];
+
     }
 
     public boolean hasItemRoom(){
@@ -42,6 +45,18 @@ public class Player extends Unit implements IUpdateListener {
 	}else{
 	    System.out.println("ERROR! spelare med fullt inventory tog upp item!");
 	}
+    }
+
+    public void cycleCurrentItem(int steps){
+	currentItemNo = (currentItemNo + steps) % maxNoItems;
+    }
+
+    public void useItem(){
+	EquippedItem current = equippedItems[currentItemNo];
+	if(current == null){
+	    unarmedItem.tryUse(this, 2); //TODO fixa direction
+	}
+	equippedItems[currentItemNo].use(this, 2); //TODO fixa direction!
     }
 
     public void dropItem(int itemNo){

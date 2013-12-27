@@ -11,7 +11,7 @@ public class LevelFactory
 {
     public static Level makeTestLevel(){
         Level level = new Level();
-        Room room = RoomFactory.makeDefaultRoom(0, 0);
+        Room room = RoomFactory.makeSwordRoom(0, 0);
         room.linkLeftRoom(RoomFactory.makeDefaultRoom(-1, 0));
         room.linkTopRoom(RoomFactory.makeDefaultRoom(0, -1));
         room.linkRightRoom(RoomFactory.makeDefaultRoom(1, 0));

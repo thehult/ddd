@@ -1,7 +1,9 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
 import org.newdawn.slick.Image;
+import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.DSword;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
@@ -20,5 +22,16 @@ public class RoomFactory {
         build.setWallSpriteLeft((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1_LEFT));
         build.setWallSpriteRight((Image)GlobalResources.getResource(GlobalResources.TILE_RESOURCES, TileResources.BRICK_WALL_1_RIGHT));
         return build;
+    }
+
+    public static Room makeSwordRoom(int gridX, int gridY){
+	Room build = makeDefaultRoom(gridX, gridY);
+	DSword sword = new DSword();
+	sword.setX(gridX * Room.ROOM_WIDTH_IN_PX + 300);
+	sword.setY(gridY * Room.ROOM_HEIGHT_IN_PX + 300);
+
+	build.addEntity(sword);
+	sword.setCurrentRoom(build); //TODO automatisera detta ifall saker flyttar på sig!
+	return build;
     }
 }

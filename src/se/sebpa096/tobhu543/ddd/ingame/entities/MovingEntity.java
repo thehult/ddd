@@ -25,8 +25,8 @@ public class MovingEntity extends Entity {
             this.setCurrentRoom(this.getCurrentRoom().getBottomRoom());
         blockGridX = (blockGridX + Room.ROOM_WIDTH_IN_TILES + 2) % (Room.ROOM_WIDTH_IN_TILES + 2);
         blockGridY = (blockGridY + Room.ROOM_HEIGHT_IN_TILES + 2) % (Room.ROOM_HEIGHT_IN_TILES + 2);
-        System.out.println("x: " + blockGridX);
-        System.out.println("y: " + blockGridY);
+        //System.out.println("x: " + blockGridX);
+        //System.out.println("y: " + blockGridY);
         if(this.getCurrentRoom().getBlockingTile(blockGridX, blockGridY)|| this.getCurrentRoom().getBlockingTile(blockGridX, blockGridY + 1)|| this.getCurrentRoom().getBlockingTile(blockGridX + 1, blockGridY) || this.getCurrentRoom().getBlockingTile(blockGridX + 1, blockGridY + 1)) {
             float dX = Math.abs(this.getX() - (blockGridX) * TILE_WIDTH_IN_PX);
             float dY = Math.abs(this.getY() - (blockGridY) * TILE_HEIGHT_IN_PX);

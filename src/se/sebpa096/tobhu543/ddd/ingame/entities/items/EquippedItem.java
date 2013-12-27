@@ -1,5 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 
+import org.newdawn.slick.GameContainer;
+import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 /**
@@ -8,7 +10,10 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
  */
 public abstract class EquippedItem
 {
-    private DroppedItem droppedTwin;
+    protected DroppedItem droppedTwin;
+
+    protected int cooldownMax = 0;
+    protected int currentCooldown = 0;
 
     public EquippedItem(){
 	super();
@@ -25,5 +30,19 @@ public abstract class EquippedItem
 	droppedTwin.addRecentPlayer(dropper);
     }
 
-    public abstract void use(int direction);
+    public void tryUse(Player user, int direction){
+	if(currentCooldown <= 0){
+	    currentCooldown = cooldownMax;
+	    use(user, direction);
+	}
+    }
+
+    public void gameUpdate(GameContainer gameContainer, int delta){
+	if(currentCooldown > 0){
+	    currentCooldown = currentCooldown - delta;
+	    if(currentCooldown < 0 ) currentCooldown = 0;
+	}
+    }
+
+    public abstract void use(Player user, int direction);
 }
