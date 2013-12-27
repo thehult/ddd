@@ -31,6 +31,7 @@ public class RoomFactory {
 	sword.setY(gridY * Room.ROOM_HEIGHT_IN_PX + 300);
 
 	build.addEntity(sword);
+	build.addRoomListener(sword);
 	sword.setCurrentRoom(build); //TODO automatisera detta ifall saker flyttar på sig!
 	return build;
     }

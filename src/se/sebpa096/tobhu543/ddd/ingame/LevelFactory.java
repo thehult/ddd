@@ -17,6 +17,7 @@ public class LevelFactory
         room.linkRightRoom(RoomFactory.makeDefaultRoom(1, 0));
         room.linkBottomRoom(RoomFactory.makeDefaultRoom(0, 1));
         level.setStartRoom(room);
+	//level.add TODO adda alla rum som levellisteners
         return level;
     }
 

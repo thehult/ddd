@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 import javafx.geometry.Rectangle2D;
 import org.newdawn.slick.GameContainer;
 import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
@@ -15,7 +16,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:08 To change this template use File | Settings | File
  * Templates.
  */
-public class DroppedItem extends Entity
+public class DroppedItem extends Entity implements IRoomListener
 {
     protected EquippedItem droppedTwin;
     private boolean onMap;
@@ -29,7 +30,7 @@ public class DroppedItem extends Entity
 	droppedTwin = twin;
     }
 
-    public void update(GameContainer gameContainer, int delta){
+    public void gameUpdate(GameContainer gameContainer, int delta){
 	super.update(gameContainer, delta);
 	System.out.println("Dropped uppdaterad!");
 	if(onMap){

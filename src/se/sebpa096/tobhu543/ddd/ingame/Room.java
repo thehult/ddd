@@ -28,7 +28,7 @@ public class Room
 
     private Tile[][] tiles = new Tile[ROOM_WIDTH_IN_TILES][ROOM_HEIGHT_IN_TILES];
     private boolean[][] blockingTiles = new boolean[ROOM_WIDTH_IN_TILES + 2][ROOM_HEIGHT_IN_TILES + 2];
-    private ArrayList<Entity> entityListeners = new ArrayList<Entity>();
+    private ArrayList<IRoomListener> roomListeners = new ArrayList<IRoomListener>();
     private ArrayList<Entity> entities = new ArrayList<Entity>();
     private Room topRoom = null;
     private Room rightRoom = null;
@@ -63,8 +63,8 @@ public class Room
     }
 
     public void update(GameContainer gameContainer, int delta) {
-        for(Entity e : entityListeners)
-            e.update(gameContainer, delta);
+        for(IRoomListener e : roomListeners)
+            e.gameUpdate(gameContainer, delta);
         for(int i = 0; i < entities.size() - 1; i++) {
             if(entities.get(i).getCenterY() > entities.get(i + 1).getCenterY()) {
                 Entity tmp = entities.get(i);
@@ -358,4 +358,13 @@ public class Room
         if(entities.contains(e))
             entities.remove(e);
     }
+
+    public void addRoomListener(IRoomListener e){
+	roomListeners.add(e);
+    }
+
+    public void removeRoomListener(IRoomListener e){
+	roomListeners.remove(e);
+    }
+
 }
