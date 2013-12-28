@@ -12,7 +12,7 @@ public class MovingEntity extends Entity {
     public float blockX = 0.0f;
     public float blockY = 0.0f;
 
-    public void update(GameContainer gameContainer, int delta) {
+    public void gameUpdate(GameContainer gameContainer, int delta) {
         this.setX(this.getX() + this.getVelocityX() * (float)delta / 1000.0f);
         this.setY(this.getY() + this.getVelocityY() * (float)delta / 1000.0f);
         int blockGridX = (int)((this.getX() + TILE_WIDTH_IN_PX)/Tile.TILE_WIDTH_IN_PX);
@@ -45,7 +45,7 @@ public class MovingEntity extends Entity {
             this.setX(this.getX() - this.getVelocityX() * (float)delta / 1000.0f);
             this.setY(this.getY() - this.getVelocityY() * (float)delta / 1000.0f);
         }
-        super.update(gameContainer, delta);
+        super.gameUpdate(gameContainer, delta);
     }
 
     public void setMovingDir(float dX, float dY) {

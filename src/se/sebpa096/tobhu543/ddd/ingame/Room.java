@@ -9,12 +9,13 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Direction;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 19:09 To change this template use File | Settings | File
  * Templates.
  */
-public class Room
+public class Room implements ILevelListener
 {
 
     public static int ROOM_WIDTH_IN_TILES = 8; //TODO change to right value
@@ -62,9 +63,10 @@ public class Room
         return tiles;
     }
 
-    public void update(GameContainer gameContainer, int delta) {
-        for(IRoomListener e : roomListeners)
-            e.gameUpdate(gameContainer, delta);
+    public void gameUpdate(GameContainer gameContainer, int delta) {
+	for(int i = roomListeners.size() - 1; i >= 0; i--){
+	    roomListeners.get(i).gameUpdate(gameContainer, delta);
+	}
         for(int i = 0; i < entities.size() - 1; i++) {
             if(entities.get(i).getCenterY() > entities.get(i + 1).getCenterY()) {
                 Entity tmp = entities.get(i);
@@ -368,5 +370,4 @@ public class Room
     public void removeRoomListener(IRoomListener e){
 	    roomListeners.remove(e);
     }
-
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Level implements IUpdateListener
 {
     private Room startRoom;
-    private ArrayList<Room> levelListeners = new ArrayList<Room>();
+    private ArrayList<ILevelListener> levelListeners = new ArrayList<ILevelListener>();
 
     public Level(){
     }
@@ -34,9 +34,13 @@ public class Level implements IUpdateListener
 
     @Override
     public void gameUpdate(GameContainer gameContainer, int delta) {
-        for(Room r: levelListeners){
-            r.update(gameContainer, delta);
+        for(ILevelListener r: levelListeners){
+            r.gameUpdate(gameContainer, delta);
         }
+    }
+
+    public void addLevelListener(ILevelListener e){
+	levelListeners.add(e);
     }
 
 }

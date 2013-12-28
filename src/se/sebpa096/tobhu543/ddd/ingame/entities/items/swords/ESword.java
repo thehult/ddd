@@ -15,7 +15,7 @@ public class ESword extends EquippedItem
 	cooldownMax = SWORD_STANDARD_COOLDOWN;
     }
 
-    @Override public void use(final Player user,final int direction) {
+    @Override protected void use(final Player user,final int direction) {
 	System.out.println("CHIIIING!");
     }
 }

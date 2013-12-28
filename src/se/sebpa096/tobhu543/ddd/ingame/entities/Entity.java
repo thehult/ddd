@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame.entities;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 20:52 To change this template use File | Settings | File
  * Templates.
  */
-public class Entity
+public class Entity implements IRoomListener
 {
     protected Image sprite;
 
@@ -30,7 +31,7 @@ public class Entity
     private ArrayList<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
 
 
-    public void update(GameContainer gameContainer, int delta) {
+    public void gameUpdate(GameContainer gameContainer, int delta) {
         for(IEntityListener listener : entityListeners)
             listener.entityChanged();
     }
@@ -117,11 +118,19 @@ public class Entity
     }
 
     public void setCurrentRoom(Room currentRoom) {
-        if(this.getCurrentRoom() != null)
+        if(this.getCurrentRoom() != null){
             this.getCurrentRoom().removeEntity(this);
+	    this.getCurrentRoom().removeRoomListener(this);
+	}
+
         this.currentRoom = currentRoom;
-        for(IEntityListener entity : entityListeners)
-            entity.entityChangedRoom(currentRoom);
-        this.getCurrentRoom().addEntity(this);
+
+	for(IEntityListener entity : entityListeners)
+	    entity.entityChangedRoom(currentRoom);
+
+	if(currentRoom != null){
+	    this.getCurrentRoom().addEntity(this);
+	    getCurrentRoom().addRoomListener(this);
+	}
     }
 }

@@ -11,12 +11,28 @@ public class LevelFactory
 {
     public static Level makeTestLevel(){
         Level level = new Level();
+
         Room room = RoomFactory.makeSwordRoom(0, 0);
-        room.linkLeftRoom(RoomFactory.makeDefaultRoom(-1, 0));
-        room.linkTopRoom(RoomFactory.makeDefaultRoom(0, -1));
-        room.linkRightRoom(RoomFactory.makeDefaultRoom(1, 0));
-        room.linkBottomRoom(RoomFactory.makeDefaultRoom(0, 1));
+	level.addLevelListener(room);
+
+	Room lRoom = RoomFactory.makeDefaultRoom(-1, 0);
+        room.linkLeftRoom(lRoom);
+	level.addLevelListener(lRoom);
+
+	Room tRoom = RoomFactory.makeDefaultRoom(0, -1);
+        room.linkTopRoom(tRoom);
+	level.addLevelListener(tRoom);
+
+	Room rRoom = RoomFactory.makeDefaultRoom(1, 0);
+        room.linkRightRoom(rRoom);
+	level.addLevelListener(rRoom);
+
+	Room bRoom = RoomFactory.makeDefaultRoom(0, 1);
+        room.linkBottomRoom(bRoom);
+	level.addLevelListener(bRoom);
+
         level.setStartRoom(room);
+
 	//level.add TODO adda alla rum som levellisteners
         return level;
     }

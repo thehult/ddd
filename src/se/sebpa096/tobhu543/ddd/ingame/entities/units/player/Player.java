@@ -4,12 +4,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
+import se.sebpa096.tobhu543.ddd.ingame.entities.items.EUnarmed;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
-
-import java.util.ArrayList;
 
 public class Player extends Unit implements IUpdateListener {
     public static int maxNoItems = 6;
@@ -22,15 +21,23 @@ public class Player extends Unit implements IUpdateListener {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
         this.setMaxVelocity(300.0f);
 	equippedItems = new EquippedItem[maxNoItems];
+	unarmedItem = new EUnarmed();
 
     }
 
     public boolean hasItemRoom(){
-	return equippedItems.length < maxNoItems;
+	boolean hasRoom = false;
+	for(EquippedItem item: equippedItems){
+	    if(item == null){
+		hasRoom = true;
+		break;
+	    }
+	}
+	return hasRoom;
     }
 
     public void receiveItem(EquippedItem item){
-	if (equippedItems.length < maxNoItems){
+	if (hasItemRoom()){
 	    boolean foundEmpty = false;
 	    for(int i = 0; i< maxNoItems; i++){
 		if(equippedItems[i] == null){
@@ -48,15 +55,20 @@ public class Player extends Unit implements IUpdateListener {
     }
 
     public void cycleCurrentItem(int steps){
-	currentItemNo = (currentItemNo + steps) % maxNoItems;
+	currentItemNo = (currentItemNo + steps);
+	if(currentItemNo < 0)
+	    currentItemNo = maxNoItems - 1;
+	if(currentItemNo >= maxNoItems)
+	    currentItemNo = 0;
     }
 
     public void useItem(){
 	EquippedItem current = equippedItems[currentItemNo];
 	if(current == null){
 	    unarmedItem.tryUse(this, 2); //TODO fixa direction
+	}else{
+	    equippedItems[currentItemNo].tryUse(this, 2); //TODO fixa direction!
 	}
-	equippedItems[currentItemNo].use(this, 2); //TODO fixa direction!
     }
 
     public void dropItem(int itemNo){
@@ -79,8 +91,23 @@ public class Player extends Unit implements IUpdateListener {
             dY = -1.0f;
         if(input.isKeyDown(Input.KEY_DOWN))
             dY = 1.0f;
+	if(input.isKeyPressed(Input.KEY_Z))
+	    cycleCurrentItem(-1);
+	if(input.isKeyPressed(Input.KEY_X))
+	    cycleCurrentItem(1);
+	if(input.isKeyPressed(Input.KEY_SPACE))
+	    useItem();
+	if(input.isKeyPressed(Input.KEY_C))
+	    dropItem(currentItemNo);
+
         this.setMovingDir(dX, dY);
 
-        super.update(gameContainer, delta);
+	for(EquippedItem item: equippedItems){
+	    if(item != null)
+		    item.gameUpdate(gameContainer, delta);
+	}
+	unarmedItem.gameUpdate(gameContainer, delta);
+
+        super.gameUpdate(gameContainer, delta);
     }
 }
