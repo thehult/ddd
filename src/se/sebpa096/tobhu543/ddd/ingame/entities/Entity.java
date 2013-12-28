@@ -113,13 +113,15 @@ public class Entity
     }
 
     public Room getCurrentRoom() {
-        return currentRoom;
+        return this.currentRoom;
     }
 
     public void setCurrentRoom(Room currentRoom) {
         if(this.getCurrentRoom() != null)
             this.getCurrentRoom().removeEntity(this);
         this.currentRoom = currentRoom;
+        for(IEntityListener entity : entityListeners)
+            entity.entityChangedRoom(currentRoom);
         this.getCurrentRoom().addEntity(this);
     }
 }

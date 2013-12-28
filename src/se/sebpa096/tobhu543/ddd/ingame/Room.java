@@ -223,6 +223,8 @@ public class Room
     }
 
     public boolean getBlockingTile(int x, int y) {
+        if(x >= blockingTiles.length || y >= blockingTiles[0].length)
+            return false;
         return blockingTiles[x][y];
     }
 
@@ -258,8 +260,8 @@ public class Room
 
     public void setRightRoom(Room rightRoom) {
         this.rightRoom = rightRoom;
-        blockingTiles[0][ROOM_HEIGHT_IN_TILES / 2 + 1] = (rightRoom == null);
-        blockingTiles[0][ROOM_HEIGHT_IN_TILES / 2] = (rightRoom == null);
+        blockingTiles[ROOM_WIDTH_IN_TILES + 1][ROOM_HEIGHT_IN_TILES / 2 + 1] = (rightRoom == null);
+        blockingTiles[ROOM_WIDTH_IN_TILES + 1][ROOM_HEIGHT_IN_TILES / 2] = (rightRoom == null);
     }
 
     public Room getBottomRoom() {
@@ -278,8 +280,8 @@ public class Room
 
     public void setLeftRoom(Room leftRoom) {
         this.leftRoom = leftRoom;
-        blockingTiles[ROOM_WIDTH_IN_TILES + 1][ROOM_HEIGHT_IN_TILES / 2 + 1] = (leftRoom == null);
-        blockingTiles[ROOM_WIDTH_IN_TILES + 1][ROOM_HEIGHT_IN_TILES / 2] = (leftRoom == null);
+        blockingTiles[0][ROOM_HEIGHT_IN_TILES / 2 + 1] = (leftRoom == null);
+        blockingTiles[0][ROOM_HEIGHT_IN_TILES / 2] = (leftRoom == null);
     }
 
     public void linkLeftRoom(Room room) {
@@ -360,11 +362,11 @@ public class Room
     }
 
     public void addRoomListener(IRoomListener e){
-	roomListeners.add(e);
+	    roomListeners.add(e);
     }
 
     public void removeRoomListener(IRoomListener e){
-	roomListeners.remove(e);
+	    roomListeners.remove(e);
     }
 
 }

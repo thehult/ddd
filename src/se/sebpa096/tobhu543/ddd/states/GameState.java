@@ -49,6 +49,8 @@ public class GameState extends State {
 	    level.render(gameContainer, graphics, camera);
         graphics.drawString("x: " + players.get(0).getX(), 20, 30);
         graphics.drawString("y: " + players.get(0).getY(), 20, 50);
+        graphics.drawString("blockX: " + players.get(0).blockX, 20, 70);
+        graphics.drawString("blockY: " + players.get(0).blockY, 20, 90);
     }
 
     public void addUpdateListener(IUpdateListener listener) {

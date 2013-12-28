@@ -19,7 +19,8 @@ public class Level implements IUpdateListener
     }
 
     public void render(GameContainer gameContainer, Graphics graphics, Camera camera){
-        startRoom.render(gameContainer, graphics, camera);
+        //startRoom.render(gameContainer, graphics, camera);
+        camera.render(gameContainer, graphics);
     }
 
 

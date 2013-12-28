@@ -9,31 +9,41 @@ public class MovingEntity extends Entity {
     private float velocityY = 0.0f;
     private float movingDirX = 0.0f;
     private float movingDirY = 0.0f;
+    public float blockX = 0.0f;
+    public float blockY = 0.0f;
 
     public void update(GameContainer gameContainer, int delta) {
         this.setX(this.getX() + this.getVelocityX() * (float)delta / 1000.0f);
         this.setY(this.getY() + this.getVelocityY() * (float)delta / 1000.0f);
         int blockGridX = (int)((this.getX() + TILE_WIDTH_IN_PX)/Tile.TILE_WIDTH_IN_PX);
         int blockGridY = (int)((this.getY() + TILE_HEIGHT_IN_PX)/Tile.TILE_HEIGHT_IN_PX);
-        if(blockGridX < 0)
+        blockX = blockGridX;
+        blockY = blockGridY;
+        if(this.getX() < -TILE_WIDTH_IN_PX) {
             this.setCurrentRoom(this.getCurrentRoom().getLeftRoom());
-        if(blockGridX > Room.ROOM_WIDTH_IN_TILES + 1)
+            blockGridX = Room.ROOM_WIDTH_IN_TILES;
+            this.setX(Room.ROOM_WIDTH_IN_PX);
+        }
+        if(this.getX() > Room.ROOM_WIDTH_IN_PX + TILE_WIDTH_IN_PX) {
             this.setCurrentRoom(this.getCurrentRoom().getRightRoom());
-        if(blockGridY < 0)
+            blockGridX = 1;
+            this.setX(0.0f);
+        }
+        if(this.getY() < -TILE_HEIGHT_IN_PX) {
             this.setCurrentRoom(this.getCurrentRoom().getTopRoom());
-        if(blockGridX > Room.ROOM_HEIGHT_IN_TILES + 1)
+            blockGridY = Room.ROOM_HEIGHT_IN_TILES;
+            this.setY(Room.ROOM_HEIGHT_IN_PX);
+        }
+        if(blockGridY > Room.ROOM_HEIGHT_IN_TILES + 1) {
             this.setCurrentRoom(this.getCurrentRoom().getBottomRoom());
+            blockGridY = 1;
+            this.setY(0.0f);
+        }
         blockGridX = (blockGridX + Room.ROOM_WIDTH_IN_TILES + 2) % (Room.ROOM_WIDTH_IN_TILES + 2);
         blockGridY = (blockGridY + Room.ROOM_HEIGHT_IN_TILES + 2) % (Room.ROOM_HEIGHT_IN_TILES + 2);
-        //System.out.println("x: " + blockGridX);
-        //System.out.println("y: " + blockGridY);
         if(this.getCurrentRoom().getBlockingTile(blockGridX, blockGridY)|| this.getCurrentRoom().getBlockingTile(blockGridX, blockGridY + 1)|| this.getCurrentRoom().getBlockingTile(blockGridX + 1, blockGridY) || this.getCurrentRoom().getBlockingTile(blockGridX + 1, blockGridY + 1)) {
-            float dX = Math.abs(this.getX() - (blockGridX) * TILE_WIDTH_IN_PX);
-            float dY = Math.abs(this.getY() - (blockGridY) * TILE_HEIGHT_IN_PX);
-
-            this.setX(this.getX() - movingDirX * dX);
-            this.setY(this.getY() - movingDirX * dY);
-
+            this.setX(this.getX() - this.getVelocityX() * (float)delta / 1000.0f);
+            this.setY(this.getY() - this.getVelocityY() * (float)delta / 1000.0f);
         }
         super.update(gameContainer, delta);
     }

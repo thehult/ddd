@@ -1,5 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame.camera;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
@@ -8,6 +10,7 @@ public class Camera implements IEntityListener {
     protected float x;
     protected float y;
     private Entity followEntity = null;
+    private Room renderRoom = null;
 
     public Camera() {
         this.y = 0;
@@ -54,5 +57,14 @@ public class Camera implements IEntityListener {
             this.setX(followEntity.getCenterX());
             this.setY(followEntity.getCenterY());
         }
+    }
+
+    @Override
+    public void entityChangedRoom(Room room) {
+        renderRoom = room;
+    }
+
+    public void render(GameContainer gameContainer, Graphics graphics) {
+        renderRoom.render(gameContainer, graphics, this);
     }
 }
