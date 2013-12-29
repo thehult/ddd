@@ -26,19 +26,19 @@ public class RoomFactory {
     }
 
     public static Room makeSwordRoom(int gridX, int gridY){
-	Room build = makeDefaultRoom(gridX, gridY);
+        Room build = makeDefaultRoom(gridX, gridY);
 
-	DSword sword = new DSword();
-	sword.setX(gridX * Room.ROOM_WIDTH_IN_PX + 300);
-	sword.setY(gridY * Room.ROOM_HEIGHT_IN_PX + 300);
-	sword.putOnMap(build);
+        DSword sword = new DSword();
+        sword.setX(300);
+        sword.setY(300);
+        sword.putOnMap(build);
 
-	DFireSword fireSword = new DFireSword();
-	fireSword.setX(gridX * Room.ROOM_WIDTH_IN_PX + 100);
-	fireSword.setY(gridY * Room.ROOM_HEIGHT_IN_PX + 300);
-	fireSword.putOnMap(build);
+        DFireSword fireSword = new DFireSword();
+        fireSword.setX(100);
+        fireSword.setY(300);
+        fireSword.putOnMap(build);
 
-
-	return build;
+        return build;
     }
+
 }

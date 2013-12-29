@@ -16,7 +16,7 @@ public class EUnarmed extends EquippedItem
 	cooldownMax = UNARMED_STANDARD_COOLDOWN;
     }
     @Override
-    public void use(final Unit user, final int direction) {
+    public void use(final Unit user, final float normX, final float normY) {
 	    System.out.println("SMACK!");
     }
 }

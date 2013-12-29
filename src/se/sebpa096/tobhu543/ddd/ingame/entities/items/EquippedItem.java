@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 import org.newdawn.slick.GameContainer;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
@@ -25,12 +26,13 @@ public abstract class EquippedItem
 
     protected int cooldownMax = 0;
     protected int currentCooldown = 0;
+    protected float range = Tile.TILE_WIDTH_IN_PX;
 
     public EquippedItem(){
-	super();
+	    super();
     }
     public EquippedItem(DroppedItem item){
-	droppedTwin = item;
+	    droppedTwin = item;
     }
 
 
@@ -41,10 +43,10 @@ public abstract class EquippedItem
         droppedTwin.addRecentPlayer(dropper);
     }
 
-    public void tryUse(Unit user, int direction){
+    public void tryUse(Unit user, float normX, float normY){
 	if(currentCooldown <= 0){
 	    currentCooldown = cooldownMax;
-	    use(user, direction);
+	    use(user, normX, normY);
 	}
     }
 
@@ -55,5 +57,29 @@ public abstract class EquippedItem
 	}
     }
 
-    protected abstract void use(Unit user, int direction);
+    protected abstract void use(Unit user, float normX, float normY);
+
+    public int getCooldownMax() {
+        return cooldownMax;
+    }
+
+    public void setCooldownMax(int cooldownMax) {
+        this.cooldownMax = cooldownMax;
+    }
+
+    public int getCurrentCooldown() {
+        return currentCooldown;
+    }
+
+    public void setCurrentCooldown(int currentCooldown) {
+        this.currentCooldown = currentCooldown;
+    }
+
+    public float getRange() {
+        return range;
+    }
+
+    public void setRange(float range) {
+        this.range = range;
+    }
 }

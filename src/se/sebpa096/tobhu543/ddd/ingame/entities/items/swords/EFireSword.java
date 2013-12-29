@@ -18,7 +18,7 @@ public class EFireSword extends EquippedItem
     }
 
     @Override
-    protected void use(final Unit user, final int direction) {
+    protected void use(final Unit user, final float normX, final float normY) {
 	System.out.println("FWOOOSH");
     }
 }

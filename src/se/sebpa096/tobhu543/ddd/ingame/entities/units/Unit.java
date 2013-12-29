@@ -27,6 +27,13 @@ public class Unit extends MovingEntity {
         super.gameUpdate(gameContainer,delta);
     }
 
+    public EquippedItem getCurrentItem() {
+        EquippedItem current = equippedItems[currentItemNo];
+        if(current == null)
+            return unarmedItem;
+        return current;
+    }
+
     public boolean hasItemRoom(){
         boolean hasRoom = false;
         for(EquippedItem item: equippedItems){
@@ -67,9 +74,9 @@ public class Unit extends MovingEntity {
     public void useItem(){
         EquippedItem current = equippedItems[currentItemNo];
         if(current == null){
-            unarmedItem.tryUse(this, 2); //TODO fixa direction
+            unarmedItem.tryUse(this, getMovingDirX(), getMovingDirY()); //TODO fixa direction
         }else{
-            equippedItems[currentItemNo].tryUse(this, 2); //TODO fixa direction!
+            equippedItems[currentItemNo].tryUse(this, getMovingDirX(), getMovingDirY()); //TODO fixa direction!
         }
     }
 
