@@ -15,21 +15,27 @@ public class Enemy extends Unit {
     }
     public void gameUpdate(GameContainer gameContainer, int delta) {
         Player closestPlayer = null;
-        float closestDistance = Integer.MAX_VALUE;
+        float closestDistance = Float.MAX_VALUE;
         for(Player player : Game.GAME_STATE.getPlayers()) {
-            float playerDist = (float)Math.hypot(player.getX() - this.getX(), player.getY() - this.getY());
+            float connectAdds = ((player.getCurrentRoom().getX() - getCurrentRoom().getX()) + (player.getCurrentRoom().getY() - getCurrentRoom().getY())) * TILE_WIDTH_IN_PX;
+            float playerDist = (float)Math.hypot(((player.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + player.getX()) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX())),
+                    ((player.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + player.getY() + connectAdds) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY())));
             if(playerDist < closestDistance) {
                 closestDistance = playerDist;
                 closestPlayer = player;
             }
         }
-        float normX = ((closestPlayer.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + closestPlayer.getX()) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX()))/closestDistance;
-        float normY = ((closestPlayer.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + closestPlayer.getY()) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY()))/closestDistance;
-        if(closestDistance < getCurrentItem().getRange()) {
-            stopEntity();
-            getCurrentItem().tryUse(this, normX, normY);
-        } else {
-            setMovingDir(normX, normY);
+        if(closestPlayer != null) {
+            float connectAddsX = (closestPlayer.getCurrentRoom().getX() - getCurrentRoom().getX()) * TILE_WIDTH_IN_PX;
+            float connectAddsY = (closestPlayer.getCurrentRoom().getY() - getCurrentRoom().getY()) * TILE_HEIGHT_IN_PX;
+            float normX = ((closestPlayer.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + closestPlayer.getX()) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX()))/closestDistance;
+            float normY = ((closestPlayer.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + closestPlayer.getY()) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY()))/closestDistance;
+            if(closestDistance < getCurrentItem().getRange()) {
+                stopEntity();
+                getCurrentItem().tryUse(this, normX, normY);
+            } else {
+                setMovingDir(normX, normY);
+            }
         }
         super.gameUpdate(gameContainer, delta);
     }
