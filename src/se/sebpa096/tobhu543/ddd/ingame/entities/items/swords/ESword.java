@@ -1,6 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items.swords;
 
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 /**
@@ -15,7 +16,7 @@ public class ESword extends EquippedItem
 	cooldownMax = SWORD_STANDARD_COOLDOWN;
     }
 
-    @Override protected void use(final Player user,final int direction) {
+    @Override protected void use(final Unit user,final int direction) {
 	System.out.println("CHIIIING!");
     }
 }

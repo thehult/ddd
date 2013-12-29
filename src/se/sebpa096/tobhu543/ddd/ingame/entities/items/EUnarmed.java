@@ -1,5 +1,6 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 /**
@@ -14,7 +15,8 @@ public class EUnarmed extends EquippedItem
 	super();
 	cooldownMax = UNARMED_STANDARD_COOLDOWN;
     }
-    @Override public void use(final Player user, final int direction) {
-	System.out.println("SMACK!");
+    @Override
+    public void use(final Unit user, final int direction) {
+	    System.out.println("SMACK!");
     }
 }

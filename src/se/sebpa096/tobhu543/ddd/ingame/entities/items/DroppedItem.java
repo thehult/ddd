@@ -7,6 +7,7 @@ import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class DroppedItem extends Entity implements IRoomListener
 {
     protected EquippedItem droppedTwin;
     private boolean onMap;
-    private HashMap<Player, Boolean> recentPlayerTable = new HashMap<Player, Boolean>(); //keeps track of who can pick up
+    private HashMap<Unit, Boolean> recentPlayerTable = new HashMap<Unit, Boolean>(); //keeps track of who can pick up
 
     public DroppedItem(){
 	super();
@@ -70,8 +71,8 @@ public class DroppedItem extends Entity implements IRoomListener
 	return colliding;
     }
 
-    public void addRecentPlayer(Player player){
-	recentPlayerTable.put(player, true);
+    public void addRecentPlayer(Unit unit){
+	recentPlayerTable.put(unit, true);
     }
 
     public void putOnMap(Room room) {

@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 import org.newdawn.slick.GameContainer;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 /**
@@ -33,14 +34,14 @@ public abstract class EquippedItem
     }
 
 
-    public void showDropped(float x, float y, Player dropper){
-	droppedTwin.setX(x);
-	droppedTwin.setY(y);
-	droppedTwin.putOnMap(dropper.getCurrentRoom());
-	droppedTwin.addRecentPlayer(dropper);
+    public void showDropped(float x, float y, Unit dropper){
+        droppedTwin.setX(x);
+        droppedTwin.setY(y);
+        droppedTwin.putOnMap(dropper.getCurrentRoom());
+        droppedTwin.addRecentPlayer(dropper);
     }
 
-    public void tryUse(Player user, int direction){
+    public void tryUse(Unit user, int direction){
 	if(currentCooldown <= 0){
 	    currentCooldown = cooldownMax;
 	    use(user, direction);
@@ -54,5 +55,5 @@ public abstract class EquippedItem
 	}
     }
 
-    protected abstract void use(Player user, int direction);
+    protected abstract void use(Unit user, int direction);
 }

@@ -11,73 +11,17 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
 public class Player extends Unit implements IUpdateListener {
-    public static int maxNoItems = 6;
 
-    private EquippedItem[] equippedItems;
-    private int currentItemNo;
-    private EquippedItem unarmedItem;
+
 
     public Player() {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
         this.setMaxVelocity(300.0f);
-	equippedItems = new EquippedItem[maxNoItems];
-	unarmedItem = new EUnarmed();
+        this.setMaxNoItems(6);
 
     }
 
-    public boolean hasItemRoom(){
-	boolean hasRoom = false;
-	for(EquippedItem item: equippedItems){
-	    if(item == null){
-		hasRoom = true;
-		break;
-	    }
-	}
-	return hasRoom;
-    }
 
-    public void receiveItem(EquippedItem item){
-	if (hasItemRoom()){
-	    boolean foundEmpty = false;
-	    for(int i = 0; i< maxNoItems; i++){
-		if(equippedItems[i] == null){
-		    equippedItems[i] = item;
-		    foundEmpty = true;
-		    break;
-		}
-	    }
-	    if(!foundEmpty){
-		System.out.println("ERROR! iteration över fullt inventory!");
-	    }
-	}else{
-	    System.out.println("ERROR! spelare med fullt inventory tog upp item!");
-	}
-    }
-
-    public void cycleCurrentItem(int steps){
-	currentItemNo = (currentItemNo + steps);
-	if(currentItemNo < 0)
-	    currentItemNo = maxNoItems - 1;
-	if(currentItemNo >= maxNoItems)
-	    currentItemNo = 0;
-    }
-
-    public void useItem(){
-	EquippedItem current = equippedItems[currentItemNo];
-	if(current == null){
-	    unarmedItem.tryUse(this, 2); //TODO fixa direction
-	}else{
-	    equippedItems[currentItemNo].tryUse(this, 2); //TODO fixa direction!
-	}
-    }
-
-    public void dropItem(int itemNo){
-	EquippedItem item = equippedItems[itemNo];
-	if(item != null){
-	    item.showDropped(x, y, this); //drop on our position, register as recent user
-	}
-	equippedItems[itemNo] = null;
-    }
 
     @Override
     public void gameUpdate(GameContainer gameContainer, int delta) {
@@ -98,15 +42,11 @@ public class Player extends Unit implements IUpdateListener {
 	if(input.isKeyPressed(Input.KEY_SPACE))
 	    useItem();
 	if(input.isKeyPressed(Input.KEY_C))
-	    dropItem(currentItemNo);
+	    dropItem(getCurrentItemNo());
 
         this.setMovingDir(dX, dY);
 
-	for(EquippedItem item: equippedItems){
-	    if(item != null)
-		    item.gameUpdate(gameContainer, delta);
-	}
-	unarmedItem.gameUpdate(gameContainer, delta);
+
 
         super.gameUpdate(gameContainer, delta);
     }
