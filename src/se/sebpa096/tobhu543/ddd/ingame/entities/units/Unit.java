@@ -11,6 +11,8 @@ public class Unit extends MovingEntity {
     private int currentItemNo = 0;
     private EquippedItem unarmedItem;
 
+    private int health=100;
+
     public Unit() {
         unarmedItem = new EUnarmed();
         setMaxNoItems(1);
@@ -119,5 +121,13 @@ public class Unit extends MovingEntity {
 
     public void setUnarmedItem(EquippedItem unarmedItem) {
         this.unarmedItem = unarmedItem;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

@@ -17,6 +17,7 @@ public class Player extends Unit implements IUpdateListener {
     public Player() {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
         this.setMaxVelocity(300.0f);
+        this.setHealth(100);
         this.setMaxNoItems(6);
 
     }
