@@ -28,8 +28,8 @@ public class Enemy extends Unit {
         if(closestPlayer != null) {
             float connectAddsX = (closestPlayer.getCurrentRoom().getX() - getCurrentRoom().getX()) * TILE_WIDTH_IN_PX;
             float connectAddsY = (closestPlayer.getCurrentRoom().getY() - getCurrentRoom().getY()) * TILE_HEIGHT_IN_PX;
-            float normX = ((closestPlayer.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + closestPlayer.getX()) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX()))/closestDistance;
-            float normY = ((closestPlayer.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + closestPlayer.getY()) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY()))/closestDistance;
+            float normX = ((closestPlayer.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + closestPlayer.getX() + connectAddsX) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX()))/closestDistance;
+            float normY = ((closestPlayer.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + closestPlayer.getY() + connectAddsY) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY()))/closestDistance;
             if(closestDistance < getCurrentItem().getRange()) {
                 stopEntity();
                 getCurrentItem().tryUse(this, normX, normY);
