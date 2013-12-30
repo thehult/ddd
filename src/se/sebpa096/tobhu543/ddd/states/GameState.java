@@ -20,21 +20,24 @@ public class GameState extends State {
     private Camera camera;
 
     private ArrayList<Player> players = new ArrayList<Player>();
+    private ArrayList<Room> activeRooms = new ArrayList<Room>();
 
     private ArrayList<IUpdateListener> updateListeners = new ArrayList<IUpdateListener>();
 
     @Override
     public void init(GameContainer gameContainer, Game game) {
-	    this.game = game;
-	    level = LevelFactory.makeTestLevel();
+	this.game = game;
+	level = LevelFactory.makeTestLevel();
         Player player = new Player();
         camera = new Camera();
         player.addEntityListener(camera);
+	player.addEntityListener(level);
         camera.setFollowEntity(player);
         player.setCurrentRoom(level.getStartRoom());
         addUpdateListener(level);
         addUpdateListener(player);
 	players.add(player);
+	level.initActives();
         //camera.lockRoom(level.getStartRoom());
     }
 
@@ -63,5 +66,9 @@ public class GameState extends State {
 
     public ArrayList<Player> getPlayers() {
 	return players;
+    }
+
+    public Level getLevel() {
+	return level;
     }
 }

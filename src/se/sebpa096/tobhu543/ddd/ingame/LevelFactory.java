@@ -20,26 +20,21 @@ public class LevelFactory
         eorc.setY(100.0f);
 
         Room room = RoomFactory.makeSwordRoom(0, 0);
-	level.addLevelListener(room);
 
 	Room lRoom = RoomFactory.makeDefaultRoom(-1, 0);
         room.linkLeftRoom(lRoom);
         eorc.setCurrentRoom(lRoom);
         /*lRoom.addEntity(eorc);
         lRoom.addRoomListener(eorc);*/
-	level.addLevelListener(lRoom);
 
 	Room tRoom = RoomFactory.makeDefaultRoom(0, -1);
         room.linkTopRoom(tRoom);
-	level.addLevelListener(tRoom);
 
 	Room rRoom = RoomFactory.makeDefaultRoom(1, 0);
         room.linkRightRoom(rRoom);
-	level.addLevelListener(rRoom);
 
 	Room bRoom = RoomFactory.makeDefaultRoom(0, 1);
         room.linkBottomRoom(bRoom);
-	level.addLevelListener(bRoom);
 
         level.setStartRoom(room);
 

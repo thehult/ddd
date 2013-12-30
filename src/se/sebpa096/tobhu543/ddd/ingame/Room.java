@@ -30,6 +30,9 @@ public class Room implements ILevelListener
     private Tile[][] tiles = new Tile[ROOM_WIDTH_IN_TILES][ROOM_HEIGHT_IN_TILES];
     private boolean[][] blockingTiles = new boolean[ROOM_WIDTH_IN_TILES + 2][ROOM_HEIGHT_IN_TILES + 2];
     private ArrayList<IRoomListener> roomListeners = new ArrayList<IRoomListener>();
+
+
+
     private ArrayList<Entity> entities = new ArrayList<Entity>();
     private Room topRoom = null;
     private Room rightRoom = null;
@@ -370,5 +373,9 @@ public class Room implements ILevelListener
 
     public void removeRoomListener(IRoomListener e){
 	    roomListeners.remove(e);
+    }
+
+    public ArrayList<Entity> getEntities() {
+	return entities;
     }
 }
