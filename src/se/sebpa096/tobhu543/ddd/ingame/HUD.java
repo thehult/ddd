@@ -57,7 +57,7 @@ public class HUD implements IUpdateListener, IUnitListener {
     public void render(GameContainer gameContainer, Graphics graphics) {
         graphics.drawImage(hudImage, 0.0f, 0.0f);
         graphics.drawImage(hudRealHealth, HEALTH_START_X, HEALTH_START_Y);
-        graphics.drawImage(hudItem, INVENTORY_X + currentItem * INVENTORY_SLOT_MARGIN_WIDTH, INVENTORY_Y);
+        graphics.drawImage(hudItem, INVENTORY_X - 1 + currentItem * INVENTORY_SLOT_MARGIN_WIDTH, INVENTORY_Y - 1);
         for(int i = 0;i<items.length;i++) {
             if(items[i] != null) {
                 graphics.drawImage(items[i], INVENTORY_X + i * INVENTORY_SLOT_MARGIN_WIDTH, INVENTORY_Y);

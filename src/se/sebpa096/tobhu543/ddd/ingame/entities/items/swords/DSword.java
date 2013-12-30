@@ -4,6 +4,7 @@ import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.DroppedItem;
 import se.sebpa096.tobhu543.ddd.resources.ButtonImageResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
+import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
 /**
@@ -13,7 +14,7 @@ import se.sebpa096.tobhu543.ddd.resources.TileResources;
 public class DSword extends DroppedItem
 {
     public DSword(){
-	super(new ESword());
-	sprite = (Image) GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_STANDARD);
+        super(new ESword());
+        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.SWORD_DROPPED);
     }
 }
