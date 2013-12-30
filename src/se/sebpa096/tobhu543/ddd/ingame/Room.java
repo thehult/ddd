@@ -9,7 +9,6 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Direction;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 19:09 To change this template use File | Settings | File
@@ -85,14 +84,14 @@ public class Room implements ILevelListener
 
 
         if(hasTopRoom())
-            topRoom.renderFloor(gameContainer, graphics, camera, Direction.UP);
+            topRoom.renderFirst(gameContainer, graphics, camera, Direction.UP);
         if(hasLeftRoom())
-            leftRoom.renderFloor(gameContainer, graphics, camera, Direction.LEFT);
-        renderFloor(gameContainer, graphics, camera, Direction.NONE);
+            leftRoom.renderFirst(gameContainer, graphics, camera, Direction.LEFT);
+        renderFirst(gameContainer, graphics, camera, Direction.NONE);
         if(hasRightRoom())
-            rightRoom.renderFloor(gameContainer, graphics, camera, Direction.RIGHT);
+            rightRoom.renderFirst(gameContainer, graphics, camera, Direction.RIGHT);
         if(hasBottomRoom())
-            bottomRoom.renderFloor(gameContainer, graphics, camera, Direction.DOWN);
+            bottomRoom.renderFirst(gameContainer, graphics, camera, Direction.DOWN);
 
         if(hasTopRoom())
             topRoom.renderEntities(gameContainer, graphics, camera, Direction.UP);
@@ -105,18 +104,18 @@ public class Room implements ILevelListener
             bottomRoom.renderEntities(gameContainer, graphics, camera, Direction.DOWN);
 
         if(hasTopRoom())
-            topRoom.renderWalls(gameContainer, graphics, camera, Direction.UP);
+            topRoom.renderLast(gameContainer, graphics, camera, Direction.UP);
         if(hasLeftRoom())
-            leftRoom.renderWalls(gameContainer, graphics, camera, Direction.LEFT);
-        renderWalls(gameContainer, graphics, camera, Direction.NONE);
+            leftRoom.renderLast(gameContainer, graphics, camera, Direction.LEFT);
+        renderLast(gameContainer, graphics, camera, Direction.NONE);
         if(hasRightRoom())
-            rightRoom.renderWalls(gameContainer, graphics, camera, Direction.RIGHT);
+            rightRoom.renderLast(gameContainer, graphics, camera, Direction.RIGHT);
         if(hasBottomRoom())
-            bottomRoom.renderWalls(gameContainer, graphics, camera, Direction.DOWN);
+            bottomRoom.renderLast(gameContainer, graphics, camera, Direction.DOWN);
 
     }
 
-    public void renderFloor(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
+    public void renderFirst(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
         float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
         float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
         if(direction == Direction.UP)
@@ -171,7 +170,7 @@ public class Room implements ILevelListener
 
     }
 
-    public void renderWalls(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
+    public void renderLast(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
         float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
         float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
         if(direction == Direction.UP)
