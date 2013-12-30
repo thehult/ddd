@@ -4,10 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.Game;
-import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
-import se.sebpa096.tobhu543.ddd.ingame.Level;
-import se.sebpa096.tobhu543.ddd.ingame.LevelFactory;
-import se.sebpa096.tobhu543.ddd.ingame.Room;
+import se.sebpa096.tobhu543.ddd.ingame.*;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
@@ -18,6 +15,7 @@ public class GameState extends State {
 
     private Level level;
     private Camera camera;
+    private HUD hud;
 
     private ArrayList<Player> players = new ArrayList<Player>();
     private ArrayList<Room> activeRooms = new ArrayList<Room>();
@@ -26,18 +24,20 @@ public class GameState extends State {
 
     @Override
     public void init(GameContainer gameContainer, Game game) {
-	this.game = game;
-	level = LevelFactory.makeTestLevel();
+	    this.game = game;
+	    level = LevelFactory.makeTestLevel();
         Player player = new Player();
         camera = new Camera();
         player.addEntityListener(camera);
-	player.addEntityListener(level);
+	    player.addEntityListener(level);
         camera.setFollowEntity(player);
         player.setCurrentRoom(level.getStartRoom());
         addUpdateListener(level);
         addUpdateListener(player);
-	players.add(player);
-	level.initActives();
+	    players.add(player);
+	    level.initActives();
+        hud = new HUD(player);
+        player.setHealth(player.getMaxHealth());
         //camera.lockRoom(level.getStartRoom());
     }
 
@@ -50,6 +50,7 @@ public class GameState extends State {
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
 	    level.render(gameContainer, graphics, camera);
+        hud.render(gameContainer, graphics);
         graphics.drawString("x: " + players.get(0).getX(), 20, 30);
         graphics.drawString("y: " + players.get(0).getY(), 20, 50);
         graphics.drawString("blockX: " + players.get(0).blockX, 20, 70);

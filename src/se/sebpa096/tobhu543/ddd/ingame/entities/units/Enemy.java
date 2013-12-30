@@ -32,7 +32,11 @@ public class Enemy extends Unit {
             float normY = ((closestPlayer.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + closestPlayer.getY() + connectAddsY) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY()))/closestDistance;
             if(closestDistance < getCurrentItem().getRange()) {
                 stopEntity();
+                //TODO: TA BORT NÄSTA IF-SATS, TEST ONLY
+                if(getCurrentItem().getCurrentCooldown() <= 0)
+                    closestPlayer.setHealth(closestPlayer.getHealth() - 10);
                 getCurrentItem().tryUse(this, normX, normY);
+
             } else {
                 setMovingDir(normX, normY);
             }
