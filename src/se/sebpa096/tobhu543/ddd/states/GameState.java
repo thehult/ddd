@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.Tester;
 import se.sebpa096.tobhu543.ddd.ingame.*;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
@@ -49,12 +50,17 @@ public class GameState extends State {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-	    level.render(gameContainer, graphics, camera);
+	level.render(gameContainer, graphics, camera);
         hud.render(gameContainer, graphics);
-        graphics.drawString("x: " + players.get(0).getX(), 20, 30);
-        graphics.drawString("y: " + players.get(0).getY(), 20, 50);
-        graphics.drawString("blockX: " + players.get(0).blockX, 20, 70);
-        graphics.drawString("blockY: " + players.get(0).blockY, 20, 90);
+	if(Game.TEST){
+	    Tester.render(gameContainer, graphics);
+	    graphics.drawString("x: " + players.get(0).getX(), 20, 30);
+	    graphics.drawString("y: " + players.get(0).getY(), 20, 50);
+	    graphics.drawString("blockX: " + players.get(0).blockX, 20, 70);
+	    graphics.drawString("blockY: " + players.get(0).blockY, 20, 90);
+
+	}
+
     }
 
     public void addUpdateListener(IUpdateListener listener) {
@@ -71,5 +77,9 @@ public class GameState extends State {
 
     public Level getLevel() {
 	return level;
+    }
+
+    public Camera getCamera() {
+	return camera;
     }
 }

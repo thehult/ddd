@@ -118,7 +118,7 @@ public class MovingEntity extends Entity {
     }
 
     public float getMovingDirY() {
-        return movingDirX;
+        return movingDirY;
     }
 
 

@@ -25,7 +25,7 @@ public abstract class EquippedItem
     protected DroppedItem droppedTwin;
 
     protected int cooldownMax = 0;
-    protected int currentCooldown = 0;
+    protected int currentCooldown = cooldownMax;
     protected float range = Tile.TILE_WIDTH_IN_PX;
 
     public EquippedItem(){

@@ -35,7 +35,10 @@ public class Enemy extends Unit {
                 //TODO: TA BORT NÄSTA IF-SATS, TEST ONLY
                 if(getCurrentItem().getCurrentCooldown() <= 0)
                     closestPlayer.setHealth(closestPlayer.getHealth() - 10);
-                getCurrentItem().tryUse(this, normX, normY);
+
+
+                //getCurrentItem().tryUse(this, normX, normY);
+		//TODO lägg tillbaka detta igen
 
             } else {
                 setMovingDir(normX, normY);
