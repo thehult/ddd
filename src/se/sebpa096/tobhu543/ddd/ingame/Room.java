@@ -140,6 +140,14 @@ public class Room implements ILevelListener
             graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + ROOM_WIDTH_IN_TILES * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2) * Tile.TILE_HEIGHT_IN_PX);
             graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + ROOM_WIDTH_IN_TILES * Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 - 1) * Tile.TILE_HEIGHT_IN_PX);
         }
+        for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
+            if(hasTopRoom() && (x == ROOM_WIDTH_IN_TILES / 2 - 1 || x == ROOM_WIDTH_IN_TILES / 2)) {
+                graphics.drawImage(wallSpriteLeft, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 - 2) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+                graphics.drawImage(wallSpriteRight, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 + 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+            }
+            else
+                graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
+        }
         for(int y = 0; y < ROOM_HEIGHT_IN_TILES; y++)
             for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++)
                 graphics.drawImage(tiles[x][y].getSprite(), screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY + y * Tile.TILE_HEIGHT_IN_PX);
@@ -156,14 +164,7 @@ public class Room implements ILevelListener
             screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
         if(direction == Direction.RIGHT)
             screenLeftX += (Room.ROOM_WIDTH_IN_PX + Tile.TILE_WIDTH_IN_PX);
-        for(int x = 0; x < ROOM_WIDTH_IN_TILES; x++) {
-            if(hasTopRoom() && (x == ROOM_WIDTH_IN_TILES / 2 - 1 || x == ROOM_WIDTH_IN_TILES / 2)) {
-                graphics.drawImage(wallSpriteLeft, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 - 2) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-                graphics.drawImage(wallSpriteRight, screenLeftX + (ROOM_WIDTH_IN_TILES / 2 + 1) * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-            }
-            else
-                graphics.drawImage(wallSpriteTop, screenLeftX + x * Tile.TILE_WIDTH_IN_PX, screenTopY - Tile.TILE_HEIGHT_IN_PX);
-        }
+
         for(int y = 0; y < ROOM_HEIGHT_IN_TILES; y++) {
             if(hasLeftRoom() && (y == ROOM_HEIGHT_IN_TILES / 2 - 1 || y == ROOM_HEIGHT_IN_TILES / 2)) {
                 graphics.drawImage(wallSpriteTop, screenLeftX - Tile.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2 - 2) * Tile.TILE_HEIGHT_IN_PX);
