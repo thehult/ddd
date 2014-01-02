@@ -62,7 +62,11 @@ public class DroppedItem extends Entity implements IRoomListener
 	for(Player player: Game.GAME_STATE.getPlayers()){
 	    Rectangle2D playerRect = new Rectangle2D(player.getX(), player.getY(), TILE_HEIGHT_IN_PX, TILE_WIDTH_IN_PX);
 	    boolean intersects = itemRect.intersects(playerRect) && player.getCurrentRoom() == getCurrentRoom();
-  	    if(intersects && !recentPlayerTable.get(player) && player.hasItemRoom()){
+	    boolean isRegisteredRecent = recentPlayerTable.containsKey(player);
+	    boolean isRecent = false;
+	    if(isRegisteredRecent)
+		if(!recentPlayerTable.get(player)) isRecent = true;
+   	    if(intersects && isRecent && player.hasItemRoom()){
 		colliding.add(player);
 	    }else if(!itemRect.intersects(playerRect)){
 		recentPlayerTable.put(player, false);
