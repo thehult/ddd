@@ -2,6 +2,7 @@ package se.sebpa096.tobhu543.ddd.ingame;
 
 import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.ingame.entities.StairsStart;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.DFireSword;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.DSword;
@@ -56,6 +57,16 @@ public class RoomFactory {
                 }
             }
         }
+        return build;
+    }
+
+    public static Room makeStartRoom(int gridX, int gridY, Level level) {
+        Room build = makeDefaultRoom(gridX, gridY, level);
+        StairsStart stairs = new StairsStart();
+        stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
+        stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
+        build.setBlockingTile(Room.ROOM_WIDTH_IN_TILES/2 + 1, Room.ROOM_HEIGHT_IN_TILES/2, true);
+        stairs.setCurrentRoom(build);
         return build;
     }
 

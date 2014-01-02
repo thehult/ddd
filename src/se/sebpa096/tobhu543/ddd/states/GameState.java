@@ -7,6 +7,7 @@ import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.Tester;
 import se.sebpa096.tobhu543.ddd.ingame.*;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 import java.util.ArrayList;
@@ -27,12 +28,14 @@ public class GameState extends State {
     public void init(GameContainer gameContainer, Game game) {
 	this.game = game;
         UnitFactory.init();
-	    level = LevelFactory.makeRealLevel(3);
+	    level = LevelFactory.makeRealLevel(1, 0.02f);
         Player player = new Player();
         camera = new Camera(gameContainer);
         player.addEntityListener(camera);
 	    player.addEntityListener(level);
         camera.setFollowEntity(player);
+        player.setX(Tile.TILE_WIDTH_IN_PX * (float) (Room.ROOM_WIDTH_IN_TILES / 2 - 1));
+        player.setY(Tile.TILE_HEIGHT_IN_PX * (float) (Room.ROOM_HEIGHT_IN_TILES / 2 - 1));
         player.setCurrentRoom(level.getStartRoom());
         addUpdateListener(level);
         //addUpdateListener(player); //TODO se över detta, kan vara så att vi inte vill uppdatera via rum

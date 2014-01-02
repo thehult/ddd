@@ -9,6 +9,8 @@ public class TileResources extends ResourceManager<Image> {
     public static final String BRICK_WALL_1_BOT = "brickwall1_bot";
     public static final String BRICK_WALL_1_LEFT = "brickwall1_left";
     public static final String BRICK_WALL_1_RIGHT = "brickwall1_right";
+    public static final String STAIRS_START = "stairsStart";
+    public static final String STAIRS_GOAL = "stairsGoal";
 
     public TileResources() {
         super();
@@ -18,6 +20,8 @@ public class TileResources extends ResourceManager<Image> {
             resources.put(BRICK_WALL_1_BOT, new Image("res/tiles/wall/brickwall1_bot.gif"));
             resources.put(BRICK_WALL_1_LEFT, new Image("res/tiles/wall/brickwall1_left.gif"));
             resources.put(BRICK_WALL_1_RIGHT, new Image("res/tiles/wall/brickwall1_right.gif"));
+            resources.put(STAIRS_START, new Image("res/tiles/stairs/staircase_start.png"));
+            resources.put(STAIRS_GOAL, new Image("res/tiles/stairs/staircase_goal.png"));
         } catch (SlickException e) {
             e.printStackTrace();
             System.exit(1);
