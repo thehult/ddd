@@ -3,9 +3,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
+import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Direction;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,9 @@ import java.util.ArrayList;
  */
 public class Tester
 {
+    public static float testScale = 0.1f;
     public static ArrayList<Shape> testShapes = new ArrayList<Shape>();
+    public static ArrayList<Room> renderedRooms = new ArrayList<Room>();
 
     public static void render(GameContainer gameContainer, Graphics graphics) {
 

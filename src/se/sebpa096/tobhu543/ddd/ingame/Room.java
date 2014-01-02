@@ -3,6 +3,8 @@ package se.sebpa096.tobhu543.ddd.ingame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.Tester;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
@@ -82,36 +84,54 @@ public class Room implements ILevelListener
         float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
         float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
 
+        /*if(!Game.TEST) {*/
+            if(hasTopRoom())
+                topRoom.renderFirst(gameContainer, graphics, camera, Direction.UP);
+            if(hasLeftRoom())
+                leftRoom.renderFirst(gameContainer, graphics, camera, Direction.LEFT);
+            renderFirst(gameContainer, graphics, camera, Direction.NONE);
+            if(hasRightRoom())
+                rightRoom.renderFirst(gameContainer, graphics, camera, Direction.RIGHT);
+            if(hasBottomRoom())
+                bottomRoom.renderFirst(gameContainer, graphics, camera, Direction.DOWN);
 
-        if(hasTopRoom())
-            topRoom.renderFirst(gameContainer, graphics, camera, Direction.UP);
-        if(hasLeftRoom())
-            leftRoom.renderFirst(gameContainer, graphics, camera, Direction.LEFT);
-        renderFirst(gameContainer, graphics, camera, Direction.NONE);
-        if(hasRightRoom())
-            rightRoom.renderFirst(gameContainer, graphics, camera, Direction.RIGHT);
-        if(hasBottomRoom())
-            bottomRoom.renderFirst(gameContainer, graphics, camera, Direction.DOWN);
+            if(hasTopRoom())
+                topRoom.renderEntities(gameContainer, graphics, camera, Direction.UP);
+            if(hasLeftRoom())
+                leftRoom.renderEntities(gameContainer, graphics, camera, Direction.LEFT);
+            renderEntities(gameContainer, graphics, camera, Direction.NONE);
+            if(hasRightRoom())
+                rightRoom.renderEntities(gameContainer, graphics, camera, Direction.RIGHT);
+            if(hasBottomRoom())
+                bottomRoom.renderEntities(gameContainer, graphics, camera, Direction.DOWN);
 
-        if(hasTopRoom())
-            topRoom.renderEntities(gameContainer, graphics, camera, Direction.UP);
-        if(hasLeftRoom())
-            leftRoom.renderEntities(gameContainer, graphics, camera, Direction.LEFT);
-        renderEntities(gameContainer, graphics, camera, Direction.NONE);
-        if(hasRightRoom())
-            rightRoom.renderEntities(gameContainer, graphics, camera, Direction.RIGHT);
-        if(hasBottomRoom())
-            bottomRoom.renderEntities(gameContainer, graphics, camera, Direction.DOWN);
+            if(hasTopRoom())
+                topRoom.renderLast(gameContainer, graphics, camera, Direction.UP);
+            if(hasLeftRoom())
+                leftRoom.renderLast(gameContainer, graphics, camera, Direction.LEFT);
+            renderLast(gameContainer, graphics, camera, Direction.NONE);
+            if(hasRightRoom())
+                rightRoom.renderLast(gameContainer, graphics, camera, Direction.RIGHT);
+            if(hasBottomRoom())
+                bottomRoom.renderLast(gameContainer, graphics, camera, Direction.DOWN);
+        /*} else {
+            if(!Tester.renderedRooms.contains(this)) {
+                Tester.renderedRooms.add(this);
+                if(hasTopRoom())
+                    topRoom.render(gameContainer,graphics,camera);
+                if(hasLeftRoom())
+                    leftRoom.render(gameContainer,graphics,camera);
+                renderFirst(gameContainer, graphics, camera, Direction.NONE);
+                renderEntities(gameContainer, graphics, camera, Direction.NONE);
+                renderLast(gameContainer, graphics, camera, Direction.NONE);
 
-        if(hasTopRoom())
-            topRoom.renderLast(gameContainer, graphics, camera, Direction.UP);
-        if(hasLeftRoom())
-            leftRoom.renderLast(gameContainer, graphics, camera, Direction.LEFT);
-        renderLast(gameContainer, graphics, camera, Direction.NONE);
-        if(hasRightRoom())
-            rightRoom.renderLast(gameContainer, graphics, camera, Direction.RIGHT);
-        if(hasBottomRoom())
-            bottomRoom.renderLast(gameContainer, graphics, camera, Direction.DOWN);
+                if(hasRightRoom())
+                    rightRoom.render(gameContainer,graphics,camera);
+                if(hasBottomRoom())
+                    bottomRoom.render(gameContainer,graphics,camera);
+
+            }
+        }*/
 
     }
 

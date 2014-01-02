@@ -120,17 +120,18 @@ public class Entity implements IRoomListener
     public void setCurrentRoom(Room currentRoom) {
         if(this.getCurrentRoom() != null){
             this.getCurrentRoom().removeEntity(this);
-	    this.getCurrentRoom().removeRoomListener(this);
-	}
+	        this.getCurrentRoom().removeRoomListener(this);
+	    }
 
         this.currentRoom = currentRoom;
 
-	for(IEntityListener entity : entityListeners)
-	    entity.entityChangedRoom(currentRoom);
 
-	if(currentRoom != null){
-	    this.getCurrentRoom().addEntity(this);
-	    getCurrentRoom().addRoomListener(this);
-	}
+
+        if(currentRoom != null){
+            this.getCurrentRoom().addEntity(this);
+            getCurrentRoom().addRoomListener(this);
+        }
+        for(IEntityListener entity : entityListeners)
+            entity.entityChangedRoom(currentRoom);
     }
 }

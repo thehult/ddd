@@ -26,9 +26,9 @@ public class GameState extends State {
     @Override
     public void init(GameContainer gameContainer, Game game) {
 	    this.game = game;
-	    level = LevelFactory.makeTestLevel();
+	    level = LevelFactory.makeRealLevel(3);
         Player player = new Player();
-        camera = new Camera();
+        camera = new Camera(gameContainer);
         player.addEntityListener(camera);
 	    player.addEntityListener(level);
         camera.setFollowEntity(player);
@@ -50,9 +50,15 @@ public class GameState extends State {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
+        if(Game.TEST)
+            graphics.scale(Tester.testScale, Tester.testScale);
 	level.render(gameContainer, graphics, camera);
+        if(Game.TEST)
+            graphics.scale(1.0f/Tester.testScale, 1.0f/Tester.testScale);
         hud.render(gameContainer, graphics);
+
 	if(Game.TEST){
+        graphics.scale(Tester.testScale, Tester.testScale);
 	    Tester.render(gameContainer, graphics);
 	    graphics.drawString("x: " + players.get(0).getX(), 20, 30);
 	    graphics.drawString("y: " + players.get(0).getY(), 20, 50);
