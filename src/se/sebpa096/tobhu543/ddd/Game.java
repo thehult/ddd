@@ -36,6 +36,7 @@ public class Game extends BasicGame {
     // CLASS IMPLEMENTATION BELOW
 
     private State state;
+    public static boolean STARTED = false;
     public static final MenuState MENU_STATE = new MenuState();
     public static final GameState GAME_STATE = new GameState();
     public static final OptionsState OPTIONS_STATE = new OptionsState();

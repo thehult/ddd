@@ -41,7 +41,7 @@ public class GameState extends State {
         hud = new HUD(player);
         player.setHealth(player.getMaxHealth());
         //camera.lockRoom(level.getStartRoom());
-
+        Game.STARTED = true;
     }
 
     @Override
