@@ -30,9 +30,12 @@ public abstract class EquippedItem
 
     public EquippedItem(){
 	    super();
+
     }
     public EquippedItem(DroppedItem item){
+        this();
 	    droppedTwin = item;
+
     }
 
 
@@ -40,7 +43,7 @@ public abstract class EquippedItem
         droppedTwin.setX(x);
         droppedTwin.setY(y);
         droppedTwin.putOnMap(dropper.getCurrentRoom());
-        droppedTwin.addRecentPlayer(dropper);
+        droppedTwin.addRecentPlayer(dropper); //TODO: VAD FAN ÄR FEL!?
     }
 
     public void tryUse(Unit user, float normX, float normY){

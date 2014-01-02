@@ -1,18 +1,23 @@
-package se.sebpa096.tobhu543.ddd.ingame.entities.units;
+package se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.ingame.RarityHandler;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
+import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
 public class Enemy extends Unit {
+
     public Enemy() {
-	this.setFaction(Faction.ENEMY);
+	    this.setFaction(Faction.ENEMY);
         this.setMaxNoItems(1);
+
     }
     public void gameUpdate(GameContainer gameContainer, int delta) {
         Player closestPlayer = null;
@@ -33,13 +38,9 @@ public class Enemy extends Unit {
             float normY = ((closestPlayer.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + closestPlayer.getY() + connectAddsY) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY()))/closestDistance;
             if(closestDistance < getCurrentItem().getRange()) {
                 stopEntity();
-                //TODO: TA BORT NÄSTA IF-SATS, TEST ONLY
-                if(getCurrentItem().getCurrentCooldown() <= 0)
-                    closestPlayer.setHealth(closestPlayer.getHealth() - 10);
 
 
-                //getCurrentItem().tryUse(this, normX, normY);
-		//TODO lägg tillbaka detta igen
+                getCurrentItem().tryUse(this, normX, normY);
 
             } else {
                 setMovingDir(normX, normY);

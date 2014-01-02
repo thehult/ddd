@@ -17,8 +17,13 @@ public class Unit extends MovingEntity {
 
     private ArrayList<IUnitListener> unitListeners = new ArrayList<IUnitListener>();
 
+    private int randomHealthMin = 10;
+    private int randomHealthMax = 100;
+
     private int maxHealth=100;
     private int health=100;
+
+    public static final double STANDARD_DROP_CHANCE = 0.1;
 
     public Unit() {
         unarmedItem = new EUnarmed();
@@ -139,13 +144,15 @@ public class Unit extends MovingEntity {
 
     @Override public void getHit(final int incoming, final Entity attacker) {
 	super.getHit(incoming, attacker);
-	health = health - incoming;
+	setHealth(health - incoming);
 	if(health <= 0){
 	    die();
 	}
     }
 
     public void die(){
+        if(this.getEquippedItems()[0] != null)
+            this.dropItem(0);
     }
 
     public EquippedItem getUnarmedItem() {
@@ -181,5 +188,21 @@ public class Unit extends MovingEntity {
 
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
+    }
+
+    public int getRandomHealthMax() {
+        return randomHealthMax;
+    }
+
+    public void setRandomHealthMax(int randomHealthMax) {
+        this.randomHealthMax = randomHealthMax;
+    }
+
+    public int getRandomHealthMin() {
+        return randomHealthMin;
+    }
+
+    public void setRandomHealthMin(int randomHealthMin) {
+        this.randomHealthMin = randomHealthMin;
     }
 }

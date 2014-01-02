@@ -13,10 +13,7 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 //import javafx.geometry.Rectangle2D;
 import org.newdawn.slick.geom.Vector2f;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
-import se.sebpa096.tobhu543.ddd.ingame.entities.units.Enemy;
-import se.sebpa096.tobhu543.ddd.ingame.entities.units.EnemyOrc;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
-import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 //import java.awt.Shape;
@@ -33,7 +30,7 @@ import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 public class ESword extends EquippedItem
 {
     public static int SWORD_STANDARD_COOLDOWN = 750;
-    public  static  int SWORD_STANDARD_LENGTH = 150;
+    public  static  int SWORD_STANDARD_LENGTH = 86;
     public static int SWORD_STANDARD_ANGLE_REACH = 120;
     public static int SWORD_STANDARD_DAMAGE = 10;
 
@@ -44,6 +41,7 @@ public class ESword extends EquippedItem
 
     public ESword(){
 	super();
+        droppedTwin = new DSword(this);
 	cooldownMax = SWORD_STANDARD_COOLDOWN;
     }
 
@@ -70,7 +68,7 @@ public class ESword extends EquippedItem
 	    hurtBox.addPoint(point[0], point[1]);
 	}
 
-	System.out.println("Svärd har träffat: ----------------");
+	//System.out.println("Svärd har träffat: ----------------");
 	for (int i = 0; i < Game.GAME_STATE.getLevel().getActiveEntities().size(); i++) {
 	    Entity e = Game.GAME_STATE.getLevel().getActiveEntities().get(i);
 	    Rectangle entityHitBox = new Rectangle(e.getUniversalX(),e.getUniversalY(),
@@ -86,6 +84,6 @@ public class ESword extends EquippedItem
 	    }
 	}
 	if(Game.TEST) Tester.testShapes.add(hurtBox);
-	System.out.println("-----------------------------------");
+	//System.out.println("-----------------------------------");
     }
 }

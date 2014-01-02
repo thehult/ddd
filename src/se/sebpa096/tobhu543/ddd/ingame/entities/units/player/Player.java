@@ -13,7 +13,7 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 import se.sebpa096.tobhu543.ddd.states.GameState;
 
-public class Player extends Unit implements IUpdateListener {
+public class  Player extends Unit implements IUpdateListener {
 
 
 
