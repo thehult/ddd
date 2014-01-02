@@ -32,7 +32,7 @@ public class Room implements ILevelListener
     private boolean[][] blockingTiles = new boolean[ROOM_WIDTH_IN_TILES + 2][ROOM_HEIGHT_IN_TILES + 2];
     private ArrayList<IRoomListener> roomListeners = new ArrayList<IRoomListener>();
 
-
+    private Level level;
 
     private ArrayList<Entity> entities = new ArrayList<Entity>();
     private Room topRoom = null;
@@ -49,9 +49,10 @@ public class Room implements ILevelListener
     private int renderableTopY = -1;
     private int renderableBottomY = ROOM_HEIGHT_IN_TILES + 1;
 
-    public Room(int inRoomGridX, int inRoomGridY){
+    public Room(int inRoomGridX, int inRoomGridY, Level level){
         x = inRoomGridX;
         y = inRoomGridY;
+	this.level = level;
         for(int i = 0; i < ROOM_WIDTH_IN_TILES + 2; i++) {
             blockingTiles[i][0] = true;
             blockingTiles[i][ROOM_HEIGHT_IN_TILES + 1] = true;
@@ -412,5 +413,9 @@ public class Room implements ILevelListener
 
     public ArrayList<Entity> getEntities() {
 	return entities;
+    }
+
+    public Level getLevel() {
+	return level;
     }
 }

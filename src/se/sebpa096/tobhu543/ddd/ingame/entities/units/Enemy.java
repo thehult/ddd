@@ -5,12 +5,13 @@ import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
 public class Enemy extends Unit {
     public Enemy() {
-
+	this.setFaction(Faction.ENEMY);
         this.setMaxNoItems(1);
     }
     public void gameUpdate(GameContainer gameContainer, int delta) {
@@ -45,5 +46,11 @@ public class Enemy extends Unit {
             }
         }
         super.gameUpdate(gameContainer, delta);
+    }
+
+    @Override public void die() {
+	super.die();
+	setCurrentRoom(null);
+	//TODO: droppa items o grejer
     }
 }

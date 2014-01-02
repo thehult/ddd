@@ -24,21 +24,21 @@ public class LevelFactory
         eorc.setX(50.0f);
         eorc.setY(100.0f);
 
-        Room room = RoomFactory.makeSwordRoom(0, 0);
+        Room room = RoomFactory.makeSwordRoom(0, 0, level);
 
-	Room lRoom = RoomFactory.makeDefaultRoom(-1, 0);
+	Room lRoom = RoomFactory.makeDefaultRoom(-1, 0, level);
         room.linkLeftRoom(lRoom);
         eorc.setCurrentRoom(lRoom);
         /*lRoom.addEntity(eorc);
         lRoom.addRoomListener(eorc);*/
 
-	Room tRoom = RoomFactory.makeDefaultRoom(0, -1);
+	Room tRoom = RoomFactory.makeDefaultRoom(0, -1, level);
         room.linkTopRoom(tRoom);
 
-	Room rRoom = RoomFactory.makeDefaultRoom(1, 0);
+	Room rRoom = RoomFactory.makeDefaultRoom(1, 0, level);
         room.linkRightRoom(rRoom);
 
-	Room bRoom = RoomFactory.makeDefaultRoom(0, 1);
+	Room bRoom = RoomFactory.makeDefaultRoom(0, 1, level);
         room.linkBottomRoom(bRoom);
 
         level.setStartRoom(room);
@@ -51,7 +51,7 @@ public class LevelFactory
     public static Level makeRealLevel(int desSize) {
         Level level = new Level();
         HashMap<Point,Room> coordinates = new HashMap<Point, Room>();
-        Room startRoom = RoomFactory.makeDefaultRoom(0, 0);
+        Room startRoom = RoomFactory.makeDefaultRoom(0, 0, level);
         level.setStartRoom(startRoom);
         coordinates.put(new Point(0, 0), startRoom);
         ArrayList<Room> roomQueue = new ArrayList<Room>();
@@ -66,7 +66,7 @@ public class LevelFactory
                     if(coordinates.containsKey(new Point(room.getX() - 1, room.getY()))) {
                         room.linkLeftRoom(coordinates.get(new Point(room.getX() - 1, room.getY())));
                     } else {
-                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX() - 1, room.getY());
+                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX() - 1, room.getY(), level);
                         room.linkLeftRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX() - 1, room.getY()), lRoom);
@@ -79,7 +79,7 @@ public class LevelFactory
                         room.linkTopRoom(coordinates.get(new Point(room.getX(), room.getY() - 1)));
                     } else {
 
-                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX(), room.getY() - 1);
+                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX(), room.getY() - 1, level);
                         room.linkTopRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX(), room.getY() - 1), lRoom);
@@ -91,7 +91,7 @@ public class LevelFactory
                     if(coordinates.containsKey(new Point(room.getX() + 1, room.getY()))) {
                         room.linkRightRoom(coordinates.get(new Point(room.getX() + 1, room.getY())));
                     } else {
-                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX() + 1, room.getY());
+                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX() + 1, room.getY(), level);
                         room.linkRightRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX() + 1, room.getY()), lRoom);
@@ -103,7 +103,7 @@ public class LevelFactory
                     if(coordinates.containsKey(new Point(room.getX(), room.getY() + 1))) {
                         room.linkBottomRoom(coordinates.get(new Point(room.getX(), room.getY() + 1)));
                     } else {
-                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX(), room.getY() + 1);
+                        Room lRoom = RoomFactory.makeDefaultRoom(room.getX(), room.getY() + 1, level);
                         room.linkBottomRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX(), room.getY() + 1), lRoom);

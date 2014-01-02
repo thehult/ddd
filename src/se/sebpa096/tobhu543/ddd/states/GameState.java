@@ -25,27 +25,31 @@ public class GameState extends State {
 
     @Override
     public void init(GameContainer gameContainer, Game game) {
-	    this.game = game;
-	    level = LevelFactory.makeRealLevel(3);
+	this.game = game;
+	level = LevelFactory.makeTestLevel();
         Player player = new Player();
         camera = new Camera(gameContainer);
         player.addEntityListener(camera);
-	    player.addEntityListener(level);
+	player.addEntityListener(level);
         camera.setFollowEntity(player);
         player.setCurrentRoom(level.getStartRoom());
         addUpdateListener(level);
-        addUpdateListener(player);
-	    players.add(player);
-	    level.initActives();
+        //addUpdateListener(player); //TODO se över detta, kan vara så att vi inte vill uppdatera via rum
+	players.add(player);
+	level.initActives();
         hud = new HUD(player);
         player.setHealth(player.getMaxHealth());
         //camera.lockRoom(level.getStartRoom());
+
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
         for(IUpdateListener listener : updateListeners)
             listener.gameUpdate(gameContainer, delta);
+	if(Game.TEST){
+	    Tester.gameUpdate(gameContainer, game);
+	}
     }
 
     @Override

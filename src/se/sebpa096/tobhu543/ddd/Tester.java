@@ -1,6 +1,7 @@
 package se.sebpa096.tobhu543.ddd;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
@@ -18,9 +19,19 @@ import java.util.ArrayList;
  */
 public class Tester
 {
-    public static float testScale = 0.1f;
+    public static float testScale = 1f;
     public static ArrayList<Shape> testShapes = new ArrayList<Shape>();
     public static ArrayList<Room> renderedRooms = new ArrayList<Room>();
+
+    public static void gameUpdate(GameContainer gameContainer, Game game){
+	Input input = gameContainer.getInput();
+	if(input.isKeyPressed(Input.KEY_U)){
+	    testScale = testScale / 1.5f;
+	}
+	if(input.isKeyPressed(Input.KEY_I)){
+	    testScale = testScale * 1.5f;
+	}
+    }
 
     public static void render(GameContainer gameContainer, Graphics graphics) {
 

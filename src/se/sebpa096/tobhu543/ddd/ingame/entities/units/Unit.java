@@ -1,9 +1,11 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.units;
 
 import org.newdawn.slick.GameContainer;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.MovingEntity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EUnarmed;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 import java.util.ArrayList;
 
@@ -133,6 +135,17 @@ public class Unit extends MovingEntity {
         for(int i=unitListeners.size() - 1;i>=0;i--) {
             unitListeners.get(i).unitChangedItems(getEquippedItems());
         }
+    }
+
+    @Override public void getHit(final int incoming, final Entity attacker) {
+	super.getHit(incoming, attacker);
+	health = health - incoming;
+	if(health <= 0){
+	    die();
+	}
+    }
+
+    public void die(){
     }
 
     public EquippedItem getUnarmedItem() {

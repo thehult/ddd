@@ -86,6 +86,14 @@ public class Level implements IUpdateListener, IEntityListener
 	}
     }
 
+    public void addActiveEntity(Entity e){
+	activeEntities.add(e);
+    }
+
+    public void removeActiveEntity(Entity e){
+	activeEntities.remove(e);
+    }
+
     public void addLevelListener(ILevelListener e){
 	levelListeners.add(e);
     }

@@ -3,8 +3,10 @@ package se.sebpa096.tobhu543.ddd.ingame.entities;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,7 @@ public class Entity implements IRoomListener
     public static float PX_HEIGHT_PER_Z = TILE_HEIGHT_IN_PX / 3.0f; //TODO change this!
     public static float TILE_RENDER_OFFSET_Y = -2.0f * PX_HEIGHT_PER_Z;
 
+
     protected float x;
     protected float y;
     protected float z;
@@ -29,7 +32,7 @@ public class Entity implements IRoomListener
     private Room currentRoom;
 
     private ArrayList<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
-
+    private Faction faction = Faction.NEUTRAL;
 
     public void gameUpdate(GameContainer gameContainer, int delta) {
         for(IEntityListener listener : entityListeners)
@@ -38,6 +41,9 @@ public class Entity implements IRoomListener
 
     public void render(GameContainer gameContainer, Graphics graphics, float screenX, float screenY){
 	    sprite.draw(screenX + x, screenY + y );
+    }
+
+    public void getHit(int incoming, Entity attacker){
     }
 
     public Entity(){
@@ -63,6 +69,36 @@ public class Entity implements IRoomListener
 
     public void removeEntityListener(IEntityListener listener) {
         entityListeners.remove(listener);
+    }
+
+    protected float toUniversalX(float localX){
+	float offset;
+	if(currentRoom == null) offset = 0;
+	else offset = currentRoom.getX() * (Room.ROOM_WIDTH_IN_PX + TILE_WIDTH_IN_PX);
+	return localX + offset;
+    }
+
+    protected float toUniversalY(float localY){
+	float offset;
+	if(currentRoom == null) offset = 0;
+	else offset = currentRoom.getY() * (Room.ROOM_HEIGHT_IN_PX + TILE_HEIGHT_IN_PX);
+	return localY + offset;
+    }
+
+    public float getUniversalCenterX(){
+	return toUniversalX(getCenterX());
+    }
+
+    public float getUniversalCenterY(){
+	return toUniversalY(getCenterY());
+    }
+
+    public float getUniversalX(){
+	return toUniversalX(getX());
+    }
+
+    public float getUniversalY(){
+	return toUniversalY(getY());
     }
 
     public Image getSprite() {
@@ -117,21 +153,33 @@ public class Entity implements IRoomListener
         return this.currentRoom;
     }
 
-    public void setCurrentRoom(Room currentRoom) {
+    public void setCurrentRoom(Room newRoom) {
         if(this.getCurrentRoom() != null){
             this.getCurrentRoom().removeEntity(this);
-	        this.getCurrentRoom().removeRoomListener(this);
-	    }
+	    this.getCurrentRoom().removeRoomListener(this);
+	}
 
-        this.currentRoom = currentRoom;
+	if(getCurrentRoom() == null && newRoom != null) newRoom.getLevel().addActiveEntity(this);
+	if(getCurrentRoom() != null && newRoom == null) getCurrentRoom().getLevel().removeActiveEntity(this);
+
+	this.currentRoom = newRoom;
+
+	if(newRoom != null){
+	    newRoom.addEntity(this);
+	    newRoom.addRoomListener(this);
+	}
 
 
 
-        if(currentRoom != null){
-            this.getCurrentRoom().addEntity(this);
-            getCurrentRoom().addRoomListener(this);
-        }
         for(IEntityListener entity : entityListeners)
-            entity.entityChangedRoom(currentRoom);
+            entity.entityChangedRoom(newRoom);
+    }
+
+    public Faction getFaction() {
+	return faction;
+    }
+
+    public void setFaction(final Faction faction) {
+	this.faction = faction;
     }
 }

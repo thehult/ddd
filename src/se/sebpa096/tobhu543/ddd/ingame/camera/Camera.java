@@ -9,8 +9,11 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
 
 public class Camera implements IEntityListener {
+    public final static float SHAKE_RESET_SPEED = 0.2f;
+
     protected float x;
     protected float y;
+    protected float shakeOffset = 0;
     private Entity followEntity = null;
     private Room renderRoom = null;
     private GameContainer gameContainer;
@@ -21,20 +24,27 @@ public class Camera implements IEntityListener {
         this.gameContainer = gameContainer;
     }
 
+    public void shake(float power){
+	if(shakeOffset < 0) shakeOffset = shakeOffset - power;
+	else shakeOffset = shakeOffset + power;
+    }
+
     public float getX() {
-        return x;
+        return x + shakeOffset;
     }
 
     public void setX(float x) {
         this.x = x;
+        //this.x = x - shakeOffset;
     }
 
     public float getY() {
-        return y;
+        return y + shakeOffset;
     }
 
     public void setY(float y) {
-        this.y = y;
+	this.y = y;
+        //this.y = y - shakeOffset;
     }
 
     public void lockRoom(Room room) {
@@ -60,10 +70,10 @@ public class Camera implements IEntityListener {
         if(followEntity != null) {
             this.setX(followEntity.getCenterX());
             this.setY(followEntity.getCenterY());
-            if(Game.TEST) {
+            /*if(Game.TEST) {
                 this.setX(this.getX() - Room.ROOM_WIDTH_IN_PX * 0.5f / Tester.testScale);
                 this.setY(this.getY() - Room.ROOM_HEIGHT_IN_PX * 0.5f / Tester.testScale);
-            }
+            }*/
         }
     }
 
@@ -76,5 +86,13 @@ public class Camera implements IEntityListener {
         if(Game.TEST)
             Tester.renderedRooms.clear();
         renderRoom.render(gameContainer, graphics, this);
+
+	//TODO test: se över detta. borde vara i update?
+	if(shakeOffset > SHAKE_RESET_SPEED)
+	    shakeOffset = -(shakeOffset - SHAKE_RESET_SPEED);
+	else if(shakeOffset < -SHAKE_RESET_SPEED)
+	    shakeOffset = -(shakeOffset + SHAKE_RESET_SPEED);
+	else
+	    shakeOffset = 0;
     }
 }

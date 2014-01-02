@@ -17,6 +17,7 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Enemy;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.EnemyOrc;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 //import java.awt.Shape;
 //import java.awt.geom.Rectangle2D;
@@ -31,12 +32,15 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
  */
 public class ESword extends EquippedItem
 {
-    public static int SWORD_STANDARD_ANGLE_REACH = 120;
-    public static int SWORD_SWING_RESOLUTION = 5; //number of points along arc of hurtbox
-    public static int SWORD_POINT_STEP = SWORD_STANDARD_ANGLE_REACH / (SWORD_SWING_RESOLUTION - 1);
-    public  static  int SWORD_STANDARD_LENGTH = 200;
-
     public static int SWORD_STANDARD_COOLDOWN = 750;
+    public  static  int SWORD_STANDARD_LENGTH = 150;
+    public static int SWORD_STANDARD_ANGLE_REACH = 120;
+    public static int SWORD_STANDARD_DAMAGE = 10;
+
+    public static float SHAKE_POWER = 3; // used for camera shake
+
+    protected static int SWORD_SWING_RESOLUTION = 5; //number of points along arc of hurtbox
+    protected static int SWORD_POINT_STEP = SWORD_STANDARD_ANGLE_REACH / (SWORD_SWING_RESOLUTION - 1);
 
     public ESword(){
 	super();
@@ -46,7 +50,7 @@ public class ESword extends EquippedItem
     @Override protected void use(final Unit user,final float normX, final float normY) {
 	float midAngle = (float)new Vector2f(normX, normY).getTheta();
 	float[][] points = new float[SWORD_SWING_RESOLUTION + 1][2]; //plus one for center of player
-	Vector2f playerPos = new Vector2f(user.getCenterX(), user.getCenterY());
+	Vector2f playerPos = new Vector2f(user.getUniversalCenterX(), user.getUniversalCenterY());
 	points[0][0] = playerPos.getX();
 	points[0][1] = playerPos.getY();
 
@@ -67,14 +71,21 @@ public class ESword extends EquippedItem
 	}
 
 	System.out.println("Svärd har träffat: ----------------");
-	for(Entity e: Game.GAME_STATE.getLevel().getActiveEntities()){
-	    Rectangle entityHitBox = new Rectangle(e.getX(),e.getY(), Tile.TILE_WIDTH_IN_PX, Tile.TILE_HEIGHT_IN_PX);
-	    if(hurtBox.intersects(entityHitBox)){
-		System.out.println(e.getClass());
+	for (int i = 0; i < Game.GAME_STATE.getLevel().getActiveEntities().size(); i++) {
+	    Entity e = Game.GAME_STATE.getLevel().getActiveEntities().get(i);
+	    Rectangle entityHitBox = new Rectangle(e.getUniversalX(),e.getUniversalY(),
+						   Tile.TILE_WIDTH_IN_PX, Tile.TILE_HEIGHT_IN_PX);
+	    boolean hit = hurtBox.intersects(entityHitBox)
+			  || hurtBox.contains(entityHitBox)
+			  || entityHitBox.contains(hurtBox);
+	    boolean hostile = (user.getFaction() == Faction.PLAYER && e.getFaction() == Faction.ENEMY )
+	    		   || (user.getFaction() == Faction.ENEMY && e.getFaction() == Faction.PLAYER);
+	    if(hit && hostile){
+		e.getHit(SWORD_STANDARD_DAMAGE, user);
+		Game.GAME_STATE.getCamera().shake(SHAKE_POWER);
 	    }
 	}
-
-	Tester.testShapes.add(hurtBox);
+	if(Game.TEST) Tester.testShapes.add(hurtBox);
 	System.out.println("-----------------------------------");
     }
 }

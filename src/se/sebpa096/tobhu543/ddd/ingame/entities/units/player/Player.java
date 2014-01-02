@@ -3,12 +3,15 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.units.player;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EUnarmed;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
+import se.sebpa096.tobhu543.ddd.states.GameState;
 
 public class Player extends Unit implements IUpdateListener {
 
@@ -16,13 +19,18 @@ public class Player extends Unit implements IUpdateListener {
 
     public Player() {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
-        this.setMaxVelocity(300.0f);
+        this.setMaxVelocity(600.0f);
         this.setHealth(100);
         this.setMaxNoItems(6);
+	this.setFaction(Faction.PLAYER);
 
     }
 
-
+    @Override public void die() {
+	super.die();
+	System.out.println("GAAAAME OVVVEEEERRRRRAR");
+	//TODO: fixa lose om spelarn dör
+    }
 
     @Override
     public void gameUpdate(GameContainer gameContainer, int delta) {
