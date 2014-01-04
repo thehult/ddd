@@ -20,7 +20,7 @@ public class Game extends BasicGame {
     public static final int WINDOW_WIDTH = 800;
     public static final int WINDOW_HEIGHT = 600;
 
-    public static boolean TEST = true;
+    public static boolean TEST = false;
 
     public static void main(String[] args) {
         try {
@@ -36,6 +36,7 @@ public class Game extends BasicGame {
     // CLASS IMPLEMENTATION BELOW
 
     private State state;
+    public static boolean STARTED = false;
     public static final MenuState MENU_STATE = new MenuState();
     public static final GameState GAME_STATE = new GameState();
     public static final OptionsState OPTIONS_STATE = new OptionsState();

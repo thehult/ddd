@@ -1,6 +1,8 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
 import org.lwjgl.util.Point;
+import se.sebpa096.tobhu543.ddd.ingame.entities.StairsGoal;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.ESword;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemyOrc;
 
@@ -45,25 +47,27 @@ public class LevelFactory
     }
 
 
-    public static Level makeRealLevel(int desSize) {
+    public static Level makeRealLevel(int desSize, float enemyDensity) {
         Level level = new Level();
         HashMap<Point,Room> coordinates = new HashMap<Point, Room>();
-        Room startRoom = RoomFactory.makeSwordRoom(0, 0, level);
+        Room startRoom = RoomFactory.makeStartRoom(0, 0, level);
         level.setStartRoom(startRoom);
         coordinates.put(new Point(0, 0), startRoom);
         ArrayList<Room> roomQueue = new ArrayList<Room>();
         roomQueue.add(startRoom);
         double desiredSize = (double)desSize + 1.0;
-        double currentSize;
+        double currentSize = 0;
+        Room lastRoom = null;
         while(!roomQueue.isEmpty()) {
             Room room = roomQueue.remove(0);
+            lastRoom = room;
             currentSize = Math.hypot(room.getX(), room.getY());
             if(!room.hasLeftRoom()) {
                 if(Math.random() < (desiredSize - currentSize) / desiredSize) {
                     if(coordinates.containsKey(new Point(room.getX() - 1, room.getY()))) {
                         room.linkLeftRoom(coordinates.get(new Point(room.getX() - 1, room.getY())));
                     } else {
-                        Room lRoom = RoomFactory.makeThreatRoom(room.getX() - 1, room.getY(), level, 0.02);
+                        Room lRoom = RoomFactory.makeThreatRoom(room.getX() - 1, room.getY(), level, enemyDensity);
                         room.linkLeftRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX() - 1, room.getY()), lRoom);
@@ -76,7 +80,7 @@ public class LevelFactory
                         room.linkTopRoom(coordinates.get(new Point(room.getX(), room.getY() - 1)));
                     } else {
 
-                        Room lRoom = RoomFactory.makeThreatRoom(room.getX(), room.getY() - 1, level, 0.02);
+                        Room lRoom = RoomFactory.makeThreatRoom(room.getX(), room.getY() - 1, level, enemyDensity);
                         room.linkTopRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX(), room.getY() - 1), lRoom);
@@ -88,7 +92,7 @@ public class LevelFactory
                     if(coordinates.containsKey(new Point(room.getX() + 1, room.getY()))) {
                         room.linkRightRoom(coordinates.get(new Point(room.getX() + 1, room.getY())));
                     } else {
-                        Room lRoom = RoomFactory.makeThreatRoom(room.getX() + 1, room.getY(), level, 0.02);
+                        Room lRoom = RoomFactory.makeThreatRoom(room.getX() + 1, room.getY(), level, enemyDensity);
                         room.linkRightRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX() + 1, room.getY()), lRoom);
@@ -100,7 +104,7 @@ public class LevelFactory
                     if(coordinates.containsKey(new Point(room.getX(), room.getY() + 1))) {
                         room.linkBottomRoom(coordinates.get(new Point(room.getX(), room.getY() + 1)));
                     } else {
-                        Room lRoom = RoomFactory.makeThreatRoom(room.getX(), room.getY() + 1, level, 0.02);
+                        Room lRoom = RoomFactory.makeThreatRoom(room.getX(), room.getY() + 1, level, enemyDensity);
                         room.linkBottomRoom(lRoom);
                         roomQueue.add(lRoom);
                         coordinates.put(new Point(room.getX(), room.getY() + 1), lRoom);
@@ -108,6 +112,10 @@ public class LevelFactory
                 }
             }
         }
+        StairsGoal stairs = new StairsGoal();
+        stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
+        stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
+        stairs.setCurrentRoom(lastRoom);
         return level;
     }
 

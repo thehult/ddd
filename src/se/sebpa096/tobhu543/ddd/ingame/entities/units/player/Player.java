@@ -15,8 +15,10 @@ import se.sebpa096.tobhu543.ddd.states.GameState;
 
 public class  Player extends Unit implements IUpdateListener {
 
+    public static int PLAYER_HEALTH_REGENERATION = 5;
+    public static int PLAYER_HEALTH_REGENERATION_COOLDOWN = 2000;
 
-
+    private int regCooldown = PLAYER_HEALTH_REGENERATION_COOLDOWN;
     public Player() {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
         this.setMaxVelocity(600.0f);
@@ -53,7 +55,16 @@ public class  Player extends Unit implements IUpdateListener {
 	    dropItem(getCurrentItemNo());
 
         this.setMovingDir(dX, dY);
-
+        regCooldown -= delta;
+        if(regCooldown <= 0) {
+            regCooldown = PLAYER_HEALTH_REGENERATION_COOLDOWN;
+            if(this.getHealth() < this.getMaxHealth()) {
+                this.setHealth(this.getHealth() + PLAYER_HEALTH_REGENERATION);
+                if(this.getHealth() > this.getMaxHealth()) {
+                    this.setHealth(this.getMaxHealth());
+                }
+            }
+        }
 
 
         super.gameUpdate(gameContainer, delta);

@@ -418,4 +418,12 @@ public class Room implements ILevelListener
     public Level getLevel() {
 	return level;
     }
+
+    public boolean equals(Room obj) {
+        return obj.getX() == this.getX() && obj.getY() == this.getY();
+    }
+
+    public void setBlockingTile(int gridX, int gridY, boolean blocking) {
+        blockingTiles[gridX][gridY] = blocking;
+    }
 }
