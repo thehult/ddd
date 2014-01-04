@@ -32,12 +32,14 @@ public class ESword extends EquippedItem
     public static int SWORD_STANDARD_COOLDOWN = 750;
     public  static  int SWORD_STANDARD_LENGTH = 86;
     public static int SWORD_STANDARD_ANGLE_REACH = 120;
-    public static int SWORD_STANDARD_DAMAGE = 10;
+    public static int SWORD_STANDARD_DAMAGE = 20;
 
     public static float SHAKE_POWER = 3; // used for camera shake
 
     protected static int SWORD_SWING_RESOLUTION = 5; //number of points along arc of hurtbox
     protected static int SWORD_POINT_STEP = SWORD_STANDARD_ANGLE_REACH / (SWORD_SWING_RESOLUTION - 1);
+
+    protected int swordDamage = SWORD_STANDARD_DAMAGE;
 
     public ESword(){
 	super();
@@ -68,15 +70,13 @@ public class ESword extends EquippedItem
 	    hurtBox.addPoint(point[0], point[1]);
 	}
 
-	//System.out.println("Svärd har träffat: ----------------");
 	for (int i = 0; i < Game.GAME_STATE.getLevel().getActiveEntities().size(); i++) {
 	    Entity e = Game.GAME_STATE.getLevel().getActiveEntities().get(i);
 	    if(e.collidesWith(hurtBox) && user.isHostileTo(e)){
-		e.getHit(SWORD_STANDARD_DAMAGE, user);
+		e.getHit(swordDamage, user);
 		Game.GAME_STATE.getCamera().shake(SHAKE_POWER);
 	    }
 	}
 	if(Game.TEST) Tester.testShapes.add(hurtBox);
-	//System.out.println("-----------------------------------");
     }
 }

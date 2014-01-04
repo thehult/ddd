@@ -34,7 +34,7 @@ public class UnitFactory {
         rarities.add(EnemyWizard.class, 10);
         RarityHandler wizardHandler = new RarityHandler();
         wizardHandler.add(EEnergyRod.class, 10);
-	wizardHandler.add(EEYeOfTheStorm.class, 2); //TODO
+	wizardHandler.add(EEYeOfTheStorm.class, 1); //TODO
         itemRarities.put(EnemyWizard.class, wizardHandler);
 
         rarities.add(EnemyNecromancer.class, 2);

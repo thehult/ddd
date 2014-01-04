@@ -11,6 +11,6 @@ public class EnemySkeleton extends Enemy {
         this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.SKELETON_DOWN));
         this.setMaxVelocity(75.0f);
         this.setRandomHealthMin(20);
-        this.setRandomHealthMax(60);
+        this.setRandomHealthMax(40);
     }
 }

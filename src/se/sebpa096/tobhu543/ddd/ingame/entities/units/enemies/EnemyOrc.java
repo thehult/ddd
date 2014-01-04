@@ -10,7 +10,7 @@ public class EnemyOrc extends Enemy {
         super();
         this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.ORC_DOWN));
         this.setMaxVelocity(100.0f);
-        this.setRandomHealthMin(60);
-        this.setRandomHealthMax(100);
+        this.setRandomHealthMin(30);
+        this.setRandomHealthMax(60);
     }
 }

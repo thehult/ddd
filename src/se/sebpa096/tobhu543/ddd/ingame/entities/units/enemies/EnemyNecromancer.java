@@ -10,7 +10,7 @@ public class EnemyNecromancer extends Enemy {
         super();
         this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.NECROMANCER_DOWN));
         this.setMaxVelocity(110.0f);
-        this.setRandomHealthMin(20);
-        this.setRandomHealthMax(40);
+        this.setRandomHealthMin(40);
+        this.setRandomHealthMax(80);
     }
 }
