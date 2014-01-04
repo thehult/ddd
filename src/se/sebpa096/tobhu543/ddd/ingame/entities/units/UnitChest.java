@@ -2,10 +2,11 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.units;
 
 import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.Enemy;
+import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
-public class UnitChest extends Enemy {
+public class UnitChest extends Unit {
 
     public UnitChest() {
         super();
@@ -13,5 +14,6 @@ public class UnitChest extends Enemy {
         this.setMaxVelocity(0.0f);
         this.setRandomHealthMin(1);
         this.setRandomHealthMax(2);
+	this.setFaction(Faction.ENEMY);
     }
 }

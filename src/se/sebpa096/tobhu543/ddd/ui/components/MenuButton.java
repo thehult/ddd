@@ -8,7 +8,7 @@ import se.sebpa096.tobhu543.ddd.ui.UI;
 
 public class MenuButton extends Button {
 
-    public MenuButton(String label) throws SlickException{
+    public MenuButton(String label) {
         super(label,
                 (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.MENU_STANDARD),
                 (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.MENU_HOVER),

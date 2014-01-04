@@ -37,7 +37,7 @@ public class Button extends Component {
         this.clickedImage = clickedImage;
     }
 
-    public Button( String label) throws SlickException {
+    public Button( String label) {
         this(label, (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_STANDARD));
         this.hoverImage = (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_HOVER);
         this.clickedImage = (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_CLICKED);

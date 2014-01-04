@@ -1,8 +1,9 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 
-import javafx.geometry.Rectangle2D;
+//import javafx.geometry.Rectangle2D;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Shape;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
@@ -57,18 +58,16 @@ public class DroppedItem extends Entity implements IRoomListener
     }
 
     private ArrayList<Player> collidingPlayers(){ //returns all colliding eligible players
-	Rectangle2D itemRect = new Rectangle2D(x, y, TILE_WIDTH_IN_PX, TILE_HEIGHT_IN_PX);
 	ArrayList<Player> colliding = new ArrayList<Player>();
 	for(Player player: Game.GAME_STATE.getPlayers()){
-	    Rectangle2D playerRect = new Rectangle2D(player.getX(), player.getY(), TILE_HEIGHT_IN_PX, TILE_WIDTH_IN_PX);
-	    boolean intersects = itemRect.intersects(playerRect) && player.getCurrentRoom() == getCurrentRoom();
+	    boolean intersects = player.collidesWith(this);
 	    boolean isRegisteredRecent = recentPlayerTable.containsKey(player);
 	    boolean isRecent = false;
 	    if(isRegisteredRecent)
 		if(!recentPlayerTable.get(player)) isRecent = true;
    	    if(intersects && isRecent && player.hasItemRoom()){
 		colliding.add(player);
-	    }else if(!itemRect.intersects(playerRect)){
+	    }else if(!intersects){
 		recentPlayerTable.put(player, false);
 	    }
 	}

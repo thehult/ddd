@@ -153,6 +153,7 @@ public class Unit extends MovingEntity {
     public void die(){
         if(this.getEquippedItems()[0] != null)
             this.dropItem(0);
+	setCurrentRoom(null);
     }
 
     public EquippedItem getUnarmedItem() {

@@ -38,7 +38,7 @@ public class MenuState extends State {
             startGame.setWidth(UI.STD_COMPONENT_WIDTH);
             startGame.setHeight(UI.STD_COMPONENT_HEIGHT);
             startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            startGame.setY(1 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + topMargin);
+            startGame.setY((UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + topMargin);
             final GameContainer gameContainerContext = gameContainer;
             startGame.setMouseListener(new ButtonMouseListener(startGame){
                 @Override
@@ -46,7 +46,7 @@ public class MenuState extends State {
                     super.mouseUpLeft(sender, x, y,
                               stillOver);
                     if(stillOver)
-                    context.setAndInitState( context.GAME_STATE, gameContainerContext);
+                    context.setAndInitState(Game.GAME_STATE, gameContainerContext);
                 }
                 });
             menuUI.addComponent(startGame);

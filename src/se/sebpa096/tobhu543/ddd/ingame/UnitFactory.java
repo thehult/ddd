@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.bows.EBow;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.magics.EBookOfSin;
+import se.sebpa096.tobhu543.ddd.ingame.entities.items.magics.EEYeOfTheStorm;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.magics.EEnergyRod;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.EFireSword;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.ESword;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 
 public class UnitFactory {
     private static RarityHandler rarities = new RarityHandler();
-    private static HashMap<Class<? extends Enemy>, RarityHandler> itemRarities = new HashMap<Class<? extends Enemy>, RarityHandler>();
+    private static HashMap<Class<? extends Unit>, RarityHandler> itemRarities = new HashMap<Class<? extends Unit>, RarityHandler>();
 
     public static void init() {
         rarities.add(EnemyOrc.class, 30);
@@ -33,6 +34,7 @@ public class UnitFactory {
         rarities.add(EnemyWizard.class, 10);
         RarityHandler wizardHandler = new RarityHandler();
         wizardHandler.add(EEnergyRod.class, 10);
+	wizardHandler.add(EEYeOfTheStorm.class, 2); //TODO
         itemRarities.put(EnemyWizard.class, wizardHandler);
 
         rarities.add(EnemyNecromancer.class, 2);

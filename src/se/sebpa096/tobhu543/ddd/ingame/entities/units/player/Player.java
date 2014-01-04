@@ -27,7 +27,6 @@ public class  Player extends Unit implements IUpdateListener {
     }
 
     @Override public void die() {
-	super.die();
 	System.out.println("GAAAAME OVVVEEEERRRRRAR");
 	//TODO: fixa lose om spelarn dör
     }

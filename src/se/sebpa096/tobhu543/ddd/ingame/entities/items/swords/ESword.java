@@ -71,14 +71,7 @@ public class ESword extends EquippedItem
 	//System.out.println("Svärd har träffat: ----------------");
 	for (int i = 0; i < Game.GAME_STATE.getLevel().getActiveEntities().size(); i++) {
 	    Entity e = Game.GAME_STATE.getLevel().getActiveEntities().get(i);
-	    Rectangle entityHitBox = new Rectangle(e.getUniversalX(),e.getUniversalY(),
-						   Tile.TILE_WIDTH_IN_PX, Tile.TILE_HEIGHT_IN_PX);
-	    boolean hit = hurtBox.intersects(entityHitBox)
-			  || hurtBox.contains(entityHitBox)
-			  || entityHitBox.contains(hurtBox);
-	    boolean hostile = (user.getFaction() == Faction.PLAYER && e.getFaction() == Faction.ENEMY )
-	    		   || (user.getFaction() == Faction.ENEMY && e.getFaction() == Faction.PLAYER);
-	    if(hit && hostile){
+	    if(e.collidesWith(hurtBox) && user.isHostileTo(e)){
 		e.getHit(SWORD_STANDARD_DAMAGE, user);
 		Game.GAME_STATE.getCamera().shake(SHAKE_POWER);
 	    }

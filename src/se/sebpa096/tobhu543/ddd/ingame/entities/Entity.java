@@ -3,6 +3,8 @@ package se.sebpa096.tobhu543.ddd.ingame.entities;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
@@ -29,6 +31,11 @@ public class Entity implements IRoomListener
     protected float y;
     protected float z;
 
+    protected float renderAngle = 0;
+
+    protected float width = TILE_WIDTH_IN_PX;
+    protected float height = TILE_HEIGHT_IN_PX;
+
     private Room currentRoom;
 
     private ArrayList<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
@@ -40,7 +47,28 @@ public class Entity implements IRoomListener
     }
 
     public void render(GameContainer gameContainer, Graphics graphics, float screenX, float screenY){
-	    sprite.draw(screenX + x, screenY + y );
+	sprite.setRotation(renderAngle);
+	sprite.draw(screenX + x, screenY + y );
+    }
+
+    public boolean collidesWith(Shape other){
+	Shape thisBox = getHitBox();
+	return thisBox.intersects(other)
+		|| thisBox.contains(other)
+		|| other.contains(thisBox);
+    }
+
+    public boolean collidesWith(Entity other){
+	return collidesWith(other.getHitBox());
+    }
+
+    public Shape getHitBox(){
+	return new Rectangle(getUniversalX(), getUniversalY(), width, height);
+    }
+
+    public boolean isHostileTo(Entity other){
+	//TODO: fixa detta!
+	return faction != other.getFaction() && ( faction != Faction.NEUTRAL && other.getFaction() != Faction.NEUTRAL );
     }
 
     public void getHit(int incoming, Entity attacker){

@@ -40,7 +40,7 @@ public class Game extends BasicGame {
     public static final GameState GAME_STATE = new GameState();
     public static final OptionsState OPTIONS_STATE = new OptionsState();
 
-    public Game(String gameName) {
+    private Game(String gameName) {
         super(gameName);
 
     }

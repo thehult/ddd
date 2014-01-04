@@ -49,9 +49,4 @@ public class Enemy extends Unit {
         super.gameUpdate(gameContainer, delta);
     }
 
-    @Override public void die() {
-	super.die();
-	setCurrentRoom(null);
-	//TODO: droppa items o grejer
-    }
 }

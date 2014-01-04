@@ -88,11 +88,14 @@ public class Camera implements IEntityListener {
         renderRoom.render(gameContainer, graphics, this);
 
 	//TODO test: se över detta. borde vara i update?
-	if(shakeOffset > SHAKE_RESET_SPEED)
+	/*if(shakeOffset > SHAKE_RESET_SPEED)
 	    shakeOffset = -(shakeOffset - SHAKE_RESET_SPEED);
 	else if(shakeOffset < -SHAKE_RESET_SPEED)
 	    shakeOffset = -(shakeOffset + SHAKE_RESET_SPEED);
 	else
+	    shakeOffset = 0;*/
+	shakeOffset = -shakeOffset * (1-SHAKE_RESET_SPEED);
+	if(Math.abs(shakeOffset) < SHAKE_RESET_SPEED)
 	    shakeOffset = 0;
     }
 }

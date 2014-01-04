@@ -54,7 +54,7 @@ public class LevelFactory
         ArrayList<Room> roomQueue = new ArrayList<Room>();
         roomQueue.add(startRoom);
         double desiredSize = (double)desSize + 1.0;
-        double currentSize = 0;
+        double currentSize;
         while(!roomQueue.isEmpty()) {
             Room room = roomQueue.remove(0);
             currentSize = Math.hypot(room.getX(), room.getY());
