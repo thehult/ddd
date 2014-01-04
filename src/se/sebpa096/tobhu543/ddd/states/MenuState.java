@@ -20,7 +20,7 @@ public class MenuState extends State {
 
     @Override
     public void init(GameContainer gameContainer, Game game) {
-        try {
+        //try {
             this.game = game;
                 menuUI = new UI(this, gameContainer);
 
@@ -91,10 +91,10 @@ public class MenuState extends State {
 
             this.backgroundImage = (Image)GlobalResources.getResource(GlobalResources.BACKGROUND_RESOURCES, BackgroundResources.MENU_BACKGROUND);
 
-        } catch (SlickException e) {
+        /*} catch (SlickException e) {
             e.printStackTrace();
             System.exit(1);
-        }
+        }*/
     }
 
     @Override

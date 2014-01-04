@@ -17,7 +17,7 @@ public class EEYeOfTheStorm extends EquippedItem
     public static float EOTS_STANDARD_START_VEL = 100;
     public static float EOTS_STANDARD_SCALE = 1f;
 
-    private static float EOTS_STEP_SIZE = 360 / (EOTS_STANDARD_NO_PROJECTILES + 1);
+    private static float EOTS_STEP_SIZE = 360 / EOTS_STANDARD_NO_PROJECTILES;
 
     public EEYeOfTheStorm(){
         super();

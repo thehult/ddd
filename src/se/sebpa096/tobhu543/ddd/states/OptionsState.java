@@ -29,7 +29,7 @@ public class OptionsState extends State
     private static final float SAVE_POSY_RAT = 7.0f/8.0f; // take a guess
 
     public void init(GameContainer gameContainer, Game game) {
-        try {
+        //try {
             optionsUI = new UI(this, gameContainer);
 
             Label header = new Label("Options");
@@ -80,10 +80,10 @@ public class OptionsState extends State
 	    this.backgroundImage = (Image) GlobalResources.getResource(GlobalResources.BACKGROUND_RESOURCES, BackgroundResources.MENU_BACKGROUND);
 
 
-        } catch (SlickException e) {
+        /*} catch (SlickException e) {
             e.printStackTrace();
             System.exit(1);
-        }
+        }*/
     }
 
     @Override public void update(final GameContainer gameContainer, final int delta) {
