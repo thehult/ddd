@@ -18,8 +18,7 @@ public class StairsGoal extends StaticEntity {
         super.gameUpdate(gameContainer, delta);
         for(Player player : Game.GAME_STATE.getPlayers()) {
 	    if(player.collidesWith(this)){
-		System.out.println("WIIIIIIIIIIIIIIIN!");
-		gameContainer.pause();
+            Game.GAME_STATE.levelFinished();
 	    }
         }
     }

@@ -3,10 +3,7 @@ package se.sebpa096.tobhu543.ddd;
 
 import org.newdawn.slick.*;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
-import se.sebpa096.tobhu543.ddd.states.GameState;
-import se.sebpa096.tobhu543.ddd.states.MenuState;
-import se.sebpa096.tobhu543.ddd.states.OptionsState;
-import se.sebpa096.tobhu543.ddd.states.State;
+import se.sebpa096.tobhu543.ddd.states.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,6 +37,8 @@ public class Game extends BasicGame {
     public static final MenuState MENU_STATE = new MenuState();
     public static final GameState GAME_STATE = new GameState();
     public static final OptionsState OPTIONS_STATE = new OptionsState();
+    public static final GameOverState GAMEOVER_STATE = new GameOverState();
+    public static final WinState WIN_STATE = new WinState();
 
     private Game(String gameName) {
         super(gameName);
@@ -49,6 +48,8 @@ public class Game extends BasicGame {
     private void initMenuStates(GameContainer gameContainer){
         MENU_STATE.init(gameContainer, this);
         OPTIONS_STATE.init(gameContainer, this);
+        GAMEOVER_STATE.init(gameContainer, this);
+        WIN_STATE.init(gameContainer, this);
     }
 
     public void setState(State state){

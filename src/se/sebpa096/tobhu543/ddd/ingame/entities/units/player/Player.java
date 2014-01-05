@@ -5,6 +5,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EUnarmed;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
@@ -29,8 +30,23 @@ public class  Player extends Unit implements IUpdateListener {
     }
 
     @Override public void die() {
-	System.out.println("GAAAAME OVVVEEEERRRRRAR");
-	//TODO: fixa lose om spelarn dör
+        Game.STARTED = false;
+        Game.GAME_STATE.gameOver();
+    }
+
+    @Override
+    public void getHit(int incoming, Entity attacker) {
+        super.getHit(incoming, attacker);
+        System.out.println("Player hit for " + incoming + " hp");
+        if(attacker != null) {
+            System.out.println("   by: " + attacker.getClass().toString());
+        } else
+            System.out.println("   by: null");
+    }
+
+    @Override
+    public void setHealth(int health) {
+        super.setHealth(health);
     }
 
     @Override

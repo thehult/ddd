@@ -1,13 +1,16 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.DroppedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.IUnitListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
+import se.sebpa096.tobhu543.ddd.resources.FontResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.HUDResources;
 
@@ -19,9 +22,12 @@ public class HUD implements IUpdateListener, IUnitListener {
     private Image hudRealHealth;
     private Image hudItem;
     private Player player;
+    private Font font;
 
     private static final float HEALTH_START_X = 276.0f;
     private static final float HEALTH_START_Y = 575.0f;
+    private static final float LEVEL_DISPLAY_X = 60.0f;
+    private static final float LEVEL_DISPLAY_Y = 556.0f;
     private static final float HEALTH_HEIGHT = 18.0f;
     private static final float HEALTH_WIDTH = 248.0f;
     private static final float INVENTORY_X = 559.0f;
@@ -44,6 +50,7 @@ public class HUD implements IUpdateListener, IUnitListener {
         this.hudHealth = (Image)GlobalResources.getResource(GlobalResources.HUD_RESOURCES, HUDResources.HUD1_CUR_HEALTH);
         this.hudRealHealth = hudHealth;
         this.hudItem = (Image)GlobalResources.getResource(GlobalResources.HUD_RESOURCES, HUDResources.HUD1_CUR_ITEM);
+        this.font = (Font)GlobalResources.getResource(GlobalResources.FONT_RESOURCES, FontResources.INGAME_FONT);
         items = new Image[player.getMaxNoItems()];
         player.addUnitListener(this);
 
@@ -55,6 +62,8 @@ public class HUD implements IUpdateListener, IUnitListener {
     }
 
     public void render(GameContainer gameContainer, Graphics graphics) {
+        graphics.setFont(this.font);
+
         graphics.drawImage(hudImage, 0.0f, 0.0f);
         graphics.drawImage(hudRealHealth, HEALTH_START_X, HEALTH_START_Y);
         graphics.drawImage(hudItem, INVENTORY_X - 1 + currentItem * INVENTORY_SLOT_MARGIN_WIDTH, INVENTORY_Y - 1);
@@ -63,6 +72,7 @@ public class HUD implements IUpdateListener, IUnitListener {
                 graphics.drawImage(items[i], INVENTORY_X + i * INVENTORY_SLOT_MARGIN_WIDTH, INVENTORY_Y);
             }
         }
+        graphics.drawString("Level " + Game.GAME_STATE.getLevelNumber(), LEVEL_DISPLAY_X, LEVEL_DISPLAY_Y);
     }
 
 

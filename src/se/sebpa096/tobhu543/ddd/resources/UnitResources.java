@@ -12,6 +12,7 @@ public class UnitResources extends ResourceManager<Image> {
     public static final String NECROMANCER_DOWN = "necromancerDown";
     public static final String SKELETON_DOWN = "skeletonDown";
     public static final String CHEST_DOWN = "chestDown";
+    public static final String LE_BOSS_DOWN = "chestDown";
 
     public UnitResources() {
         super();
@@ -22,6 +23,7 @@ public class UnitResources extends ResourceManager<Image> {
             resources.put(NECROMANCER_DOWN, new Image("res/units/necromancer_down.png"));
             resources.put(SKELETON_DOWN, new Image("res/units/skeleton_down.png"));
             resources.put(CHEST_DOWN, new Image("res/units/chest_down.png"));
+            resources.put(LE_BOSS_DOWN, new Image("res/units/le_boss_down.png"));
 
         } catch (SlickException e) {
             e.printStackTrace();

@@ -45,8 +45,10 @@ public class MenuState extends State {
                 public void mouseUpLeft(final Component sender, final float x, final float y, final boolean stillOver) {
                     super.mouseUpLeft(sender, x, y,
                               stillOver);
-                    if(stillOver)
-                    context.setAndInitState(Game.GAME_STATE, gameContainerContext);
+                    if(stillOver) {
+                        Game.GAME_STATE.setLevelNumber(1);
+                        context.setAndInitState(Game.GAME_STATE, gameContainerContext);
+                    }
                 }
                 });
             menuUI.addComponent(startGame);

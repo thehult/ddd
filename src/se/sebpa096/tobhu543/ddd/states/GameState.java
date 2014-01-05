@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class GameState extends State {
     private Game game;
 
+    private int levelNumber = 1;
+
     private Level level;
     private Camera camera;
     private HUD hud;
@@ -27,24 +29,45 @@ public class GameState extends State {
     @Override
     public void init(GameContainer gameContainer, Game game) {
 	this.game = game;
-        UnitFactory.init();
-	    level = LevelFactory.makeRealLevel(1, 0.02f);
+        players = new ArrayList<Player>();
+        initNewLevel(gameContainer, game);
         Player player = new Player();
         camera = new Camera(gameContainer);
         player.addEntityListener(camera);
-	    player.addEntityListener(level);
         camera.setFollowEntity(player);
-        player.setX(Tile.TILE_WIDTH_IN_PX * (float) (Room.ROOM_WIDTH_IN_TILES / 2 - 1));
-        player.setY(Tile.TILE_HEIGHT_IN_PX * (float) (Room.ROOM_HEIGHT_IN_TILES / 2 - 1));
-        player.setCurrentRoom(level.getStartRoom());
-        addUpdateListener(level);
+        player.setHealth(player.getMaxHealth());
+        players.add(player);
+        movePlayersToNewLevel();
         //addUpdateListener(player); //TODO se över detta, kan vara så att vi inte vill uppdatera via rum
-	    players.add(player);
+
 	    level.initActives();
         hud = new HUD(player);
         player.setHealth(player.getMaxHealth());
         //camera.lockRoom(level.getStartRoom());
         Game.STARTED = true;
+
+    }
+
+    public void initNewLevel(GameContainer gameContainer, Game game) {
+        activeRooms = new ArrayList<Room>();
+        updateListeners = new ArrayList<IUpdateListener>();
+        UnitFactory.init();
+        if(levelNumber % 4 == 0)
+            level = LevelFactory.makeBossLevel();
+        else
+            level = LevelFactory.makeRealLevel(2, getLevelNumber() * 0.01f);
+        addUpdateListener(level);
+        System.out.println("Starting level: " + levelNumber);
+    }
+
+    public void movePlayersToNewLevel() {
+        for(Player player : players) {
+            player.addEntityListener(level);
+            player.setX(Tile.TILE_WIDTH_IN_PX * (float) (Room.ROOM_WIDTH_IN_TILES / 2 - 1) - 5);
+            player.setY(Tile.TILE_HEIGHT_IN_PX * (float) (Room.ROOM_HEIGHT_IN_TILES / 2 - 1));
+            player.setCurrentRoom(level.getStartRoom());
+            player.setHealth(player.getMaxHealth());
+        }
     }
 
     @Override
@@ -77,6 +100,15 @@ public class GameState extends State {
 
     }
 
+    public void gameOver() {
+        game.setState(Game.GAMEOVER_STATE);
+    }
+
+    public void levelFinished() {
+        Game.WIN_STATE.setFinishedLevel(getLevelNumber());
+        game.setState(Game.WIN_STATE);
+    }
+
     public void addUpdateListener(IUpdateListener listener) {
         updateListeners.add(listener);
     }
@@ -95,5 +127,13 @@ public class GameState extends State {
 
     public Camera getCamera() {
 	return camera;
+    }
+
+    public int getLevelNumber() {
+        return levelNumber;
+    }
+
+    public void setLevelNumber(int levelNumber) {
+        this.levelNumber = levelNumber;
     }
 }

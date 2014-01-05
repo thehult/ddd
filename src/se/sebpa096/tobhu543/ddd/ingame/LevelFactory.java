@@ -4,6 +4,7 @@ import org.lwjgl.util.Point;
 import se.sebpa096.tobhu543.ddd.ingame.entities.StairsGoal;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.ESword;
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemyLeBoss;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemyOrc;
 
 import java.util.ArrayList;
@@ -116,6 +117,39 @@ public class LevelFactory
         stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
         stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
         stairs.setCurrentRoom(lastRoom);
+        return level;
+    }
+
+    public static Level makeBossLevel() {
+        Level level = new Level();
+        Room startRoom = RoomFactory.makeStartRoom(0, 0, level);
+        level.setStartRoom(startRoom);
+
+        Room aRoom = RoomFactory.makeDefaultRoom(0, -1, level);
+        startRoom.linkTopRoom(aRoom);
+
+        Room bRoom = RoomFactory.makeDefaultRoom(0, -2, level);
+        aRoom.linkTopRoom(bRoom);
+
+        Room cRoom = RoomFactory.makeDefaultRoom(0, -3, level);
+        bRoom.linkTopRoom(cRoom);
+
+        Room dRoom = RoomFactory.makeDefaultRoom(0, -4, level);
+        cRoom.linkTopRoom(dRoom);
+
+        Room eRoom = RoomFactory.makeDefaultRoom(0, -5, level);
+        dRoom.linkTopRoom(eRoom);
+
+        StairsGoal stairs = new StairsGoal();
+        stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
+        stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
+        stairs.setCurrentRoom(eRoom);
+
+        EnemyLeBoss eorc = new EnemyLeBoss();
+        eorc.setX(Room.ROOM_WIDTH_IN_PX / 2.0f);
+        eorc.setY(Room.ROOM_HEIGHT_IN_PX / 2.0f);
+        eorc.setCurrentRoom(dRoom);
+
         return level;
     }
 
