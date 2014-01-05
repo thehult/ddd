@@ -12,7 +12,7 @@ public class UnitResources extends ResourceManager<Image> {
     public static final String NECROMANCER_DOWN = "necromancerDown";
     public static final String SKELETON_DOWN = "skeletonDown";
     public static final String CHEST_DOWN = "chestDown";
-    public static final String LE_BOSS_DOWN = "chestDown";
+    public static final String LE_BOSS_DOWN = "leBossDown";
 
     public UnitResources() {
         super();
