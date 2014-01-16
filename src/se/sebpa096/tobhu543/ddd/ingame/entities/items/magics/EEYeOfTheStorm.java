@@ -1,7 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items.magics;
 
 import org.newdawn.slick.geom.Vector2f;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.projectiles.EnergyOrb;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
@@ -10,19 +10,19 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
  * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 22:32 To change this template use File | Settings | File
  * Templates.
  */
+@SuppressWarnings("JavaDoc")
 public class EEYeOfTheStorm extends EquippedItem
 {
-    public static int EOTS_STANDARD_COOLDOWN = 5000;
-    public static int EOTS_STANDARD_NO_PROJECTILES = 10;
-    public static float EOTS_STANDARD_START_VEL = 100;
-    public static float EOTS_STANDARD_SCALE = 1f;
+    public static final int EOTS_STANDARD_COOLDOWN = 5000;
+    public static final int EOTS_STANDARD_NO_PROJECTILES = 10;
+    public static final float EOTS_STANDARD_START_VEL = 100;
+    public static final float EOTS_STANDARD_SCALE = 1.0f;
 
-    private static float EOTS_STEP_SIZE = 360 / EOTS_STANDARD_NO_PROJECTILES;
+    private static final float EOTS_STEP_SIZE = 360.0f / EOTS_STANDARD_NO_PROJECTILES;
 
     public EEYeOfTheStorm(){
-        super();
-        cooldownMax = EOTS_STANDARD_COOLDOWN;
-        this.setRange(6 * Tile.TILE_WIDTH_IN_PX);
+	cooldownMax = EOTS_STANDARD_COOLDOWN;
+        this.setRange(6 * Entity.TILE_WIDTH_IN_PX);
         droppedTwin = new DEyeOfTheStorm(this);
     }
 

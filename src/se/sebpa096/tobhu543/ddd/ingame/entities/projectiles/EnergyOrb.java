@@ -2,7 +2,6 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.projectiles;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.geom.Vector2f;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
@@ -13,6 +12,7 @@ import se.sebpa096.tobhu543.ddd.resources.ItemResources;
  * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 21:15 To change this template use File | Settings | File
  * Templates.
  */
+@SuppressWarnings("JavaDoc")
 public class EnergyOrb extends Projectile
 {
 
@@ -64,15 +64,15 @@ public class EnergyOrb extends Projectile
 	    float hypo = (float)Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 	    float normX = diffX/hypo;
 	    float normY = diffY/hypo;
-	    velocityX = velocityX + normX * ENERGYORB_STANDARD_ACC;
-	    velocityY = velocityY + normY * ENERGYORB_STANDARD_ACC;
+	    velocityX += normX * ENERGYORB_STANDARD_ACC;
+	    velocityY += normY * ENERGYORB_STANDARD_ACC;
 	    hadTarget = true;
 	}else if(hadTarget){
-	    velocityX = velocityX - delta * velocityX / 1000;
-	    velocityY = velocityY - delta * velocityY / 1000;
+	    velocityX -= delta * velocityX / 1000;
+	    velocityY -= delta * velocityY / 1000;
 	}
-	x = x + velocityX * (float)delta / 1000f;
-	y = y + velocityY * (float)delta / 1000f;
+	x += velocityX * delta / Game.MILLISEC_PER_SEC;
+	y += velocityY * delta / Game.MILLISEC_PER_SEC;
 	//To change body of implemented methods use File | Settings | File Templates.
     }
 }

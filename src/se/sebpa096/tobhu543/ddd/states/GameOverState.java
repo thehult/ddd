@@ -18,9 +18,8 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
  */
 public class GameOverState extends State
 {
-    private Game game;
 
-    private UI optionsUI;
+    private UI optionsUI = null;
 
     private static final float BACK_POSX_RAT = 2.0f/4.0f; //position of back button as a ration of screen with, from the left
     private static final float BACK_POSY_RAT = 7.0f/8.0f; // -- || --                                     height         top
@@ -34,7 +33,7 @@ public class GameOverState extends State
             optionsUI.addComponent(header);
             header.setWidth(UI.STD_COMPONENT_WIDTH);
             header.setHeight(UI.STD_COMPONENT_HEIGHT);
-            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
+            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
 	    header.setY(UI.STD_COMPONENT_MARGIN);
             header.updateRenderPos();
 
@@ -48,8 +47,9 @@ public class GameOverState extends State
 	    back.setMouseListener(new ButtonMouseListener(back) {
             @Override
             public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
-                super.mouseDownLeft(sender, x, y);
-                context.setState(context.MENU_STATE);
+		super.mouseUpLeft(sender, x, y, stillOver);
+                mouseDownLeft(sender, x, y);
+                context.setState(Game.MENU_STATE);
             }
         });
             optionsUI.addComponent(back);

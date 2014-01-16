@@ -12,12 +12,17 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.*;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class UnitFactory {
+@SuppressWarnings("JavaDoc")
+public final class UnitFactory {
     private static RarityHandler rarities = new RarityHandler();
-    private static HashMap<Class<? extends Unit>, RarityHandler> itemRarities = new HashMap<Class<? extends Unit>, RarityHandler>();
+    private static Map<Class<? extends Unit>, RarityHandler> itemRarities = new HashMap<Class<? extends Unit>, RarityHandler>();
 
-    public static void init() {
+    private UnitFactory() {}
+
+    //Inspector believes we have too many referenced classes here. Could be split up into different methods, but I believe it would be harder to find and edit everything then (the layout is so simple.)
+    @SuppressWarnings("OverlyCoupledMethod") public static void init() {
         rarities.add(EnemyOrc.class, 30);
         RarityHandler orcHandler = new RarityHandler();
         orcHandler.add(ESword.class, 70);
@@ -57,9 +62,10 @@ public class UnitFactory {
             unit.setHealth(unit.getMaxHealth());
             unit.getEquippedItems()[0] = (EquippedItem)itemRarities.get(unit.getClass()).getRandomRarity().newInstance();
             return unit;
-        } catch (Exception e) {
+	} catch (IllegalAccessException e) {
+	    e.printStackTrace();
+	} catch (InstantiationException e) {
             e.printStackTrace();
-            System.exit(0);
         }
         return null;
     }
@@ -71,10 +77,11 @@ public class UnitFactory {
             unit.setHealth(unit.getMaxHealth());
             unit.getEquippedItems()[0] = (EquippedItem)itemRarities.get(unitClass).getRandomRarity().newInstance();
             return unit;
-        } catch(Exception e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
+	} catch (IllegalAccessException e) {
+	    e.printStackTrace();
+	} catch (InstantiationException e) {
+	    e.printStackTrace();
+	}
         return null;
     }
 }

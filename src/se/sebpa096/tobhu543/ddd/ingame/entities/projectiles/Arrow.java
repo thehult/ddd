@@ -5,12 +5,12 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
-import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 18:22 To change this template use File | Settings | File
  * Templates.
  */
+@SuppressWarnings("JavaDoc")
 public class Arrow extends LinearProjectile
 {
     public final static int ARROW_STANDARD_DAMAGE = 15;

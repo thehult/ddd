@@ -3,7 +3,6 @@ package se.sebpa096.tobhu543.ddd.states;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.resources.BackgroundResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
@@ -13,15 +12,14 @@ import se.sebpa096.tobhu543.ddd.ui.components.Label;
 import se.sebpa096.tobhu543.ddd.ui.components.MenuButton;
 import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 
+@SuppressWarnings("JavaDoc")
 public class MenuState extends State {
-    private Game game;
-    private UI menuUI;
-    private final int topMargin = 100;
+    private UI menuUI = null;
+    private static final int TOP_MARGIN = 100;
 
     @Override
     public void init(GameContainer gameContainer, Game game) {
         //try {
-            this.game = game;
                 menuUI = new UI(this, gameContainer);
 
             final Game context = game;
@@ -30,15 +28,15 @@ public class MenuState extends State {
             menuUI.addComponent(header);
             header.setWidth(UI.STD_COMPONENT_WIDTH);
             header.setHeight(UI.STD_COMPONENT_HEIGHT);
-            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            header.setY(topMargin);
+            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
+            header.setY(TOP_MARGIN);
             header.updateRenderPos();
 
             MenuButton startGame = new MenuButton("Start New Game");
             startGame.setWidth(UI.STD_COMPONENT_WIDTH);
             startGame.setHeight(UI.STD_COMPONENT_HEIGHT);
-            startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            startGame.setY((UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + topMargin);
+            startGame.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
+            startGame.setY((UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN) + TOP_MARGIN);
             final GameContainer gameContainerContext = gameContainer;
             startGame.setMouseListener(new ButtonMouseListener(startGame){
                 @Override
@@ -58,14 +56,14 @@ public class MenuState extends State {
             MenuButton options = new MenuButton("Options");
             options.setWidth(UI.STD_COMPONENT_WIDTH);
             options.setHeight(UI.STD_COMPONENT_HEIGHT);
-            options.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            options.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
+            options.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
+            options.setY(2 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + TOP_MARGIN);
             options.setMouseListener(new ButtonMouseListener(options){
             @Override
                 public void mouseUpLeft(Component sender, float x, float y, boolean stillOver){
                 super.mouseUpLeft(sender, x, y, stillOver);
                 if(stillOver)
-                context.setState(context.OPTIONS_STATE);
+                context.setState(Game.OPTIONS_STATE);
             }
             });
             menuUI.addComponent(options);
@@ -77,8 +75,8 @@ public class MenuState extends State {
             MenuButton exit = new MenuButton("Exit Game");
             exit.setWidth(UI.STD_COMPONENT_WIDTH);
             exit.setHeight(UI.STD_COMPONENT_HEIGHT);
-            exit.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
-            exit.setY(3 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + topMargin);
+            exit.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
+            exit.setY(3 * (UI.STD_COMPONENT_HEIGHT + UI.STD_COMPONENT_MARGIN)  + TOP_MARGIN);
             exit.setMouseListener(new ButtonMouseListener(exit) {
                 @Override
                 public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {

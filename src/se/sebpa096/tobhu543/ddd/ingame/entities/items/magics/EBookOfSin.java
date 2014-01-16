@@ -1,18 +1,17 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items.magics;
 
 import se.sebpa096.tobhu543.ddd.ingame.UnitFactory;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
-import se.sebpa096.tobhu543.ddd.ingame.entities.items.bows.DBow;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemySkeleton;
 
+@SuppressWarnings("JavaDoc")
 public class EBookOfSin extends EquippedItem {
-    public static int BOS_STANDARD_COOLDOWN = 8000;
+    public static final int BOS_STANDARD_COOLDOWN = 8000;
     public EBookOfSin(){
-        super();
-        cooldownMax = BOS_STANDARD_COOLDOWN;
-        this.setRange(5 * Tile.TILE_WIDTH_IN_PX);
+	cooldownMax = BOS_STANDARD_COOLDOWN;
+        this.setRange(5 * Entity.TILE_WIDTH_IN_PX);
         droppedTwin = new DBookOfSin(this);
     }
 

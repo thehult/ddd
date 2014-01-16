@@ -8,21 +8,21 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 import se.sebpa096.tobhu543.ddd.ui.listeners.MouseListener;
 
 
+@SuppressWarnings("JavaDoc")
 public class Button extends Component {
 
     private Image standardImage = null;
     private Image hoverImage = null;
     private Image clickedImage = null;
     private Image currentImage = null;
-    private String label;
+    private String label = "";
     private MouseListener mouseListener;
     private float labelOffsetX;
     private float labelOffsetY;
     private Font font;
 
     public Button(String label, Image standardImage) {
-        super();
-        this.font = (Font)GlobalResources.getResource(GlobalResources.FONT_RESOURCES, FontResources.MENU_FONT);
+	this.font = (Font)GlobalResources.getResource(GlobalResources.FONT_RESOURCES, FontResources.MENU_FONT);
         setLabel(label);
         this.standardImage = standardImage;
         this.currentImage = standardImage;
@@ -37,7 +37,7 @@ public class Button extends Component {
         this.clickedImage = clickedImage;
     }
 
-    public Button( String label) {
+    @SuppressWarnings("UnusedDeclaration") public Button( String label) {
         this(label, (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_STANDARD));
         this.hoverImage = (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_HOVER);
         this.clickedImage = (Image)GlobalResources.getResource(GlobalResources.BUTTON_RESOURCES, ButtonImageResources.DEFAULT_CLICKED);
@@ -56,7 +56,7 @@ public class Button extends Component {
         return standardImage;
     }
 
-    public void setStandardImage(Image standardImage) {
+    @SuppressWarnings("UnusedDeclaration") public void setStandardImage(Image standardImage) {
         this.standardImage = standardImage;
     }
 
@@ -64,7 +64,7 @@ public class Button extends Component {
         return hoverImage;
     }
 
-    public void setHoverImage(Image hoverImage) {
+    @SuppressWarnings("UnusedDeclaration") public void setHoverImage(Image hoverImage) {
         this.hoverImage = hoverImage;
     }
 
@@ -72,7 +72,7 @@ public class Button extends Component {
         return clickedImage;
     }
 
-    public void setClickedImage(Image clickedImage) {
+    @SuppressWarnings("UnusedDeclaration") public void setClickedImage(Image clickedImage) {
         this.clickedImage = clickedImage;
     }
 
@@ -95,18 +95,14 @@ public class Button extends Component {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        getCurrentImage().draw(getRenderX(),
-                getRenderY(),
-                getWidth(),
-                getHeight());
-        font.drawString(getRenderX() + getLabelOffsetX(),
-                getRenderY() + getLabelOffsetY(),
-                this.getLabel());
+	currentImage.draw(getRenderX(), getRenderY(), getWidth(), getHeight());
+        font.drawString(getRenderX() + labelOffsetX,
+                getRenderY() + labelOffsetY, this.label);
     }
 
     private void updateLabelOffset() {
-        this.labelOffsetX = (this.getWidth() - font.getWidth(this.getLabel())) / 2;
-        this.labelOffsetY = (this.getHeight() - font.getHeight(this.getLabel())) / 2;
+        this.labelOffsetX = (this.getWidth() - font.getWidth(this.label)) / 2;
+        this.labelOffsetY = (this.getHeight() - font.getHeight(this.label)) / 2;
     }
 
     private float getLabelOffsetX() {
@@ -119,8 +115,8 @@ public class Button extends Component {
 
     @Override
     public void updateRenderPos() {
-        super.setRenderX(this.getX() + this.getParentUI().getX());
-        super.setRenderY(this.getY() + this.getParentUI().getY());
+        setRenderX(this.getX() + this.getParentUI().getX());
+        setRenderY(this.getY() + this.getParentUI().getY());
         updateLabelOffset();
     }
 

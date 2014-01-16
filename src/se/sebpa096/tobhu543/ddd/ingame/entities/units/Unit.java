@@ -5,17 +5,18 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.MovingEntity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EUnarmed;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
-import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 import java.util.ArrayList;
+import java.util.List;
 
+@SuppressWarnings("JavaDoc")
 public class Unit extends MovingEntity {
     private int maxNoItems = 1;
-    private EquippedItem[] equippedItems;
+    private EquippedItem[] equippedItems = null;
     private int currentItemNo = 0;
     private EquippedItem unarmedItem;
 
-    private ArrayList<IUnitListener> unitListeners = new ArrayList<IUnitListener>();
+    private List<IUnitListener> unitListeners = new ArrayList<IUnitListener>();
 
     private int randomHealthMin = 10;
     private int randomHealthMax = 100;
@@ -23,7 +24,7 @@ public class Unit extends MovingEntity {
     private int maxHealth=100;
     private int health=100;
 
-    public static final double STANDARD_DROP_CHANCE = 0.1;
+    @SuppressWarnings("UnusedDeclaration") public static final double STANDARD_DROP_CHANCE = 0.1;
 
     public Unit() {
         unarmedItem = new EUnarmed();
@@ -76,12 +77,12 @@ public class Unit extends MovingEntity {
             System.out.println("ERROR! spelare med fullt inventory tog upp item!");
         }
         for(int i=unitListeners.size() - 1;i>=0;i--) {
-            unitListeners.get(i).unitChangedItems(getEquippedItems());
+            unitListeners.get(i).unitChangedItems(equippedItems);
         }
     }
 
     public void cycleCurrentItem(int steps){
-        currentItemNo = (currentItemNo + steps);
+	currentItemNo += steps;
         if(currentItemNo < 0)
             currentItemNo = maxNoItems - 1;
         if(currentItemNo >= maxNoItems)
@@ -91,9 +92,12 @@ public class Unit extends MovingEntity {
         }
     }
 
+    public boolean hasEquippedItem() {
+	return equippedItems[currentItemNo] != null;
+    }
+
     public void useItem(){
-        EquippedItem current = equippedItems[currentItemNo];
-        if(current == null){
+	if(hasEquippedItem()){
             unarmedItem.tryUse(this, getMovingDirX(), getMovingDirY()); //TODO fixa direction
         }else{
             equippedItems[currentItemNo].tryUse(this, getMovingDirX(), getMovingDirY()); //TODO fixa direction!
@@ -107,7 +111,7 @@ public class Unit extends MovingEntity {
         }
         equippedItems[itemNo] = null;
         for(int i=unitListeners.size() - 1;i>=0;i--) {
-            unitListeners.get(i).unitChangedItems(getEquippedItems());
+            unitListeners.get(i).unitChangedItems(equippedItems);
         }
     }
 
@@ -124,7 +128,7 @@ public class Unit extends MovingEntity {
         return currentItemNo;
     }
 
-    public void setCurrentItemNo(int currentItemNo) {
+    @SuppressWarnings("UnusedDeclaration") public void setCurrentItemNo(int currentItemNo) {
         this.currentItemNo = currentItemNo;
         for(int i=unitListeners.size() - 1;i>=0;i--) {
             unitListeners.get(i).unitChangedCurrentItem(currentItemNo);
@@ -135,10 +139,10 @@ public class Unit extends MovingEntity {
         return equippedItems;
     }
 
-    public void setEquippedItems(EquippedItem[] equippedItems) {
+    @SuppressWarnings("UnusedDeclaration") public void setEquippedItems(EquippedItem[] equippedItems) {
         this.equippedItems = equippedItems;
         for(int i=unitListeners.size() - 1;i>=0;i--) {
-            unitListeners.get(i).unitChangedItems(getEquippedItems());
+            unitListeners.get(i).unitChangedItems(this.equippedItems);
         }
     }
 
@@ -151,16 +155,16 @@ public class Unit extends MovingEntity {
     }
 
     public void die(){
-        if(this.getEquippedItems()[0] != null)
+        if(this.equippedItems[0] != null)
             this.dropItem(0);
 	setCurrentRoom(null);
     }
 
-    public EquippedItem getUnarmedItem() {
+    @SuppressWarnings("UnusedDeclaration") public EquippedItem getUnarmedItem() {
         return unarmedItem;
     }
 
-    public void setUnarmedItem(EquippedItem unarmedItem) {
+    @SuppressWarnings("UnusedDeclaration") public void setUnarmedItem(EquippedItem unarmedItem) {
         this.unarmedItem = unarmedItem;
     }
 
@@ -179,7 +183,7 @@ public class Unit extends MovingEntity {
         unitListeners.add(listener);
     }
 
-    public void removeUnitListener(IUnitListener listener) {
+    @SuppressWarnings("UnusedDeclaration") public void removeUnitListener(IUnitListener listener) {
         unitListeners.remove(listener);
     }
 

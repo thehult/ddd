@@ -8,28 +8,33 @@ import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
-import se.sebpa096.tobhu543.ddd.ingame.enums.Direction;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 30/12/13 Time: 21:06 To change this template use File | Settings | File
  * Templates.
  */
-public class Tester
+
+//Suppress warnings, it's a testclass... no need for too good code
+@SuppressWarnings("ALL")
+public final class Tester
 {
     public static float testScale = 1f;
-    public static ArrayList<Shape> testShapes = new ArrayList<Shape>();
-    public static ArrayList<Room> renderedRooms = new ArrayList<Room>();
+    public static Collection<Shape> testShapes = new ArrayList<Shape>();
+    public static Collection<Room> renderedRooms = new ArrayList<Room>();
 
-    public static void gameUpdate(GameContainer gameContainer, Game game){
+    private Tester() {}
+//Suppress since it might be of use later on
+    public static void gameUpdate(GameContainer gameContainer, @SuppressWarnings("UnusedParameters") Game game){
 	Input input = gameContainer.getInput();
 	if(input.isKeyPressed(Input.KEY_U)){
-	    testScale = testScale / 1.5f;
+	    testScale /= 1.5f;
 	}
 	if(input.isKeyPressed(Input.KEY_I)){
-	    testScale = testScale * 1.5f;
+	    testScale *= 1.5f;
 	}
     }
 

@@ -7,6 +7,7 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
+@SuppressWarnings("JavaDoc")
 public class StairsGoal extends StaticEntity {
 
     public StairsGoal() {
@@ -17,7 +18,7 @@ public class StairsGoal extends StaticEntity {
     public void gameUpdate(GameContainer gameContainer, int delta) {
         super.gameUpdate(gameContainer, delta);
         for(Player player : Game.GAME_STATE.getPlayers()) {
-	    if(player.collidesWith(this)){
+	    if(player.isCollidingWith(this)){
             Game.GAME_STATE.levelFinished();
 	    }
         }

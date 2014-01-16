@@ -2,6 +2,7 @@ package se.sebpa096.tobhu543.ddd.resources;
 
 import java.util.HashMap;
 
+@SuppressWarnings("JavaDoc")
 public class ResourceManager<E> {
     protected HashMap<String, E> resources;
 

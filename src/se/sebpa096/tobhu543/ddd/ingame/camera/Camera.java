@@ -8,6 +8,7 @@ import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
 
+@SuppressWarnings("JavaDoc")
 public class Camera implements IEntityListener {
     public final static float SHAKE_RESET_SPEED = 0.2f;
 
@@ -16,17 +17,16 @@ public class Camera implements IEntityListener {
     protected float shakeOffset = 0;
     private Entity followEntity = null;
     private Room renderRoom = null;
-    private GameContainer gameContainer;
 
-    public Camera(GameContainer gameContainer) {
+    //Might want to use it later
+    @SuppressWarnings("UnusedParameters") public Camera(GameContainer gameContainer) {
         this.y = 0;
         this.x = 0;
-        this.gameContainer = gameContainer;
     }
 
     public void shake(float power){
-	if(shakeOffset < 0) shakeOffset = shakeOffset - power;
-	else shakeOffset = shakeOffset + power;
+	if(shakeOffset < 0) shakeOffset -= power;
+	else shakeOffset += power;
     }
 
     public float getX() {
@@ -47,9 +47,11 @@ public class Camera implements IEntityListener {
         //this.y = y - shakeOffset;
     }
 
-    public void lockRoom(Room room) {
+    //Method not finished yet, therefore suppress!
+    @SuppressWarnings({ "UnusedDeclaration", "CallToSimpleSetterFromWithinClass" }) public void lockRoom(Room room) {
         this.setX(Room.ROOM_WIDTH_IN_PX / 2);
         this.setY(Room.ROOM_HEIGHT_IN_PX / 2);
+	renderRoom = room;
         if(followEntity != null) {
             this.followEntity.removeEntityListener(this);
             this.followEntity = null;
@@ -61,15 +63,20 @@ public class Camera implements IEntityListener {
         followEntity.addEntityListener(this);
     }
 
-    public Entity getFollowEntity() {
+    @SuppressWarnings("UnusedDeclaration") public Entity getFollowEntity() {
         return followEntity;
     }
 
     @Override
     public void entityChanged() {
         if(followEntity != null) {
-            this.setX(followEntity.getCenterX());
-            this.setY(followEntity.getCenterY());
+
+	    //Suppress: we want to use setX/Y since there may be alterations to x/y within the setters. Not at the moment... but later on!
+
+	    //noinspection CallToSimpleSetterFromWithinClass
+	    this.setX(followEntity.getCenterX());
+	    //noinspection CallToSimpleSetterFromWithinClass
+	    this.setY(followEntity.getCenterY());
             /*if(Game.TEST) {
                 this.setX(this.getX() - Room.ROOM_WIDTH_IN_PX * 0.5f / Tester.testScale);
                 this.setY(this.getY() - Room.ROOM_HEIGHT_IN_PX * 0.5f / Tester.testScale);

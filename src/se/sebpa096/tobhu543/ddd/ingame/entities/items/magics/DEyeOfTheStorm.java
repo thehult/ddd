@@ -12,7 +12,7 @@ import se.sebpa096.tobhu543.ddd.resources.ItemResources;
  */
 public class DEyeOfTheStorm extends DroppedItem
 {
-    public DEyeOfTheStorm(){
+    @SuppressWarnings("UnusedDeclaration") public DEyeOfTheStorm(){
         super(new EBookOfSin());
         sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_PROJECTILE);
     }

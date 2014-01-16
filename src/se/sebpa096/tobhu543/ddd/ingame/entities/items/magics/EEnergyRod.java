@@ -1,19 +1,19 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items.magics;
 
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.projectiles.EnergyOrb;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
+@SuppressWarnings("JavaDoc")
 public class EEnergyRod extends EquippedItem {
 
-    public static int ER_STANDARD_COOLDOWN = 1000;
-    public static float ER_STANDARD_LAUNCH_SPEED = 200f;
+    public static final int ER_STANDARD_COOLDOWN = 1000;
+    public static final float ER_STANDARD_LAUNCH_SPEED = 200.0f;
 
     public EEnergyRod(){
-        super();
-        cooldownMax = ER_STANDARD_COOLDOWN;
-        this.setRange(4 * Tile.TILE_WIDTH_IN_PX);
+	cooldownMax = ER_STANDARD_COOLDOWN;
+        this.setRange(4 * Entity.TILE_WIDTH_IN_PX);
         droppedTwin = new DEnergyRod(this);
     }
 

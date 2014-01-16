@@ -10,6 +10,9 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.IMouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//No. "UI" is not too short.
+@SuppressWarnings({ "UnusedParameters", "JavaDoc", "ClassNamingConvention" })
 public class UI {
 
     public static final int STD_COMPONENT_MARGIN = 10;
@@ -20,7 +23,7 @@ public class UI {
     private float y;
     private float width;
     private float height;
-    private State parentState;
+    @SuppressWarnings("UnusedDeclaration") private State parentState;
 
     private List<IMouseListener> mouseListeners = new ArrayList<IMouseListener>();
     private List<Component> components = new ArrayList<Component>();
@@ -29,7 +32,8 @@ public class UI {
         this(parentState, gameContainer, 0, 0, gameContainer.getWidth(), gameContainer.getHeight());
     }
 
-    public UI(State parentState, GameContainer gameContainer,  float x, float y, float width, float height) {
+    //Suppress since GameContainer might be of use later on (it contains the window parameters and such)
+    public UI(State parentState, @SuppressWarnings("UnusedParameters") GameContainer gameContainer,  float x, float y, float width, float height) {
         this.parentState = parentState;
         this.x = x;
         this.y = y;
@@ -37,13 +41,14 @@ public class UI {
         this.height = height;
     }
 
-    public void update(GameContainer gameContainer, int delta) {
-        float x = gameContainer.getInput().getMouseX();
-        float y = gameContainer.getInput().getMouseY();
+    //Suppress, delta is standard to send to an update, might be of use
+    public void update(GameContainer gameContainer, @SuppressWarnings("UnusedParameters") int delta) {
+        float tx = gameContainer.getInput().getMouseX();
+        float ty = gameContainer.getInput().getMouseY();
         boolean leftClick = gameContainer.getInput().isMouseButtonDown(Input.MOUSE_LEFT_BUTTON);
         boolean rightClick = gameContainer.getInput().isMouseButtonDown(Input.MOUSE_RIGHT_BUTTON);
         for(IMouseListener object : mouseListeners)
-            object.mouseEvent(x - this.x, y - this.y, leftClick, rightClick);
+            object.mouseEvent(tx - this.x, ty - this.y, leftClick, rightClick);
     }
 
     public void render(GameContainer gameContainer, Graphics graphics) {
@@ -64,7 +69,7 @@ public class UI {
         components.add(object);
     }
 
-    public void removeComponent(Component object) {
+    @SuppressWarnings("UnusedDeclaration") public void removeComponent(Component object) {
         object.setParentUI(null);
         components.remove(object);
     }
@@ -73,7 +78,7 @@ public class UI {
         return x;
     }
 
-    public void setX(float x) {
+    @SuppressWarnings("UnusedDeclaration") public void setX(float x) {
         this.x = x;
         for(Component component : components)
             component.updateRenderPos();
@@ -83,25 +88,25 @@ public class UI {
         return y;
     }
 
-    public void setY(float y) {
+    @SuppressWarnings("UnusedDeclaration") public void setY(float y) {
         this.y = y;
         for(Component component : components)
             component.updateRenderPos();
     }
 
-    public float getWidth() {
+    @SuppressWarnings("UnusedDeclaration") public float getWidth() {
         return width;
     }
 
-    public void setWidth(float width) {
+    @SuppressWarnings("UnusedDeclaration") public void setWidth(float width) {
         this.width = width;
     }
 
-    public float getHeight() {
+    @SuppressWarnings("UnusedDeclaration") public float getHeight() {
         return height;
     }
 
-    public void setHeight(float height) {
+    @SuppressWarnings("UnusedDeclaration") public void setHeight(float height) {
         this.height = height;
     }
 }

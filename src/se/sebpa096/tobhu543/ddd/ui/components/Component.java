@@ -4,7 +4,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 
-public class Component {
+@SuppressWarnings({ "UnusedParameters", "JavaDoc" })
+public abstract class Component {
     private float x = 0;
     private float y = 0;
     private float width = 0;
@@ -13,16 +14,13 @@ public class Component {
     private float renderY = 0;
     private UI parentUI = null;
 
-    public Component() {
-    }
-
     public UI getParentUI() {
         return parentUI;
     }
 
-    public void render(GameContainer gameContainer, Graphics graphics) {
+    //Suppress since GameContainer might be of use later on (it contains the window parameters and such)
 
-    }
+    public abstract void render(@SuppressWarnings("UnusedParameters") GameContainer gameContainer, Graphics graphics) ;
 
     public void setParentUI(UI parentUI) {
         this.parentUI = parentUI;
@@ -76,6 +74,5 @@ public class Component {
         this.renderY = renderY;
     }
 
-    public void updateRenderPos() {
-    }
+    public abstract void updateRenderPos();
 }

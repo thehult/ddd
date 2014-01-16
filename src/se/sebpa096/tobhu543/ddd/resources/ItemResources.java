@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+@SuppressWarnings("JavaDoc")
 public class ItemResources extends ResourceManager<Image> {
 
     public static final String SWORD_DROPPED = "swordDropped";
@@ -17,8 +18,7 @@ public class ItemResources extends ResourceManager<Image> {
     public static final String ENERGY_ROD_PROJECTILE = "energyRodProjectile";
 
     public ItemResources() {
-        super();
-        try {
+	try {
             resources.put(SWORD_DROPPED, new Image("res/items/sword_dropped.png"));
             resources.put(SWORD_EQUIPPED, new Image("res/items/sword_equipped.png"));
             resources.put(FIRE_SWORD_DROPPED, new Image("res/items/fire_sword_dropped.png"));

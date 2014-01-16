@@ -5,16 +5,17 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.Game;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
-import se.sebpa096.tobhu543.ddd.ingame.entities.items.DroppedItem;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.IUnitListener;
+import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.resources.FontResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.HUDResources;
 
 
+@SuppressWarnings({ "UnusedParameters", "JavaDoc" })
 public class HUD implements IUpdateListener, IUnitListener {
 
     private Image hudImage;
@@ -39,7 +40,7 @@ public class HUD implements IUpdateListener, IUnitListener {
 
 
 
-    private float currentHealthWidth = 248.0f;
+    private float currentHealthWidth = HEALTH_WIDTH;
     private int currentItem = 0;
 
 
@@ -61,7 +62,9 @@ public class HUD implements IUpdateListener, IUnitListener {
 
     }
 
-    public void render(GameContainer gameContainer, Graphics graphics) {
+    //Suppress since GameContainer might be of use later on (it contains the window parameters and such)
+
+    public void render(@SuppressWarnings("UnusedParameters") GameContainer gameContainer, Graphics graphics) {
         graphics.setFont(this.font);
 
         graphics.drawImage(hudImage, 0.0f, 0.0f);
@@ -76,13 +79,15 @@ public class HUD implements IUpdateListener, IUnitListener {
     }
 
 
+    //Suppress since they are empty at the moment (but needs to be there)
+
     @Override
-    public void unitDied() {
+    public void unitDied(Unit unit) {
 
     }
 
     @Override
-    public void unitKilled() {
+    public void unitKilled(Unit unit) {
 
     }
 
@@ -94,7 +99,7 @@ public class HUD implements IUpdateListener, IUnitListener {
     @Override
     public void unitHealthChanged(int health) {
         if(health > 0) {
-            currentHealthWidth = HEALTH_WIDTH * (float)health/(float)player.getMaxHealth();
+            currentHealthWidth = HEALTH_WIDTH * health / player.getMaxHealth();
             hudRealHealth = hudHealth.getScaledCopy((int)currentHealthWidth, (int)HEALTH_HEIGHT);
         }
     }
@@ -104,7 +109,7 @@ public class HUD implements IUpdateListener, IUnitListener {
         items = new Image[player.getMaxNoItems()];
         for(int i=0;i<equippedItems.length;i++) {
             if(equippedItems[i] != null)
-                items[i] = equippedItems[i].getDroppedTwin().getSprite().getSubImage(0, (int)-Tile.TILE_RENDER_OFFSET_Y, (int)Tile.TILE_WIDTH_IN_PX, (int)Tile.TILE_HEIGHT_IN_PX).getScaledCopy((int)INVENTORY_SLOT_WIDTH, (int)INVENTORY_SLOT_WIDTH);
+                items[i] = equippedItems[i].getDroppedTwin().getSprite().getSubImage(0, (int)-Entity.TILE_RENDER_OFFSET_Y, (int) Entity.TILE_WIDTH_IN_PX, (int) Entity.TILE_HEIGHT_IN_PX).getScaledCopy((int)INVENTORY_SLOT_WIDTH, (int)INVENTORY_SLOT_WIDTH);
         }
     }
 }

@@ -6,8 +6,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 
+@SuppressWarnings("JavaDoc")
 public class DBow extends DroppedItem {
-    public DBow(){
+    @SuppressWarnings("UnusedDeclaration") public DBow(){
         super(new EBow());
         sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOW_DROPPED);
     }

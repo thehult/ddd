@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+@SuppressWarnings("JavaDoc")
 public class ButtonImageResources extends ResourceManager<Image> {
     public static final String DEFAULT_STANDARD = "defaultStandard";
     public static final String DEFAULT_HOVER = "defaultHover";
@@ -12,8 +13,7 @@ public class ButtonImageResources extends ResourceManager<Image> {
     public static final String MENU_CLICKED = "menuClicked";
 
     public ButtonImageResources() {
-        super();
-        try {
+	try {
             resources.put(DEFAULT_STANDARD, new Image("res/buttons/default/standard.gif"));
             resources.put(DEFAULT_HOVER, new Image("res/buttons/default/hover.gif"));
             resources.put(DEFAULT_CLICKED, new Image("res/buttons/default/clicked.gif"));

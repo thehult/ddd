@@ -5,10 +5,10 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.resources.FontResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
-import se.sebpa096.tobhu543.ddd.ui.UI;
 
+@SuppressWarnings("JavaDoc")
 public class Label extends Component {
-    private String text;
+    private String text = null;
     private Font font;
 
     public Label(String text) {
@@ -16,8 +16,9 @@ public class Label extends Component {
     }
 
     public Label(String text, int x, int y) {
-        super();
-        this.setText(text);
+	//Suppress: Might want to alter text within the setter.
+	//noinspection CallToSimpleSetterFromWithinClass
+	this.setText(text);
         this.setX(x);
         this.setY(y);
         this.font = (Font)GlobalResources.getResource(GlobalResources.FONT_RESOURCES, FontResources.MENU_FONT);
@@ -42,7 +43,7 @@ public class Label extends Component {
 
     @Override
     public void updateRenderPos() {
-        this.setRenderX(this.getX() + this.getParentUI().getX() + (this.getWidth() - font.getWidth(this.getText())) / 2);
-        this.setRenderY(this.getY() + this.getParentUI().getY() + (this.getHeight() - font.getHeight(this.getText())) / 2);
+        this.setRenderX(this.getX() + this.getParentUI().getX() + (this.getWidth() - font.getWidth(this.text)) / 2);
+        this.setRenderY(this.getY() + this.getParentUI().getY() + (this.getHeight() - font.getHeight(this.text)) / 2);
     }
 }

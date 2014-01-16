@@ -1,7 +1,6 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.projectiles;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.MobileEntity;
@@ -15,11 +14,11 @@ public abstract class Projectile extends MobileEntity
 {
     protected float velocityX;
     protected float velocityY;
-    protected Unit source;
+    protected Unit source = null;
 
-    protected Projectile(){}; //MUST supply source to create Projectile
+    protected Projectile(){} //MUST supply source to create Projectile
 
-    public Projectile(Unit source){
+    @SuppressWarnings("UnusedDeclaration") protected Projectile(Unit source){
 	this.source = source;
     }
 
@@ -33,7 +32,7 @@ public abstract class Projectile extends MobileEntity
 	//Collision with entities
 	for (int i = 0; i < Game.GAME_STATE.getLevel().getActiveEntities().size(); i++) {
 	    Entity e = Game.GAME_STATE.getLevel().getActiveEntities().get(i);
-	    if(collidesWith(e)){
+	    if(isCollidingWith(e)){
 		hit(e);
 	    }
 	}

@@ -5,26 +5,27 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
-import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 20:52 To change this template use File | Settings | File
  * Templates.
  */
+@SuppressWarnings("JavaDoc")
 public class Entity implements IRoomListener
 {
-    protected Image sprite;
+    protected Image sprite = null;
 
 
-    public static float TILE_WIDTH_IN_PX = 72.0f;
-    public static float TILE_HEIGHT_IN_PX = 72.0f;
-    public static float PX_HEIGHT_PER_Z = TILE_HEIGHT_IN_PX / 3.0f; //TODO change this!
-    public static float TILE_RENDER_OFFSET_Y = -2.0f * PX_HEIGHT_PER_Z;
+    public static final float TILE_WIDTH_IN_PX = 72.0f;
+    public static final float TILE_HEIGHT_IN_PX = 72.0f;
+    public static final float PX_HEIGHT_PER_Z = TILE_HEIGHT_IN_PX / 3.0f; //TODO change this!
+    public static final float TILE_RENDER_OFFSET_Y = -2.0f * PX_HEIGHT_PER_Z;
 
 
     protected float x;
@@ -36,9 +37,9 @@ public class Entity implements IRoomListener
     protected float width = TILE_WIDTH_IN_PX;
     protected float height = TILE_HEIGHT_IN_PX;
 
-    private Room currentRoom;
+    private Room currentRoom = null;
 
-    private ArrayList<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
+    private Collection<IEntityListener> entityListeners = new ArrayList<IEntityListener>();
     private Faction faction = Faction.NEUTRAL;
 
     public void gameUpdate(GameContainer gameContainer, int delta) {
@@ -51,15 +52,15 @@ public class Entity implements IRoomListener
 	sprite.draw(screenX + x, screenY + y );
     }
 
-    public boolean collidesWith(Shape other){
+    public boolean isCollidingWith(Shape other){
 	Shape thisBox = getHitBox();
 	return thisBox.intersects(other)
 		|| thisBox.contains(other)
 		|| other.contains(thisBox);
     }
 
-    public boolean collidesWith(Entity other){
-	return collidesWith(other.getHitBox());
+    public boolean isCollidingWith(Entity other){
+	return isCollidingWith(other.getHitBox());
     }
 
     public Shape getHitBox(){
@@ -68,7 +69,7 @@ public class Entity implements IRoomListener
 
     public boolean isHostileTo(Entity other){
 	//TODO: fixa detta!
-	return faction != other.getFaction() && ( faction != Faction.NEUTRAL && other.getFaction() != Faction.NEUTRAL );
+	return faction != other.faction && ( faction != Faction.NEUTRAL && other.faction != Faction.NEUTRAL );
     }
 
     public void getHit(int incoming, Entity attacker){
@@ -86,7 +87,7 @@ public class Entity implements IRoomListener
         z = inZ;
     }
 
-    public Entity(float inX, float inY, float inZ, Image inSprite){
+    @SuppressWarnings("UnusedDeclaration") public Entity(float inX, float inY, float inZ, Image inSprite){
         this(inX, inY, inZ);
         sprite = inSprite;
     }
@@ -122,11 +123,11 @@ public class Entity implements IRoomListener
     }
 
     public float getUniversalX(){
-	return toUniversalX(getX());
+	return toUniversalX(x);
     }
 
     public float getUniversalY(){
-	return toUniversalY(getY());
+	return toUniversalY(y);
     }
 
     public Image getSprite() {
@@ -153,11 +154,11 @@ public class Entity implements IRoomListener
         this.y = y;
     }
 
-    public float getZ() {
+    @SuppressWarnings("UnusedDeclaration") public float getZ() {
         return z;
     }
 
-    public void setZ(float z) {
+    @SuppressWarnings("UnusedDeclaration") public void setZ(float z) {
         this.z = z;
     }
 
@@ -165,7 +166,7 @@ public class Entity implements IRoomListener
        return this.x + TILE_WIDTH_IN_PX / 2.0f;
     }
 
-    public void setCenterX(float cx) {
+    @SuppressWarnings("UnusedDeclaration") public void setCenterX(float cx) {
         this.x = cx - TILE_WIDTH_IN_PX / 2.0f;
     }
 
@@ -173,7 +174,7 @@ public class Entity implements IRoomListener
         return this.y + TILE_HEIGHT_IN_PX / 2.0f;
     }
 
-    public void setCenterY(float cy) {
+    @SuppressWarnings("UnusedDeclaration") public void setCenterY(float cy) {
         this.y = cy - TILE_HEIGHT_IN_PX / 2.0f;
     }
 
@@ -182,13 +183,13 @@ public class Entity implements IRoomListener
     }
 
     public void setCurrentRoom(Room newRoom) {
-        if(this.getCurrentRoom() != null){
-            this.getCurrentRoom().removeEntity(this);
-	    this.getCurrentRoom().removeRoomListener(this);
+        if(this.currentRoom != null){
+	    this.currentRoom.removeEntity(this);
+	    this.currentRoom.removeRoomListener(this);
 	}
 
-	if(getCurrentRoom() == null && newRoom != null) newRoom.getLevel().addActiveEntity(this);
-	if(getCurrentRoom() != null && newRoom == null) getCurrentRoom().getLevel().removeActiveEntity(this);
+	if(currentRoom == null && newRoom != null) newRoom.getLevel().addActiveEntity(this);
+	if(currentRoom != null && newRoom == null) currentRoom.getLevel().removeActiveEntity(this);
 
 	this.currentRoom = newRoom;
 

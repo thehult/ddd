@@ -6,31 +6,34 @@ import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
-import se.sebpa096.tobhu543.ddd.ingame.entities.items.EUnarmed;
-import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
-import se.sebpa096.tobhu543.ddd.states.GameState;
 
+@SuppressWarnings("JavaDoc")
 public class  Player extends Unit implements IUpdateListener {
 
-    public static int PLAYER_HEALTH_REGENERATION = 5;
-    public static int PLAYER_HEALTH_REGENERATION_COOLDOWN = 2000;
+    public static final int PLAYER_HP_REGENERATION = 5;
+    public static final int PLAYER_HP_REG_COOLDOWN = 2000;
 
-    private int regCooldown = PLAYER_HEALTH_REGENERATION_COOLDOWN;
+    public static final float PLAYER_STANDARD_MAX_VELOCITY = 600.0f;
+    @SuppressWarnings("UnusedDeclaration") public static final int PLAYER_STANDARD_MAX_HEALTH = 100;
+    @SuppressWarnings("UnusedDeclaration") public static final int PLAYER_STANDARD_MAX_ITEMS = 6;
+
+    private int regCooldown = PLAYER_HP_REG_COOLDOWN;
     public Player() {
         this.setSprite((Image)GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.PLAYER_DOWN));
-        this.setMaxVelocity(600.0f);
-        this.setHealth(100);
+        this.setMaxVelocity(PLAYER_STANDARD_MAX_VELOCITY);
+        setHealth(100);
         this.setMaxNoItems(6);
 	this.setFaction(Faction.PLAYER);
 
     }
 
     @Override public void die() {
-        Game.STARTED = false;
+	super.die();
+        Game.setStarted(false);
         Game.GAME_STATE.gameOver();
     }
 
@@ -44,10 +47,7 @@ public class  Player extends Unit implements IUpdateListener {
             System.out.println("   by: null");
     }
 
-    @Override
-    public void setHealth(int health) {
-        super.setHealth(health);
-    }
+
 
     @Override
     public void gameUpdate(GameContainer gameContainer, int delta) {
@@ -73,11 +73,11 @@ public class  Player extends Unit implements IUpdateListener {
         this.setMovingDir(dX, dY);
         regCooldown -= delta;
         if(regCooldown <= 0) {
-            regCooldown = PLAYER_HEALTH_REGENERATION_COOLDOWN;
+            regCooldown = PLAYER_HP_REG_COOLDOWN;
             if(this.getHealth() < this.getMaxHealth()) {
-                this.setHealth(this.getHealth() + PLAYER_HEALTH_REGENERATION);
+                setHealth(this.getHealth() + PLAYER_HP_REGENERATION);
                 if(this.getHealth() > this.getMaxHealth()) {
-                    this.setHealth(this.getMaxHealth());
+                    setHealth(this.getMaxHealth());
                 }
             }
         }

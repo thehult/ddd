@@ -2,35 +2,40 @@ package se.sebpa096.tobhu543.ddd.states;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.Tester;
 import se.sebpa096.tobhu543.ddd.ingame.*;
 import se.sebpa096.tobhu543.ddd.ingame.camera.Camera;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
+//this.game = game; <= no bug
+@SuppressWarnings({ "JavaDoc", "ParameterHidesMemberVariable" })
 public class GameState extends State {
-    private Game game;
+    public static final float SPAWN_RATE = 0.01f;
+
+    private Game game = null;
 
     private int levelNumber = 1;
 
-    private Level level;
-    private Camera camera;
-    private HUD hud;
+    private Level level = null;
+    private Camera camera = null;
+    private HUD hud = null;
 
-    private ArrayList<Player> players = new ArrayList<Player>();
-    private ArrayList<Room> activeRooms = new ArrayList<Room>();
+    private List<Player> players = new ArrayList<Player>();
 
-    private ArrayList<IUpdateListener> updateListeners = new ArrayList<IUpdateListener>();
+    private Collection<IUpdateListener> updateListeners = new ArrayList<IUpdateListener>();
+    private List<Room> activeRooms = null;
 
     @Override
     public void init(GameContainer gameContainer, Game game) {
 	this.game = game;
         players = new ArrayList<Player>();
-        initNewLevel(gameContainer, game);
+        initNewLevel();
         Player player = new Player();
         camera = new Camera(gameContainer);
         player.addEntityListener(camera);
@@ -44,18 +49,18 @@ public class GameState extends State {
         hud = new HUD(player);
         player.setHealth(player.getMaxHealth());
         //camera.lockRoom(level.getStartRoom());
-        Game.STARTED = true;
+        Game.setStarted(true);
 
     }
 
-    public void initNewLevel(GameContainer gameContainer, Game game) {
+    public void initNewLevel() {
         activeRooms = new ArrayList<Room>();
         updateListeners = new ArrayList<IUpdateListener>();
         UnitFactory.init();
         if(levelNumber % 4 == 0)
             level = LevelFactory.makeBossLevel();
         else
-            level = LevelFactory.makeRealLevel(2, getLevelNumber() * 0.01f);
+            level = LevelFactory.makeRealLevel(2, levelNumber * SPAWN_RATE);
         addUpdateListener(level);
         System.out.println("Starting level: " + levelNumber);
     }
@@ -63,8 +68,8 @@ public class GameState extends State {
     public void movePlayersToNewLevel() {
         for(Player player : players) {
             player.addEntityListener(level);
-            player.setX(Tile.TILE_WIDTH_IN_PX * (float) (Room.ROOM_WIDTH_IN_TILES / 2 - 1) - 5);
-            player.setY(Tile.TILE_HEIGHT_IN_PX * (float) (Room.ROOM_HEIGHT_IN_TILES / 2 - 1));
+            player.setX(Entity.TILE_WIDTH_IN_PX * (Room.ROOM_WIDTH_IN_TILES / 2.0f - 1) - 5);
+            player.setY(Entity.TILE_HEIGHT_IN_PX * (Room.ROOM_HEIGHT_IN_TILES / 2.0f - 1));
             player.setCurrentRoom(level.getStartRoom());
             player.setHealth(player.getMaxHealth());
         }
@@ -81,7 +86,7 @@ public class GameState extends State {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) {
-        if(Game.TEST)
+	if(Game.TEST)
             graphics.scale(Tester.testScale, Tester.testScale);
 	level.render(gameContainer, graphics, camera);
         if(Game.TEST)
@@ -93,8 +98,6 @@ public class GameState extends State {
 	    Tester.render(gameContainer, graphics);
 	    graphics.drawString("x: " + players.get(0).getX(), 20, 30);
 	    graphics.drawString("y: " + players.get(0).getY(), 20, 50);
-	    graphics.drawString("blockX: " + players.get(0).blockX, 20, 70);
-	    graphics.drawString("blockY: " + players.get(0).blockY, 20, 90);
 
 	}
 
@@ -105,7 +108,7 @@ public class GameState extends State {
     }
 
     public void levelFinished() {
-        Game.WIN_STATE.setFinishedLevel(getLevelNumber());
+        Game.WIN_STATE.setFinishedLevel(levelNumber);
         game.setState(Game.WIN_STATE);
     }
 
@@ -113,11 +116,11 @@ public class GameState extends State {
         updateListeners.add(listener);
     }
 
-    public void removeUpdateListener(IUpdateListener listener) {
+    @SuppressWarnings("UnusedDeclaration") public void removeUpdateListener(IUpdateListener listener) {
         updateListeners.remove(listener);
     }
 
-    public ArrayList<Player> getPlayers() {
+    public Iterable<Player> getPlayers() {
 	return players;
     }
 

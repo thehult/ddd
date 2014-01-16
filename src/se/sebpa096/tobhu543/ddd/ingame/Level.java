@@ -9,6 +9,7 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 18:56 To change this template use File | Settings | File
@@ -16,13 +17,10 @@ import java.util.ArrayList;
  */
 public class Level implements IUpdateListener, IEntityListener
 {
-    private Room startRoom;
-    private ArrayList<ILevelListener> levelListeners = new ArrayList<ILevelListener>();
+    private Room startRoom = null;
+    private Collection<ILevelListener> levelListeners = new ArrayList<ILevelListener>();
     private ArrayList<Room> activeRooms = new ArrayList<Room>();
     private ArrayList<Entity> activeEntities = new ArrayList<Entity>();
-
-    public Level(){
-    }
 
 
     public void initActives(){
@@ -48,7 +46,7 @@ public class Level implements IUpdateListener, IEntityListener
     }
 
     @Override
-    public void entityChangedRoom(Room r){
+    public void entityChangedRoom(Room room){
 	updateActiveRooms();
 	updateActiveEntities();
     }
@@ -94,12 +92,12 @@ public class Level implements IUpdateListener, IEntityListener
 	activeEntities.remove(e);
     }
 
-    public void addLevelListener(ILevelListener e){
+    @SuppressWarnings("UnusedDeclaration") public void addLevelListener(ILevelListener e){
 	levelListeners.add(e);
     }
 
 
-    public ArrayList<Room> getActiveRooms(){
+    @SuppressWarnings("UnusedDeclaration") public ArrayList<Room> getActiveRooms(){
 	return activeRooms;
     }
 

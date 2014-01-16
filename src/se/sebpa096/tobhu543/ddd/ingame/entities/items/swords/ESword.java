@@ -5,16 +5,13 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.items.swords;
 //import javafx.scene.shape.Rectangle;
 //import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.geom.Polygon;
-import org.newdawn.slick.geom.Rectangle;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.Tester;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 //import javafx.geometry.Rectangle2D;
 import org.newdawn.slick.geom.Vector2f;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
-import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
 //import java.awt.Shape;
 //import java.awt.geom.Rectangle2D;
@@ -27,23 +24,23 @@ import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:06 To change this template use File | Settings | File
  * Templates.
  */
+@SuppressWarnings("JavaDoc")
 public class ESword extends EquippedItem
 {
-    public static int SWORD_STANDARD_COOLDOWN = 750;
-    public  static  int SWORD_STANDARD_LENGTH = 86;
-    public static int SWORD_STANDARD_ANGLE_REACH = 120;
-    public static int SWORD_STANDARD_DAMAGE = 20;
+    public static final int SWORD_STANDARD_COOLDOWN = 750;
+    public static final int SWORD_STANDARD_LENGTH = 86;
+    public static final int SWORD_STANDARD_ANGLE_REACH = 120;
+    public static final int SWORD_STANDARD_DAMAGE = 20;
 
-    public static float SHAKE_POWER = 3; // used for camera shake
+    public static final float SHAKE_POWER = 3; // used for camera shake
 
-    protected static int SWORD_SWING_RESOLUTION = 5; //number of points along arc of hurtbox
-    protected static int SWORD_POINT_STEP = SWORD_STANDARD_ANGLE_REACH / (SWORD_SWING_RESOLUTION - 1);
+    protected static final int SWORD_SWING_RESOLUTION = 5; //number of points along arc of hurtbox
+    protected static final int SWORD_POINT_STEP = SWORD_STANDARD_ANGLE_REACH / (SWORD_SWING_RESOLUTION - 1);
 
     protected int swordDamage = SWORD_STANDARD_DAMAGE;
 
     public ESword(){
-	super();
-        droppedTwin = new DSword(this);
+	droppedTwin = new DSword(this);
 	cooldownMax = SWORD_STANDARD_COOLDOWN;
     }
 
@@ -54,7 +51,7 @@ public class ESword extends EquippedItem
 	points[0][0] = playerPos.getX();
 	points[0][1] = playerPos.getY();
 
-	float tempAngle = midAngle - SWORD_STANDARD_ANGLE_REACH/2;
+	float tempAngle = midAngle - SWORD_STANDARD_ANGLE_REACH/2.0f;
 	Vector2f curPointer = new Vector2f( (float) (SWORD_STANDARD_LENGTH * Math.cos(Math.toRadians(tempAngle))),
 					     (float) (SWORD_STANDARD_LENGTH * Math.sin(Math.toRadians(tempAngle))));
 	for(int i = 0; i < SWORD_SWING_RESOLUTION; i++){
@@ -72,7 +69,7 @@ public class ESword extends EquippedItem
 
 	for (int i = 0; i < Game.GAME_STATE.getLevel().getActiveEntities().size(); i++) {
 	    Entity e = Game.GAME_STATE.getLevel().getActiveEntities().get(i);
-	    if(e.collidesWith(hurtBox) && user.isHostileTo(e)){
+	    if(e.isCollidingWith(hurtBox) && user.isHostileTo(e)){
 		e.getHit(swordDamage, user);
 		Game.GAME_STATE.getCamera().shake(SHAKE_POWER);
 	    }

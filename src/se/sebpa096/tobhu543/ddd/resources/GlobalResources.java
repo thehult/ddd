@@ -2,7 +2,9 @@ package se.sebpa096.tobhu543.ddd.resources;
 
 import java.util.HashMap;
 
-public class GlobalResources {
+//I have seriously NO IDEA how to solve this raw type thingy...
+@SuppressWarnings({ "rawtypes", "JavaDoc" })
+public final class GlobalResources {
 
     public static final String BUTTON_RESOURCES = "buttons";
     public static final String FONT_RESOURCES = "font";
@@ -13,7 +15,9 @@ public class GlobalResources {
     public static final String ITEM_RESOURCES = "items";
 
 
-    private static HashMap<String, ResourceManager> resourceManagers;
+    private static HashMap<String, ResourceManager> resourceManagers = null;
+
+    private GlobalResources() {}
 
     public static void init() {
         resourceManagers = new HashMap<String, ResourceManager>();

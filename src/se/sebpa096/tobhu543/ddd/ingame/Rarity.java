@@ -1,5 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
+//Raw types... don't know how to fix it.
+@SuppressWarnings({ "rawtypes", "JavaDoc" })
 public class Rarity {
     private int chance = 0;
     private Class object = null;
@@ -13,7 +15,7 @@ public class Rarity {
         return chance;
     }
 
-    public void setChance(int chance) {
+    @SuppressWarnings("UnusedDeclaration") public void setChance(int chance) {
         this.chance = chance;
     }
 
@@ -21,7 +23,7 @@ public class Rarity {
         return object;
     }
 
-    public void setObject(Class object) {
+    @SuppressWarnings("UnusedDeclaration") public void setObject(Class object) {
         this.object = object;
     }
 }

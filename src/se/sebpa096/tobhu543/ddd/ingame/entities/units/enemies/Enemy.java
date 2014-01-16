@@ -1,17 +1,13 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.Game;
-import se.sebpa096.tobhu543.ddd.ingame.RarityHandler;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
-import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
-import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
-import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
+@SuppressWarnings("JavaDoc")
 public class Enemy extends Unit {
 
     public Enemy() {

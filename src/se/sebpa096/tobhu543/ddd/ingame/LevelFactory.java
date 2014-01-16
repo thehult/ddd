@@ -1,8 +1,8 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
 import org.lwjgl.util.Point;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.StairsGoal;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.ESword;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemyLeBoss;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemyOrc;
@@ -14,9 +14,11 @@ import java.util.HashMap;
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 19:38 To change this template use File | Settings | File
  * Templates.
  */
-public class LevelFactory
+public final class LevelFactory
 {
-    public static Level makeTestLevel(){
+    private LevelFactory() {}
+
+    @SuppressWarnings("UnusedDeclaration") public static Level makeTestLevel(){
         Level level = new Level();
 
         EnemyOrc eorc = new EnemyOrc();
@@ -47,8 +49,8 @@ public class LevelFactory
         return level;
     }
 
-
-    public static Level makeRealLevel(int desSize, float enemyDensity) {
+	//I looked for a way to split it up when inspector told me it was too long. Can't seem to find any good way though, that makes it more than a couple of rows shorter.
+    @SuppressWarnings("OverlyLongMethod") public static Level makeRealLevel(int desSize, float enemyDensity) {
         Level level = new Level();
         HashMap<Point,Room> coordinates = new HashMap<Point, Room>();
         Room startRoom = RoomFactory.makeStartRoom(0, 0, level);
@@ -56,14 +58,13 @@ public class LevelFactory
         coordinates.put(new Point(0, 0), startRoom);
         ArrayList<Room> roomQueue = new ArrayList<Room>();
         roomQueue.add(startRoom);
-        double desiredSize = (double)desSize + 1.0;
-        double currentSize = 0;
-        Room lastRoom = null;
+        double desiredSize = desSize + 1.0;
+	Room lastRoom = null;
         while(!roomQueue.isEmpty()) {
             Room room = roomQueue.remove(0);
             lastRoom = room;
-            currentSize = Math.hypot(room.getX(), room.getY());
-            if(!room.hasLeftRoom()) {
+	    double currentSize = Math.hypot(room.getX(), room.getY());
+	    if(!room.hasLeftRoom()) {
                 if(Math.random() < (desiredSize - currentSize) / desiredSize) {
                     if(coordinates.containsKey(new Point(room.getX() - 1, room.getY()))) {
                         room.linkLeftRoom(coordinates.get(new Point(room.getX() - 1, room.getY())));
@@ -114,8 +115,8 @@ public class LevelFactory
             }
         }
         StairsGoal stairs = new StairsGoal();
-        stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
-        stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
+        stairs.setX(Entity.TILE_WIDTH_IN_PX * (Room.ROOM_WIDTH_IN_TILES/2.0f));
+        stairs.setY(Entity.TILE_HEIGHT_IN_PX * (Room.ROOM_HEIGHT_IN_TILES/2.0f - 1));
         stairs.setCurrentRoom(lastRoom);
         return level;
     }
@@ -141,8 +142,8 @@ public class LevelFactory
         dRoom.linkTopRoom(eRoom);
 
         StairsGoal stairs = new StairsGoal();
-        stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
-        stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
+        stairs.setX(Entity.TILE_WIDTH_IN_PX * (Room.ROOM_WIDTH_IN_TILES/2.0f));
+        stairs.setY(Entity.TILE_HEIGHT_IN_PX * (Room.ROOM_HEIGHT_IN_TILES/2.0f - 1));
         stairs.setCurrentRoom(eRoom);
 
         EnemyLeBoss eorc = new EnemyLeBoss();

@@ -5,21 +5,21 @@ import org.newdawn.slick.*;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.states.*;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.SEVERE;
-import static org.lwjgl.opengl.GL11.glBlendFunc;
-import static org.lwjgl.opengl.GL11.glEnable;
 
+//ClassName... unlucky mistake from our side to name it Game. Tried renaming it to DDDGame, but the references and parameters got all messed up, since they didn't change with it, and though Game was the superclass. Leaving it as "Game" for now.
+@SuppressWarnings({ "JavaDoc", "ClassNameSameAsAncestorName" })
 public class Game extends BasicGame {
     public static final String GAME_NAME = "Dungeon Derring-Do's";
     public static final int WINDOW_WIDTH = 800;
     public static final int WINDOW_HEIGHT = 600;
+    public static final float MILLISEC_PER_SEC = 1000.0f;
 
-    public static boolean TEST = false;
+    public static final boolean TEST = false;
 
-    public static void main(String[] args) {
+    @SuppressWarnings("UnusedDeclaration") public static void main(String[] args) {
         try {
             AppGameContainer appGC;
             appGC = new AppGameContainer(new Game(GAME_NAME));
@@ -32,8 +32,9 @@ public class Game extends BasicGame {
 
     // CLASS IMPLEMENTATION BELOW
 
-    private State state;
-    public static boolean STARTED = false;
+    private State state = null;
+    @SuppressWarnings("UnusedDeclaration")
+    private static boolean started = false;
     public static final MenuState MENU_STATE = new MenuState();
     public static final GameState GAME_STATE = new GameState();
     public static final OptionsState OPTIONS_STATE = new OptionsState();
@@ -43,6 +44,15 @@ public class Game extends BasicGame {
     private Game(String gameName) {
         super(gameName);
 
+    }
+
+    public static void setStarted(boolean started) {
+	Game.started = started;
+    }
+
+    //Might be of use
+    @SuppressWarnings("UnusedDeclaration") public static boolean isStarted() {
+	return started;
     }
 
     private void initMenuStates(GameContainer gameContainer){
@@ -58,7 +68,7 @@ public class Game extends BasicGame {
 
     public void setAndInitState(State state, GameContainer gameContainer){
         state.init(gameContainer, this); //TODO maybe fix a better solution. private pointer to gameContainer?
-        setState(state);
+	this.state = state;
     }
 
 
@@ -66,7 +76,7 @@ public class Game extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         GlobalResources.init();
         initMenuStates(gameContainer);
-        setState(MENU_STATE);
+	state = MENU_STATE;
 
     }
 

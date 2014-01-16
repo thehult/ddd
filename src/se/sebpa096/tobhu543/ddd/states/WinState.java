@@ -18,12 +18,11 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
  */
 public class WinState extends State
 {
-    private Game game;
-    private GameContainer gameContainer;
+    private Game gameD = null;
 
-    private UI optionsUI;
-    private MenuButton next;
-    private Label header;
+    private UI optionsUI = null;
+    private MenuButton next = null;
+    private Label header = null;
 
     private static final float BACK_POSX_RAT = 2.0f/4.0f; //position of next button as a ration of screen with, from the left
     private static final float BACK_POSY_RAT = 7.0f/8.0f; // -- || --                                     height         top
@@ -31,16 +30,14 @@ public class WinState extends State
 
     public void init(GameContainer gameContainer, Game game) {
         //try {
-        this.game = game;
-        this.gameContainer = gameContainer;
+       	this.gameD = game;
             optionsUI = new UI(this, gameContainer);
 
-            final GameContainer gameContainerContext = gameContainer;
             header = new Label("Level x finished!");
             optionsUI.addComponent(header);
             header.setWidth(UI.STD_COMPONENT_WIDTH);
             header.setHeight(UI.STD_COMPONENT_HEIGHT);
-            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
+            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
 	    header.setY(UI.STD_COMPONENT_MARGIN);
             header.updateRenderPos();
 
@@ -54,8 +51,9 @@ public class WinState extends State
 	    next.setMouseListener(new ButtonMouseListener(next) {
             @Override
             public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
-                super.mouseDownLeft(sender, x, y);
-                Game.GAME_STATE.initNewLevel(gameContainerContext, context);
+		super.mouseUpLeft(sender, x, y, stillOver);
+                mouseDownLeft(sender, x, y);
+                Game.GAME_STATE.initNewLevel();
                 Game.GAME_STATE.movePlayersToNewLevel();
                 context.setState(Game.GAME_STATE);
             }
@@ -81,11 +79,12 @@ public class WinState extends State
         next.setMouseListener(new ButtonMouseListener(next) {
             @Override
             public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
-                super.mouseDownLeft(sender, x, y);
+		super.mouseUpLeft(sender, x, y, stillOver);
+                mouseDownLeft(sender, x, y);
                 Game.GAME_STATE.setLevelNumber(fLevel + 1);
-                Game.GAME_STATE.initNewLevel(gameContainer, game);
+                Game.GAME_STATE.initNewLevel();
                 Game.GAME_STATE.movePlayersToNewLevel();
-                game.setState(Game.GAME_STATE);
+                gameD.setState(Game.GAME_STATE);
             }
         });
         optionsUI.addMouseListener(next.getMouseListener());

@@ -1,7 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
 import org.newdawn.slick.Image;
-import se.sebpa096.tobhu543.ddd.Game;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.StairsStart;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.swords.DFireSword;
@@ -10,8 +10,12 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
-public class RoomFactory {
-    public static final double TILE_VARIANCE_FACTOR = 0.1;
+@SuppressWarnings("JavaDoc")
+public final class RoomFactory {
+    @SuppressWarnings("UnusedDeclaration") public static final double TILE_VARIANCE_FACTOR = 0.1;
+
+    private RoomFactory() {}
+
     public static Room makeDefaultRoom(int gridX, int gridY, Level level) {
         Room build = new Room(gridX, gridY, level);
         Tile[][] tiles = new Tile[Room.ROOM_WIDTH_IN_TILES][Room.ROOM_HEIGHT_IN_TILES];
@@ -51,8 +55,8 @@ public class RoomFactory {
                 if(Math.random() < threatDensity) {
                     Unit unit = UnitFactory.makeRandomUnit();
 
-                    unit.setX(x * Tile.TILE_WIDTH_IN_PX);
-                    unit.setY(y * Tile.TILE_HEIGHT_IN_PX);
+                    unit.setX(x * Entity.TILE_WIDTH_IN_PX);
+                    unit.setY(y * Entity.TILE_HEIGHT_IN_PX);
                     unit.setCurrentRoom(build);
                 }
             }
@@ -63,8 +67,8 @@ public class RoomFactory {
     public static Room makeStartRoom(int gridX, int gridY, Level level) {
         Room build = makeDefaultRoom(gridX, gridY, level);
         StairsStart stairs = new StairsStart();
-        stairs.setX(Tile.TILE_WIDTH_IN_PX * (float)(Room.ROOM_WIDTH_IN_TILES/2));
-        stairs.setY(Tile.TILE_HEIGHT_IN_PX * (float)(Room.ROOM_HEIGHT_IN_TILES/2 - 1));
+        stairs.setX(Entity.TILE_WIDTH_IN_PX * (Room.ROOM_WIDTH_IN_TILES/2.0f));
+        stairs.setY(Entity.TILE_HEIGHT_IN_PX * (Room.ROOM_HEIGHT_IN_TILES/2.0f - 1));
         build.setBlockingTile(Room.ROOM_WIDTH_IN_TILES/2 + 1, Room.ROOM_HEIGHT_IN_TILES/2, true);
         stairs.setCurrentRoom(build);
         return build;

@@ -1,30 +1,34 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RarityHandler extends ArrayList<Rarity> {
+//Raw types... still don't know what it wants me to do different.
+@SuppressWarnings({ "rawtypes", "JavaDoc" })
+public class RarityHandler
+{
+    private final List<Rarity> rarities = new ArrayList<Rarity>();
     private int totalChance = 0;
 
-    public boolean add(Class object, int chance) {
-        return add(new Rarity(object, chance));
+    public void add(Class object, int chance) {
+        add(new Rarity(object, chance));
     }
 
-    @Override
-    public boolean add(Rarity rarity) {
+    public void add(Rarity rarity) {
         totalChance += rarity.getChance();
-        return super.add(rarity);
+        rarities.add(rarity);
     }
 
     public Class getRandomRarity() {
         int random = (int)(Math.random() * totalChance);
         int currentLow = 0;
 
-        for(int i=0;i<this.size();i++) {
-            if(random >= currentLow && random < this.get(i).getChance() + currentLow) {
-                return this.get(i).getObject();
+        for(int i=0;i< rarities.size();i++) {
+            if(random >= currentLow && random < rarities.get(i).getChance() + currentLow) {
+                return rarities.get(i).getObject();
             }
-            currentLow += this.get(i).getChance();
+            currentLow += rarities.get(i).getChance();
         }
-        return this.get(this.size() - 1).getObject();
+        return rarities.get(rarities.size() - 1).getObject();
     }
 }

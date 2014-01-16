@@ -2,9 +2,8 @@ package se.sebpa096.tobhu543.ddd.resources;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
-import org.newdawn.slick.font.effects.ColorEffect;
 
+@SuppressWarnings("JavaDoc")
 public class UnitResources extends ResourceManager<Image> {
     public static final String PLAYER_DOWN = "playerDown";
     public static final String ORC_DOWN = "orcDown";
@@ -15,8 +14,7 @@ public class UnitResources extends ResourceManager<Image> {
     public static final String LE_BOSS_DOWN = "leBossDown";
 
     public UnitResources() {
-        super();
-        try {
+	try {
             resources.put(PLAYER_DOWN, new Image("res/units/player_down.png"));
             resources.put(ORC_DOWN, new Image("res/units/orc_down.png"));
             resources.put(WIZARD_DOWN, new Image("res/units/wizard_down.png"));

@@ -1,8 +1,6 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.projectiles;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
+import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 /**
@@ -21,8 +19,8 @@ public abstract class LinearProjectile extends Projectile
     }
 
     @Override void move(int delta) {
-	x = x + velocityX * (float)delta / 1000f;
-	y = y + velocityY * (float)delta / 1000f;
+	x += velocityX * delta / Game.MILLISEC_PER_SEC;
+	y += velocityY * delta / Game.MILLISEC_PER_SEC;
     }
 
 

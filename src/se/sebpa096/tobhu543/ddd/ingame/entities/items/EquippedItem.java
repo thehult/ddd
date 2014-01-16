@@ -1,16 +1,14 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 
 import org.newdawn.slick.GameContainer;
-import se.sebpa096.tobhu543.ddd.ingame.IUpdateListener;
-import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
-import se.sebpa096.tobhu543.ddd.ingame.entities.Tile;
+import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
-import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:08 To change this template use File | Settings | File
  * Templates.
  */
+@SuppressWarnings("UnusedParameters")
 public abstract class EquippedItem
 {
     public DroppedItem getDroppedTwin() {
@@ -22,17 +20,16 @@ public abstract class EquippedItem
 	this.droppedTwin = droppedTwin;
     }
 
-    protected DroppedItem droppedTwin;
+    protected DroppedItem droppedTwin = null;
 
     protected int cooldownMax = 0;
     protected int currentCooldown = cooldownMax;
-    protected float range = Tile.TILE_WIDTH_IN_PX;
+    protected float range = Entity.TILE_WIDTH_IN_PX;
 
-    public EquippedItem(){
-	    super();
+    protected EquippedItem(){
 
     }
-    public EquippedItem(DroppedItem item){
+    @SuppressWarnings("UnusedDeclaration") protected EquippedItem(DroppedItem item){
         this();
 	    droppedTwin = item;
 
@@ -53,28 +50,30 @@ public abstract class EquippedItem
 	}
     }
 
-    public void gameUpdate(GameContainer gameContainer, int delta){
+    //Suppress since GameContainer might be of use later on (it contains the window parameters and such)
+
+    public void gameUpdate(@SuppressWarnings("UnusedParameters") GameContainer gameContainer, int delta){
 	if(currentCooldown > 0){
-	    currentCooldown = currentCooldown - delta;
+	    currentCooldown -= delta;
 	    if(currentCooldown < 0 ) currentCooldown = 0;
 	}
     }
 
     protected abstract void use(Unit user, float normX, float normY);
 
-    public int getCooldownMax() {
+    @SuppressWarnings("UnusedDeclaration") public int getCooldownMax() {
         return cooldownMax;
     }
 
-    public void setCooldownMax(int cooldownMax) {
+    @SuppressWarnings("UnusedDeclaration") public void setCooldownMax(int cooldownMax) {
         this.cooldownMax = cooldownMax;
     }
 
-    public int getCurrentCooldown() {
+    @SuppressWarnings("UnusedDeclaration") public int getCurrentCooldown() {
         return currentCooldown;
     }
 
-    public void setCurrentCooldown(int currentCooldown) {
+    @SuppressWarnings("UnusedDeclaration") public void setCurrentCooldown(int currentCooldown) {
         this.currentCooldown = currentCooldown;
     }
 

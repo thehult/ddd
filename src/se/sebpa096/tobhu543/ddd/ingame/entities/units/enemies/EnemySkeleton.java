@@ -4,13 +4,17 @@ import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
+@SuppressWarnings("JavaDoc")
 public class EnemySkeleton extends Enemy {
 
+    public static final float SKELETON_STANDARD_VELOCITY = 75.0f;
+    public static final int SKELETON_STANDARD_MIN_HEALTH = 20;
+    public static final int SKELETON_STANDARD_MAX_HEALTH = 40;
+
     public EnemySkeleton() {
-        super();
-        this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.SKELETON_DOWN));
-        this.setMaxVelocity(75.0f);
-        this.setRandomHealthMin(20);
-        this.setRandomHealthMax(40);
+	this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.SKELETON_DOWN));
+        this.setMaxVelocity(SKELETON_STANDARD_VELOCITY);
+        this.setRandomHealthMin(SKELETON_STANDARD_MIN_HEALTH);
+        this.setRandomHealthMax(SKELETON_STANDARD_MAX_HEALTH);
     }
 }

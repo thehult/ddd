@@ -3,9 +3,7 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.items;
 //import javafx.geometry.Rectangle2D;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Shape;
 import se.sebpa096.tobhu543.ddd.Game;
-import se.sebpa096.tobhu543.ddd.ingame.IRoomListener;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
@@ -13,22 +11,21 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:08 To change this template use File | Settings | File
  * Templates.
  */
-public class DroppedItem extends Entity implements IRoomListener
+public class DroppedItem extends Entity
 {
-    protected EquippedItem droppedTwin;
+    protected EquippedItem droppedTwin = null;
     private boolean onMap;
     private HashMap<Unit, Boolean> recentPlayerTable = new HashMap<Unit, Boolean>(); //keeps track of who can pick up
 
     public DroppedItem(){
-	super();
     }
     public DroppedItem(EquippedItem twin){
-	super();
 	droppedTwin = twin;
 	droppedTwin.setDroppedTwin(this);
     }
@@ -50,17 +47,17 @@ public class DroppedItem extends Entity implements IRoomListener
     }
 
     private void handlePlayerCollision(){
-	ArrayList<Player> collPlayers = collidingPlayers();
-	if(collPlayers.size() > 0){
+	List<Player> collPlayers = collidingPlayers();
+	if(!collPlayers.isEmpty()){
 	    collPlayers.get(0).receiveItem(droppedTwin);
 	    removeFromMap();
 	}
     }
 
-    private ArrayList<Player> collidingPlayers(){ //returns all colliding eligible players
-	ArrayList<Player> colliding = new ArrayList<Player>();
+    private List<Player> collidingPlayers(){ //returns all colliding eligible players
+	List<Player> colliding = new ArrayList<Player>();
 	for(Player player: Game.GAME_STATE.getPlayers()){
-	    boolean intersects = player.collidesWith(this);
+	    boolean intersects = player.isCollidingWith(this);
 	    boolean isRegisteredRecent = recentPlayerTable.containsKey(player);
 	    boolean isRecent = false;
 	    if(isRegisteredRecent)

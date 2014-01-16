@@ -3,6 +3,7 @@ package se.sebpa096.tobhu543.ddd.ui.listeners;
 import se.sebpa096.tobhu543.ddd.ui.components.Button;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
 
+@SuppressWarnings("JavaDoc")
 public class ButtonMouseListener extends MouseListener {
     Button button;
 
@@ -18,8 +19,16 @@ public class ButtonMouseListener extends MouseListener {
     }
 
     @Override
-    public void mouseUpLeft(Component sender, float x, float y, boolean stillOVer) {
+    public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
         button.setCurrentImage(button.getStandardImage());
+    }
+
+    @Override public void mouseDownRight(final Component sender, final float x, final float y) {
+
+    }
+
+    @Override public void mouseUpRight(final Component sender, final float x, final float y, final boolean stillOver) {
+
     }
 
     @Override
@@ -31,5 +40,9 @@ public class ButtonMouseListener extends MouseListener {
     @Override
     public void mouseOut(Component sender, float x, float y) {
         button.setCurrentImage(button.getStandardImage());
+    }
+
+    @Override public void mouseOver(final Component sender, final float x, final float y) {
+
     }
 }

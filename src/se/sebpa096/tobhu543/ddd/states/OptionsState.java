@@ -3,7 +3,6 @@ package se.sebpa096.tobhu543.ddd.states;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.resources.BackgroundResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
@@ -19,9 +18,7 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
  */
 public class OptionsState extends State
 {
-    private Game game;
-
-    private UI optionsUI;
+    private UI optionsUI = null;
 
     private static final float BACK_POSX_RAT = 1.0f/4.0f; //position of back button as a ration of screen with, from the left
     private static final float BACK_POSY_RAT = 7.0f/8.0f; // -- || --                                     height         top
@@ -36,7 +33,7 @@ public class OptionsState extends State
             optionsUI.addComponent(header);
             header.setWidth(UI.STD_COMPONENT_WIDTH);
             header.setHeight(UI.STD_COMPONENT_HEIGHT);
-            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2);
+            header.setX((gameContainer.getWidth() - UI.STD_COMPONENT_WIDTH) / 2.0f);
 	    header.setY(UI.STD_COMPONENT_MARGIN);
             header.updateRenderPos();
 
@@ -50,8 +47,9 @@ public class OptionsState extends State
 	    back.setMouseListener(new ButtonMouseListener(back) {
             @Override
             public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
-                super.mouseDownLeft(sender, x, y);
-                context.setState(context.MENU_STATE);
+		super.mouseUpLeft(sender, x, y, stillOver);
+                mouseDownLeft(sender, x, y);
+                context.setState(Game.MENU_STATE);
             }
         });
             optionsUI.addComponent(back);
@@ -68,7 +66,8 @@ public class OptionsState extends State
             save.setMouseListener(new ButtonMouseListener(save) {
                 @Override
                 public void mouseUpLeft(Component sender, float x, float y, boolean stillOver) {
-                    super.mouseDownLeft(sender, x, y);
+		    super.mouseUpLeft(sender, x, y, stillOver);
+                    mouseDownLeft(sender, x, y);
                     //TODO: save current settings
                     System.out.println("Settings saved!");
                 }
