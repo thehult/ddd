@@ -97,7 +97,7 @@ public class Unit extends MovingEntity {
     }
 
     public void useItem(){
-	if(hasEquippedItem()){
+	if(!hasEquippedItem()){
             unarmedItem.tryUse(this, getMovingDirX(), getMovingDirY()); //TODO fixa direction
         }else{
             equippedItems[currentItemNo].tryUse(this, getMovingDirX(), getMovingDirY()); //TODO fixa direction!
