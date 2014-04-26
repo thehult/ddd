@@ -1,0 +1,1 @@
+java -classpath lwjgl.jar;slick.jar;lwjgl_util.jar;jinput.jar;. -Djava.library.path=lib/macosx se.sebpa096.tobhu543.ddd.Game

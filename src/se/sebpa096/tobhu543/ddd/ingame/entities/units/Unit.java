@@ -159,7 +159,7 @@ public class Unit extends MovingEntity {
     public void die(){
         if(this.equippedItems[0] != null)
             this.dropItem(0);
-	//setCurrentRoom(null);
+	setCurrentRoom(null);
     }
 
     @SuppressWarnings("UnusedDeclaration") public EquippedItem getUnarmedItem() {

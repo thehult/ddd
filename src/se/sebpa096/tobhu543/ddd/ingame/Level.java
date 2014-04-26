@@ -63,16 +63,18 @@ public class Level implements IUpdateListener, IEntityListener
     private void updateActiveRooms(){
 	activeRooms.clear();
 	for(Player p: Game.GAME_STATE.getPlayers()){
-	    Room temp = p.getCurrentRoom();
-	    if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
-	    temp = p.getCurrentRoom().getTopRoom();
-	    if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
-	    temp = p.getCurrentRoom().getRightRoom();
-	    if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
-	    temp = p.getCurrentRoom().getBottomRoom();
-	    if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
-	    temp = p.getCurrentRoom().getLeftRoom();
-	    if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
+	    if(p.getCurrentRoom() != null) {
+		Room temp = p.getCurrentRoom();
+		if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
+			temp = p.getCurrentRoom().getTopRoom();
+		if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
+			temp = p.getCurrentRoom().getRightRoom();
+		if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
+			temp = p.getCurrentRoom().getBottomRoom();
+		if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
+			temp = p.getCurrentRoom().getLeftRoom();
+		if(!activeRooms.contains(temp) && temp != null) activeRooms.add(temp);
+	    }
 	}
     }
 
