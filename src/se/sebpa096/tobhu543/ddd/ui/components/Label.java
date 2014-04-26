@@ -6,7 +6,9 @@ import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.resources.FontResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The label component is just showing some text.
+ */
 public class Label extends Component {
     private String text = null;
     private Font font;

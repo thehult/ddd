@@ -6,7 +6,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemySkeleton;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The item Book Of Sin equipped.
+ */
 public class EBookOfSin extends EquippedItem {
     public static final int BOS_STANDARD_COOLDOWN = 8000;
     public EBookOfSin(){

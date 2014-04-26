@@ -1,7 +1,11 @@
 package se.sebpa096.tobhu543.ddd.ingame;
 
 //Raw types... don't know how to fix it.
-@SuppressWarnings({ "rawtypes", "JavaDoc" })
+
+/**
+ * A Rarity used by RarityHandler. Basically the drops from creatures.
+ */
+@SuppressWarnings({ "rawtypes"})
 public class Rarity {
     private int chance = 0;
     private Class object = null;

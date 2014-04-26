@@ -12,7 +12,11 @@ import java.util.List;
 
 
 //No. "UI" is not too short.
-@SuppressWarnings({ "UnusedParameters", "JavaDoc", "ClassNamingConvention" })
+
+/**
+ * This is the main UI class. This provides an interactive UI for a state. Components can be added to this.
+ */
+@SuppressWarnings({ "UnusedParameters", "ClassNamingConvention" })
 public class UI {
 
     public static final int STD_COMPONENT_MARGIN = 10;

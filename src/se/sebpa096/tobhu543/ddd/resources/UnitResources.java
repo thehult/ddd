@@ -3,7 +3,9 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * Resources.
+ */
 public class UnitResources extends ResourceManager<Image> {
     public static final String PLAYER_DOWN = "playerDown";
     public static final String ORC_DOWN = "orcDown";

@@ -7,10 +7,8 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 18:22 To change this template use File | Settings | File
- * Templates.
+ * The projectile used by the item EBow.
  */
-@SuppressWarnings("JavaDoc")
 public class Arrow extends LinearProjectile
 {
     public final static int ARROW_STANDARD_DAMAGE = 15;

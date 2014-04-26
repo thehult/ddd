@@ -7,10 +7,8 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.projectiles.EnergyOrb;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 22:32 To change this template use File | Settings | File
- * Templates.
+ * The item Eye of the Storm equipped.
  */
-@SuppressWarnings("JavaDoc")
 public class EEYeOfTheStorm extends EquippedItem
 {
     public static final int EOTS_STANDARD_COOLDOWN = 5000;

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Raw types... still don't know what it wants me to do different.
-@SuppressWarnings({ "rawtypes", "JavaDoc" })
+
+/**
+ * This class handles rarities, which are the dropchances of Items in Enemies.
+ */
+@SuppressWarnings({ "rawtypes"})
 public class RarityHandler
 {
     private final List<Rarity> rarities = new ArrayList<Rarity>();

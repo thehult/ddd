@@ -7,7 +7,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The main Enemy class, this handles general Enemy Unit logic.
+ */
 public class Enemy extends Unit {
 
     public Enemy() {

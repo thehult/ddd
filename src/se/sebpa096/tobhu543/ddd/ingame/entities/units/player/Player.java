@@ -11,7 +11,9 @@ import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The Player class, which handles input and other logic unique to the player.
+ */
 public class  Player extends Unit implements IUpdateListener {
 
     public static final int PLAYER_HP_REGENERATION = 5;

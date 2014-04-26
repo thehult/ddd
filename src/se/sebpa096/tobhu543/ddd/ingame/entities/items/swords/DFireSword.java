@@ -7,8 +7,7 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-28 Time: 21:49 To change this template use File | Settings | File
- * Templates.
+ * The item Fire Sword dropped.
  */
 public class DFireSword extends DroppedItem
 {

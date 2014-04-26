@@ -3,7 +3,9 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * Resources.
+ */
 public class TileResources extends ResourceManager<Image> {
     public static final String CBBLE_FLOOR_1 = "cbblefloor1";
     public static final String BRICK_WALL_1_TOP = "brickwall1_top";

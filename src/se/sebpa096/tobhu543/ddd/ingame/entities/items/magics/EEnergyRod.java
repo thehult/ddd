@@ -5,7 +5,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.projectiles.EnergyOrb;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The item Energy Rod equipped.
+ */
 public class EEnergyRod extends EquippedItem {
 
     public static final int ER_STANDARD_COOLDOWN = 1000;

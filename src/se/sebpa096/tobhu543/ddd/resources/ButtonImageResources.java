@@ -3,7 +3,9 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * Resources.
+ */
 public class ButtonImageResources extends ResourceManager<Image> {
     public static final String DEFAULT_STANDARD = "defaultStandard";
     public static final String DEFAULT_HOVER = "defaultHover";

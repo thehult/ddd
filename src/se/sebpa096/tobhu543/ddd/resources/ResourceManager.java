@@ -2,7 +2,9 @@ package se.sebpa096.tobhu543.ddd.resources;
 
 import java.util.HashMap;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The main Resource class, which all specific Resource classes inherits from.
+ */
 public class ResourceManager<E> {
     protected HashMap<String, E> resources;
 

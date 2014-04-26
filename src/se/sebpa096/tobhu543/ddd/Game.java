@@ -10,7 +10,11 @@ import java.util.logging.Logger;
 import static java.util.logging.Level.SEVERE;
 
 //ClassName... unlucky mistake from our side to name it Game. Tried renaming it to DDDGame, but the references and parameters got all messed up, since they didn't change with it, and though Game was the superclass. Leaving it as "Game" for now.
-@SuppressWarnings({ "JavaDoc", "ClassNameSameAsAncestorName" })
+
+/**
+ * This is the acctual game. This extends the LWJGL class BasicGame, which initializes the game window and openGL logics.
+ */
+@SuppressWarnings({ "ClassNameSameAsAncestorName" })
 public class Game extends BasicGame {
     public static final String GAME_NAME = "Dungeon Derring-Do's";
     public static final int WINDOW_WIDTH = 800;

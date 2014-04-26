@@ -2,7 +2,9 @@ package se.sebpa096.tobhu543.ddd.ingame.entities.units;
 
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The IUnitListener interface provides some listener methods to the units.
+ */
 public interface IUnitListener {
 
     //Suppress since not used yet

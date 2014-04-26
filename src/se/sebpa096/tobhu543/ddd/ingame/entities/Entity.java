@@ -13,10 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 20:52 To change this template use File | Settings | File
- * Templates.
+ * Provides common logic for Entities in the game. An entity is something that exists visually in the game and needs rendering.
  */
-@SuppressWarnings("JavaDoc")
 public class Entity implements IRoomListener
 {
     protected Image sprite = null;

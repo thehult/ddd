@@ -3,7 +3,9 @@ package se.sebpa096.tobhu543.ddd.ui.listeners;
 import se.sebpa096.tobhu543.ddd.ui.components.Button;
 import se.sebpa096.tobhu543.ddd.ui.components.Component;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The ButtonMouseListener is used when someone clicks a button. It is fun to acctually know when it's clicked.
+ */
 public class ButtonMouseListener extends MouseListener {
     Button button;
 

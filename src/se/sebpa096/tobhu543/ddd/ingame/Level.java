@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 18:56 To change this template use File | Settings | File
- * Templates.
+ * A Level consists of multiple rooms and has the general overview of the game logic.
  */
 public class Level implements IUpdateListener, IEntityListener
 {

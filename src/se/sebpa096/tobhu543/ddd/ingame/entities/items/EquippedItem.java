@@ -5,8 +5,7 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:08 To change this template use File | Settings | File
- * Templates.
+ * This class handles the logic of equipped items, and gives an abstraction of how the item classes should look.
  */
 @SuppressWarnings("UnusedParameters")
 public abstract class EquippedItem

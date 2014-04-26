@@ -5,7 +5,9 @@ import se.sebpa096.tobhu543.ddd.ingame.enums.Faction;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * A chest which contains an item. Extends Unit to provide the hit registration for players.
+ */
 public class UnitChest extends Unit {
 
     public UnitChest() {

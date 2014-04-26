@@ -6,7 +6,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The item Energy Rod dropped.
+ */
 public class DEnergyRod extends DroppedItem {
     @SuppressWarnings("UnusedDeclaration") public DEnergyRod(){
         super(new EEnergyRod());

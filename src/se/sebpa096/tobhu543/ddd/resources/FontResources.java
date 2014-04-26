@@ -6,7 +6,9 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import java.awt.Color;
 
 
-@SuppressWarnings("JavaDoc")
+/**
+ * Resources.
+ */
 public class FontResources extends ResourceManager<Font> {
     public static final String MENU_FONT = "menuFont";
     public static final String INGAME_FONT = "ingameFont";

@@ -14,7 +14,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import java.util.HashMap;
 import java.util.Map;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The UnitFactory has all the necessary information about what items that an Enemy might have. It makes the Enemies a little more random and unique.
+ */
 public final class UnitFactory {
     private static RarityHandler rarities = new RarityHandler();
     private static Map<Class<? extends Unit>, RarityHandler> itemRarities = new HashMap<Class<? extends Unit>, RarityHandler>();

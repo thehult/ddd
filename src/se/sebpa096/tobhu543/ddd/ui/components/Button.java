@@ -8,7 +8,9 @@ import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 import se.sebpa096.tobhu543.ddd.ui.listeners.MouseListener;
 
 
-@SuppressWarnings("JavaDoc")
+/**
+ * A Button Component. Used for clicking. Or ignoring. Mostly clicking.
+ */
 public class Button extends Component {
 
     private Image standardImage = null;

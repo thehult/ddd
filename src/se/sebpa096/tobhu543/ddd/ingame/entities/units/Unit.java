@@ -9,7 +9,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The Unit class provides common logic for units in the game. A Unit is a living creature of some kind (except from chests).
+ */
 public class Unit extends MovingEntity {
     private int maxNoItems = 1;
     private EquippedItem[] equippedItems = null;
@@ -157,7 +159,7 @@ public class Unit extends MovingEntity {
     public void die(){
         if(this.equippedItems[0] != null)
             this.dropItem(0);
-	setCurrentRoom(null);
+	//setCurrentRoom(null);
     }
 
     @SuppressWarnings("UnusedDeclaration") public EquippedItem getUnarmedItem() {

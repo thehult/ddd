@@ -5,7 +5,10 @@ import se.sebpa096.tobhu543.ddd.ui.components.Component;
 //Suppress unused parameters, they can all be necessary in the future
 //Suppress parameters hides... can't find which parameter that gets hidden
 
-@SuppressWarnings({ "UnusedParameters", "JavaDoc", "ParameterHidesMemberVariable" })
+/**
+ * Generates what kind of mouse event that happened.
+ */
+@SuppressWarnings({ "UnusedParameters", "ParameterHidesMemberVariable" })
 public abstract class MouseListener implements IMouseListener{
 
     //The EmptyMethod suppress is because we do not use these callbacks yet.

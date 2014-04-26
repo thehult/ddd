@@ -4,7 +4,9 @@ import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * An enemy.
+ */
 public class EnemySkeleton extends Enemy {
 
     public static final float SKELETON_STANDARD_VELOCITY = 75.0f;

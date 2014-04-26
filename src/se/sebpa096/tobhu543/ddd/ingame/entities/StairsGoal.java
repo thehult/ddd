@@ -7,7 +7,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.player.Player;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The Entity that serves as the goal of a level.
+ */
 public class StairsGoal extends StaticEntity {
 
     public StairsGoal() {

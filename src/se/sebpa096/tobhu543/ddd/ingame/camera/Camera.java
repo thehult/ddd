@@ -8,7 +8,9 @@ import se.sebpa096.tobhu543.ddd.ingame.Room;
 import se.sebpa096.tobhu543.ddd.ingame.entities.Entity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.IEntityListener;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The basic Camera class, which has code and variables to help out with rendering of different types.
+ */
 public class Camera implements IEntityListener {
     public final static float SHAKE_RESET_SPEED = 0.2f;
 

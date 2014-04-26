@@ -4,7 +4,9 @@ import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The entity that serves as a start of the game.
+ */
 public class StairsStart extends StaticEntity {
 
     public StairsStart() {

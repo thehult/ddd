@@ -19,6 +19,10 @@ import java.util.Collection;
  */
 
 //Suppress warnings, it's a testclass... no need for too good code
+
+/**
+ * A class which we used to test things, giving hitboxes and such for easy testing.
+ */
 @SuppressWarnings("ALL")
 public final class Tester
 {

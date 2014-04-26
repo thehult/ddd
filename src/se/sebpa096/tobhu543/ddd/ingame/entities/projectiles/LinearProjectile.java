@@ -4,8 +4,7 @@ import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 18:34 To change this template use File | Settings | File
- * Templates.
+ * An abstract class to describe a projectile flying in a line.
  */
 public abstract class LinearProjectile extends Projectile
 {

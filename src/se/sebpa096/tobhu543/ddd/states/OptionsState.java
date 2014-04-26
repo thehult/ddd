@@ -13,8 +13,7 @@ import se.sebpa096.tobhu543.ddd.ui.components.MenuButton;
 import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-09-30 Time: 17:37 To change this template use File | Settings | File
- * Templates.
+ * The state when the Player sets the options. No options are implemented yet.
  */
 public class OptionsState extends State
 {

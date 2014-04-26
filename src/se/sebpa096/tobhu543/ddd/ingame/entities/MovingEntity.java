@@ -4,7 +4,9 @@ import org.newdawn.slick.GameContainer;
 import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.ingame.Room;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * MovingEntity is an entity that can move around.
+ */
 public class MovingEntity extends Entity {
     private float maxVelocity = 0.0f;
     private float velocityX = 0.0f;

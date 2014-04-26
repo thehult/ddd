@@ -10,7 +10,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.TileResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The RoomFactory creates different kind of Rooms. Functionality not yet implemented: Randomizer which randomly adds pillars and other structures into rooms.
+ */
 public final class RoomFactory {
     @SuppressWarnings("UnusedDeclaration") public static final double TILE_VARIANCE_FACTOR = 0.1;
 

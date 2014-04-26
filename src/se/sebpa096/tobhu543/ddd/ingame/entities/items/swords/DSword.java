@@ -5,10 +5,8 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.items.DroppedItem;
 import se.sebpa096.tobhu543.ddd.ingame.entities.items.EquippedItem;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
-
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:09 To change this template use File | Settings | File
- * Templates.
+ * The item Sword dropped.
  */
 public class DSword extends DroppedItem
 {

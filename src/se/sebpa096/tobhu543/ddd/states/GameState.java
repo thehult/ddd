@@ -14,7 +14,10 @@ import java.util.Collection;
 import java.util.List;
 
 //this.game = game; <= no bug
-@SuppressWarnings({ "JavaDoc", "ParameterHidesMemberVariable" })
+/**
+ * The state when the Player is in-game.
+ */
+@SuppressWarnings({ "ParameterHidesMemberVariable" })
 public class GameState extends State {
     public static final float SPAWN_RATE = 0.01f;
 

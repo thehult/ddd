@@ -15,7 +15,10 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.HUDResources;
 
 
-@SuppressWarnings({ "UnusedParameters", "JavaDoc" })
+/**
+ * The HUD class is what renders and updates the in-game HUD, containing inventory and health.
+ */
+@SuppressWarnings({ "UnusedParameters"})
 public class HUD implements IUpdateListener, IUnitListener {
 
     private Image hudImage;

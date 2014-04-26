@@ -5,7 +5,9 @@ import se.sebpa096.tobhu543.ddd.Game;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.UnitResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * An enemy.
+ */
 public class EnemyLeBoss extends Enemy {
 
     public static final float LE_BOSS_STANDARD_VELOCITY = 400.0f;

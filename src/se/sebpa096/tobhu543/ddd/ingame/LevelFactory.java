@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 19:38 To change this template use File | Settings | File
- * Templates.
+ * The static LevelFactory creates different type of levels. The two types of levels used in-game are RealLevel and BossLevel.
  */
 public final class LevelFactory
 {

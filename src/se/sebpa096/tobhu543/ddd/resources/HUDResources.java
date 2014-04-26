@@ -3,7 +3,9 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * Resources.
+ */
 public class HUDResources extends ResourceManager<Image> {
     public static final String HUD1 = "hud1";
     public static final String HUD1_CUR_ITEM = "hud1CurItem";

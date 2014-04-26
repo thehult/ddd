@@ -5,7 +5,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.Game;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The abstract State class.
+ */
 public abstract class State {
     protected Image backgroundImage = null;
     public abstract void init(GameContainer gameContainer, Game game);

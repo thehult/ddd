@@ -7,8 +7,7 @@ import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 22:31 To change this template use File | Settings | File
- * Templates.
+ * The item Eye of the Storm dropped.
  */
 public class DEyeOfTheStorm extends DroppedItem
 {

@@ -1,10 +1,8 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities.items.swords;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-28 Time: 21:49 To change this template use File | Settings | File
- * Templates.
+ * The item Fire Sword equipped.
  */
-@SuppressWarnings("JavaDoc")
 public class EFireSword extends ESword
 {
 

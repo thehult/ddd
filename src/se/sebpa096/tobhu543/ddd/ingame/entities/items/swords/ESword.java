@@ -21,10 +21,8 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:06 To change this template use File | Settings | File
- * Templates.
+ * The item Sword equipped.
  */
-@SuppressWarnings("JavaDoc")
 public class ESword extends EquippedItem
 {
     public static final int SWORD_STANDARD_COOLDOWN = 750;

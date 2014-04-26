@@ -7,8 +7,7 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.MobileEntity;
 import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 03/01/14 Time: 17:53 To change this template use File | Settings | File
- * Templates.
+ * The projectile class that all projectiles extends from. This extends from MobileEntity instead of MovingEntity, since MovingEntity had some movement that wasn't necessary for Projectiles.
  */
 public abstract class Projectile extends MobileEntity
 {

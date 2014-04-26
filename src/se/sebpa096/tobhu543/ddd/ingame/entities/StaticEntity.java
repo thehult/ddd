@@ -1,8 +1,7 @@
 package se.sebpa096.tobhu543.ddd.ingame.entities;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 20:01 To change this template use File | Settings | File
- * Templates.
+ * StaticEntities are Entities that does not move. We haven't had the need to implement any methods here yet.
  */
 public class StaticEntity extends Entity
 {

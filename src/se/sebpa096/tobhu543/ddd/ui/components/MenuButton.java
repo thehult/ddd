@@ -4,7 +4,9 @@ import org.newdawn.slick.Image;
 import se.sebpa096.tobhu543.ddd.resources.ButtonImageResources;
 import se.sebpa096.tobhu543.ddd.resources.GlobalResources;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * A MenuButton is basically a Button. Just fancier textures.
+ */
 public class MenuButton extends Button {
 
     public MenuButton(String label) {

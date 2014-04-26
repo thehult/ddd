@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-10-02 Time: 19:09 To change this template use File | Settings | File
- * Templates.
+ * A Room is a part of a Level. The structure of multiple rooms are tree-based. This and our kind of 2.5D render makes the render methods of a Room kind of complex. We have tried to find a better solution
  */
 @SuppressWarnings("JavaDoc")
 public class Room implements ILevelListener

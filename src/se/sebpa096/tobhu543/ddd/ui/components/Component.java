@@ -4,7 +4,10 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import se.sebpa096.tobhu543.ddd.ui.UI;
 
-@SuppressWarnings({ "UnusedParameters", "JavaDoc" })
+/**
+ * How an UI class should look like.
+ */
+@SuppressWarnings({ "UnusedParameters" })
 public abstract class Component {
     private float x = 0;
     private float y = 0;

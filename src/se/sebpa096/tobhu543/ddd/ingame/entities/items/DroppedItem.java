@@ -14,8 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA. User: Sebbe Date: 2013-12-25 Time: 19:08 To change this template use File | Settings | File
- * Templates.
+ * This class handles most of the logic of a dropped item. (On the ground)
  */
 public class DroppedItem extends Entity
 {

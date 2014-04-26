@@ -12,7 +12,9 @@ import se.sebpa096.tobhu543.ddd.ui.components.Label;
 import se.sebpa096.tobhu543.ddd.ui.components.MenuButton;
 import se.sebpa096.tobhu543.ddd.ui.listeners.ButtonMouseListener;
 
-@SuppressWarnings("JavaDoc")
+/**
+ * The state when the Player is in the menu.
+ */
 public class MenuState extends State {
     private UI menuUI = null;
     private static final int TOP_MARGIN = 100;

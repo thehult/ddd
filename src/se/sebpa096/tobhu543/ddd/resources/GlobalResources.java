@@ -3,7 +3,11 @@ package se.sebpa096.tobhu543.ddd.resources;
 import java.util.HashMap;
 
 //I have seriously NO IDEA how to solve this raw type thingy...
-@SuppressWarnings({ "rawtypes", "JavaDoc" })
+
+/**
+ * This static class contains all kind of resources used in game. This to allow for easy resource loading inside other classes.
+ */
+@SuppressWarnings({ "rawtypes" })
 public final class GlobalResources {
 
     public static final String BUTTON_RESOURCES = "buttons";
