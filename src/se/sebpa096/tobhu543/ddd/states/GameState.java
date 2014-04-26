@@ -64,7 +64,7 @@ public class GameState extends State {
             level = LevelFactory.makeBossLevel();
         else
             level = LevelFactory.makeRealLevel(2, levelNumber * SPAWN_RATE);
-        addUpdateListener(level);
+        //addUpdateListener(level);
         System.out.println("Starting level: " + levelNumber);
     }
 
@@ -80,6 +80,7 @@ public class GameState extends State {
 
     @Override
     public void update(GameContainer gameContainer, int delta) {
+	level.gameUpdate(gameContainer, delta);
         for(IUpdateListener listener : updateListeners)
             listener.gameUpdate(gameContainer, delta);
 	if(Game.TEST){
