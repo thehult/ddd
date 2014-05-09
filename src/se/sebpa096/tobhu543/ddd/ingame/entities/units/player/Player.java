@@ -34,7 +34,7 @@ public class  Player extends Unit implements IUpdateListener {
     }
 
     @Override public void die() {
-	super.die();
+	//super.die();
         Game.setStarted(false);
         Game.GAME_STATE.gameOver();
     }
