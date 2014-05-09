@@ -35,7 +35,6 @@ public abstract class Projectile extends MobileEntity
 		hit(e);
 	    }
 	}
-	//TODO: hit with wall!
     }
 
     abstract void hit(Entity e);
