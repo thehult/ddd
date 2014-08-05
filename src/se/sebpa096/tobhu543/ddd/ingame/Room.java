@@ -115,16 +115,10 @@ public class Room implements ILevelListener
 
     //It is too complex for the inspector, it tells us there might be bugs here
     @SuppressWarnings("ConstantConditions") public void renderFirst(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
-        float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
-        float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
-        if(direction == Direction.UP)
-            screenTopY -= (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
-        if(direction == Direction.DOWN)
-            screenTopY += (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
-        if(direction == Direction.LEFT)
-            screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
-        if(direction == Direction.RIGHT)
-            screenLeftX += (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
+        float screenLeftX = getScreenLeftX(gameContainer, camera, direction);
+        float screenTopY = getScreenTopY(gameContainer, camera, direction);
+
+	// BELOW: creating the floor of the  room connectors
         if(direction == Direction.DOWN) {
             graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + (ROOM_WIDTH_IN_TILES / 2.0f) * Entity.TILE_WIDTH_IN_PX, screenTopY -
 															      Entity.TILE_HEIGHT_IN_PX);
@@ -151,28 +145,34 @@ public class Room implements ILevelListener
             graphics.drawImage(tiles[0][0].getSprite(), screenLeftX + ROOM_WIDTH_IN_TILES * Entity.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2.0f - 1) *
 																  Entity.TILE_HEIGHT_IN_PX);
         }
+
+	// Draw the main floor
         for(int ty = 0; ty < ROOM_HEIGHT_IN_TILES; ty++)
             for(int tx = 0; tx < ROOM_WIDTH_IN_TILES; tx++)
                 graphics.drawImage(tiles[tx][ty].getSprite(), screenLeftX + tx * Entity.TILE_WIDTH_IN_PX, screenTopY + ty *
 														    Entity.TILE_HEIGHT_IN_PX);
-
+	// Draw a connector wall (needs to be done before the entities)
         if(hasRightRoom())
             graphics.drawImage(wallSpriteTop, screenLeftX + ROOM_WIDTH_IN_TILES * Entity.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2.0f - 2) *
 															Entity.TILE_HEIGHT_IN_PX);
+
+	// Draw the top half of the side walls.
         for(int ty = 0; ty <= ROOM_HEIGHT_IN_TILES / 2.0f; ty++) {
             if(!hasLeftRoom() || ty < ROOM_HEIGHT_IN_TILES / 2.0f - 1)
                 graphics.drawImage(wallSpriteLeft, screenLeftX - Entity.TILE_WIDTH_IN_PX, screenTopY + ty *
 												       Entity.TILE_HEIGHT_IN_PX);
-
             if(!hasRightRoom() || ty < ROOM_HEIGHT_IN_TILES / 2.0f - 1)
                 graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + ty * Entity.TILE_HEIGHT_IN_PX);
         }
+
+	// Draw the top wall
         for(int tx = 0; tx < ROOM_WIDTH_IN_TILES; tx++) {
             if(!hasTopRoom() || !(tx >= ROOM_WIDTH_IN_TILES / 2.0f - 1 && tx <= ROOM_WIDTH_IN_TILES / 2.0f))
                 graphics.drawImage(wallSpriteTop, screenLeftX + tx * Entity.TILE_WIDTH_IN_PX, screenTopY -
 											     Entity.TILE_HEIGHT_IN_PX);
         }
 
+	//Draw the top connector walls
         if(hasTopRoom()) {
             graphics.drawImage(wallSpriteLeft, screenLeftX + (ROOM_WIDTH_IN_TILES / 2.0f - 2) * Entity.TILE_WIDTH_IN_PX, screenTopY -
 															 Entity.TILE_HEIGHT_IN_PX);
@@ -183,24 +183,20 @@ public class Room implements ILevelListener
     }
 
     public void renderLast(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
-        float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
-        float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
-        if(direction == Direction.UP)
-            screenTopY -= (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
-        if(direction == Direction.DOWN)
-            screenTopY += (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
-        if(direction == Direction.LEFT)
-            screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
-        if(direction == Direction.RIGHT)
-            screenLeftX += (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
+        float screenLeftX = getScreenLeftX(gameContainer, camera, direction);
+        float screenTopY = getScreenTopY(gameContainer, camera, direction);
+
+	// Draw a connector wall (needs to be done after the entities)
         if(hasRightRoom()) {
             graphics.drawImage(wallSpriteBot, screenLeftX + ROOM_WIDTH_IN_TILES * Entity.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES / 2.0f + 1) *
-															Entity.TILE_HEIGHT_IN_PX);
+												Entity.TILE_HEIGHT_IN_PX);
         }
+	// Draw the bottom half of the side walls.
         for(int ty = ROOM_HEIGHT_IN_TILES / 2 + 1; ty < ROOM_HEIGHT_IN_TILES;ty++) {
             graphics.drawImage(wallSpriteLeft, screenLeftX - Entity.TILE_WIDTH_IN_PX, screenTopY + ty * Entity.TILE_HEIGHT_IN_PX);
             graphics.drawImage(wallSpriteRight, screenLeftX + ROOM_WIDTH_IN_PX, screenTopY + ty * Entity.TILE_HEIGHT_IN_PX);
         }
+	// Draw the walls of the bottom connector
         for(int tx = 0; tx < ROOM_WIDTH_IN_TILES; tx++) {
             if(hasBottomRoom() && (tx == ROOM_WIDTH_IN_TILES / 2 - 1 || tx == ROOM_WIDTH_IN_TILES / 2)) {
                 if(direction != Direction.UP) {
@@ -215,6 +211,7 @@ public class Room implements ILevelListener
                 graphics.drawImage(wallSpriteTop, screenLeftX + tx * Entity.TILE_WIDTH_IN_PX, screenTopY + (ROOM_HEIGHT_IN_TILES - 1) *
 													  Entity.TILE_HEIGHT_IN_PX);
         }
+	// Draw just a part of the walls of the top connector, to cover the entities correctly
         if(hasTopRoom()) {
             graphics.drawImage(wallSpriteLeft.getSubImage(0,0, (int) Entity.TILE_WIDTH_IN_PX, (int)-Entity.TILE_RENDER_OFFSET_Y), screenLeftX + (ROOM_WIDTH_IN_TILES / 2.0f - 2) *
 																		Entity.TILE_WIDTH_IN_PX, screenTopY -
@@ -226,19 +223,30 @@ public class Room implements ILevelListener
     }
 
     public void renderEntities(GameContainer gameContainer, Graphics graphics, Camera camera, Direction direction) {
-        float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
-        float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
-        if(direction == Direction.UP)
-            screenTopY -= (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
-        if(direction == Direction.DOWN)
-            screenTopY += (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
-        if(direction == Direction.LEFT)
-            screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
-        if(direction == Direction.RIGHT)
-            screenLeftX += (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
+        float screenLeftX = getScreenLeftX(gameContainer, camera, direction);
+        float screenTopY = getScreenTopY(gameContainer, camera, direction);
+
         for(Entity entity : entities) {
             entity.render(gameContainer, graphics, screenLeftX, screenTopY);
         }
+    }
+
+    private float getScreenLeftX(GameContainer gameContainer, Camera camera, Direction direction) {
+	float screenLeftX = gameContainer.getWidth() / 2.0f - camera.getX();
+	if(direction == Direction.LEFT)
+	    screenLeftX -= (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
+	if(direction == Direction.RIGHT)
+	    screenLeftX += (Room.ROOM_WIDTH_IN_PX + Entity.TILE_WIDTH_IN_PX);
+	return screenLeftX;
+    }
+
+    private float getScreenTopY(GameContainer gameContainer, Camera camera, Direction direction) {
+	float screenTopY = gameContainer.getHeight() / 2.0f - camera.getY();
+	if(direction == Direction.UP)
+	    screenTopY -= (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
+	if(direction == Direction.DOWN)
+	    screenTopY += (Room.ROOM_HEIGHT_IN_PX + Entity.TILE_HEIGHT_IN_PX);
+	return screenTopY;
     }
 
     @SuppressWarnings("UnusedDeclaration") private void setRenderableBounds() {

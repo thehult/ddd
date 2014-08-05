@@ -14,9 +14,9 @@ public class EEnergyRod extends EquippedItem {
     public static final float ER_STANDARD_LAUNCH_SPEED = 200.0f;
 
     public EEnergyRod(){
-	cooldownMax = ER_STANDARD_COOLDOWN;
+	setCooldownMax(ER_STANDARD_COOLDOWN);
         this.setRange(4 * Entity.TILE_WIDTH_IN_PX);
-        droppedTwin = new DEnergyRod(this);
+        setDroppedTwin(new DEnergyRod(this));
     }
 
     @Override

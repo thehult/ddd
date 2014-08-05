@@ -12,11 +12,11 @@ import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 public class DBow extends DroppedItem {
     @SuppressWarnings("UnusedDeclaration") public DBow(){
         super(new EBow());
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOW_DROPPED);
+        setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOW_DROPPED));
     }
 
     public DBow(EquippedItem twin) {
         super(twin);
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOW_DROPPED);
+        setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOW_DROPPED));
     }
 }

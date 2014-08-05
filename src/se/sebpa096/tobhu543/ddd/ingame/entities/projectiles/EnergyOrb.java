@@ -22,11 +22,11 @@ public class EnergyOrb extends Projectile
 
 
     public EnergyOrb(float x, float y, float velocityX, float velocityY, Unit source){
-	this.x = x;
-	this.y = y;
-	this.velocityX = velocityX;
-	this.velocityY = velocityY;
-	this.source = source;
+	setX(x);
+	setY(y);
+	setVelocityX(velocityX);
+	setVelocityY(velocityY);
+	setSource(source);
 	this.setFaction(source.getFaction());
 	this.setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_PROJECTILE));
     }

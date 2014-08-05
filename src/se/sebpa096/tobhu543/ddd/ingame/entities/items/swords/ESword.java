@@ -38,8 +38,8 @@ public class ESword extends EquippedItem
     protected int swordDamage = SWORD_STANDARD_DAMAGE;
 
     public ESword(){
-	droppedTwin = new DSword(this);
-	cooldownMax = SWORD_STANDARD_COOLDOWN;
+	setDroppedTwin(new DSword(this));
+	setCooldownMax(SWORD_STANDARD_COOLDOWN);
     }
 
     @Override protected void use(final Unit user,final float normX, final float normY) {
@@ -73,5 +73,9 @@ public class ESword extends EquippedItem
 	    }
 	}
 	if(Game.TEST) Tester.testShapes.add(hurtBox);
+    }
+
+    public void setSwordDamage(int d) {
+	swordDamage = d;
     }
 }

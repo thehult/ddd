@@ -13,11 +13,11 @@ public class DFireSword extends DroppedItem
 {
     public DFireSword(){
 	super(new EFireSword());
-	sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.FIRE_SWORD_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.FIRE_SWORD_DROPPED));
     }
 
     public DFireSword(EquippedItem twin) {
         super(twin);
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.FIRE_SWORD_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.FIRE_SWORD_DROPPED));
     }
 }

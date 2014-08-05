@@ -12,7 +12,7 @@ public class EUnarmed extends ESword
     public static final int UNARMED_STANDARD_DAMAGE = 10;
 
     public EUnarmed(){
-	cooldownMax = UNARMED_STANDARD_COOLDOWN;
-	swordDamage = UNARMED_STANDARD_DAMAGE;
+	setCooldownMax(UNARMED_STANDARD_COOLDOWN);
+	setSwordDamage(UNARMED_STANDARD_DAMAGE);
     }
 }

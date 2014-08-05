@@ -13,11 +13,11 @@ public class DEyeOfTheStorm extends DroppedItem
 {
     @SuppressWarnings("UnusedDeclaration") public DEyeOfTheStorm(){
         super(new EBookOfSin());
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_PROJECTILE);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_PROJECTILE));
     }
 
     public DEyeOfTheStorm(EquippedItem twin) {
         super(twin);
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_PROJECTILE);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_PROJECTILE));
     }
 }

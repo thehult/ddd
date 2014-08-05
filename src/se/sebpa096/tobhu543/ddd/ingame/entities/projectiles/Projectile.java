@@ -11,6 +11,30 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
  */
 public abstract class Projectile extends MobileEntity
 {
+    public float getVelocityX() {
+	return velocityX;
+    }
+
+    public void setVelocityX(final float velocityX) {
+	this.velocityX = velocityX;
+    }
+
+    public float getVelocityY() {
+	return velocityY;
+    }
+
+    public void setVelocityY(final float velocityY) {
+	this.velocityY = velocityY;
+    }
+
+    public Unit getSource() {
+	return source;
+    }
+
+    public void setSource(final Unit source) {
+	this.source = source;
+    }
+
     protected float velocityX;
     protected float velocityY;
     protected Unit source = null;

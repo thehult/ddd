@@ -10,9 +10,9 @@ public class EFireSword extends ESword
     public static final int FIRE_SWORD_STANDARD_DAMAGE = 40;
 
     public EFireSword(){
-	droppedTwin = new DFireSword(this);
-	cooldownMax = FIRE_SWORD_STANDARD_COOLDOWN;
-	swordDamage = FIRE_SWORD_STANDARD_DAMAGE;
+	setDroppedTwin(new DFireSword(this));
+	setCooldownMax(FIRE_SWORD_STANDARD_COOLDOWN);
+	setSwordDamage(FIRE_SWORD_STANDARD_DAMAGE);
     }
 
 }

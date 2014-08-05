@@ -19,9 +19,9 @@ public class EEYeOfTheStorm extends EquippedItem
     private static final float EOTS_STEP_SIZE = 360.0f / EOTS_STANDARD_NO_PROJECTILES;
 
     public EEYeOfTheStorm(){
-	cooldownMax = EOTS_STANDARD_COOLDOWN;
+	setCooldownMax(EOTS_STANDARD_COOLDOWN);
         this.setRange(6 * Entity.TILE_WIDTH_IN_PX);
-        droppedTwin = new DEyeOfTheStorm(this);
+        setDroppedTwin(new DEyeOfTheStorm(this));
     }
 
     @Override protected void use(final Unit user, final float normX, final float normY) {

@@ -18,8 +18,8 @@ public class Arrow extends LinearProjectile
 	super(x, y, velocityX, velocityY, source);
 	this.setFaction(source.getFaction());
 	this.setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOW_PROJECTILE));
-	this.width = ARROW_STANDARD_SIZE;
-	this.height = ARROW_STANDARD_SIZE;
+	setWidth(ARROW_STANDARD_SIZE);
+	setHeight(ARROW_STANDARD_SIZE);
     }
 
     @Override void hit(final Entity e) {

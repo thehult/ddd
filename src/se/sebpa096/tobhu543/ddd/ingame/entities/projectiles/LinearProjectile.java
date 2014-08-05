@@ -9,12 +9,12 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.Unit;
 public abstract class LinearProjectile extends Projectile
 {
     LinearProjectile(float x, float y, float velocityX, float velocityY, Unit source){
-	this.x = x;
-	this.y = y;
-	this.velocityX = velocityX;
-	this.velocityY = velocityY;
-	this.source = source;
-	this.renderAngle = (float)Math.toDegrees(Math.atan2(velocityY,velocityX));
+	setX(x);
+	setY(y);
+	setVelocityX(velocityX);
+	setVelocityY(velocityY);
+	setSource(source);
+	setRenderAngle((float)Math.toDegrees(Math.atan2(velocityY,velocityX)));
     }
 
     @Override void move(int delta) {

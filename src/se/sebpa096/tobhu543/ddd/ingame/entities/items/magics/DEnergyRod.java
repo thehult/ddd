@@ -12,11 +12,11 @@ import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 public class DEnergyRod extends DroppedItem {
     @SuppressWarnings("UnusedDeclaration") public DEnergyRod(){
         super(new EEnergyRod());
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_DROPPED));
     }
 
     public DEnergyRod(EquippedItem twin) {
         super(twin);
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.ENERGY_ROD_DROPPED));
     }
 }

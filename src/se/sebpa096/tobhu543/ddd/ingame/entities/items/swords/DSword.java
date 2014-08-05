@@ -12,11 +12,11 @@ public class DSword extends DroppedItem
 {
     public DSword(){
         super(new ESword());
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.SWORD_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.SWORD_DROPPED));
     }
 
     public DSword(EquippedItem twin) {
         super(twin);
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.SWORD_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.SWORD_DROPPED));
     }
 }

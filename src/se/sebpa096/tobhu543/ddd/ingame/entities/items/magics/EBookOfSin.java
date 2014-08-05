@@ -12,9 +12,9 @@ import se.sebpa096.tobhu543.ddd.ingame.entities.units.enemies.EnemySkeleton;
 public class EBookOfSin extends EquippedItem {
     public static final int BOS_STANDARD_COOLDOWN = 8000;
     public EBookOfSin(){
-	cooldownMax = BOS_STANDARD_COOLDOWN;
+	setCooldownMax(BOS_STANDARD_COOLDOWN);
         this.setRange(5 * Entity.TILE_WIDTH_IN_PX);
-        droppedTwin = new DBookOfSin(this);
+        setDroppedTwin(new DBookOfSin(this));
     }
 
     @Override

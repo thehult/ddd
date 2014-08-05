@@ -12,11 +12,11 @@ import se.sebpa096.tobhu543.ddd.resources.ItemResources;
 public class DBookOfSin extends DroppedItem {
     @SuppressWarnings("UnusedDeclaration") public DBookOfSin(){
         super(new EBookOfSin());
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOOK_OF_SIN_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOOK_OF_SIN_DROPPED));
     }
 
     public DBookOfSin(EquippedItem twin) {
         super(twin);
-        sprite = (Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOOK_OF_SIN_DROPPED);
+	setSprite((Image) GlobalResources.getResource(GlobalResources.ITEM_RESOURCES, ItemResources.BOOK_OF_SIN_DROPPED));
     }
 }
