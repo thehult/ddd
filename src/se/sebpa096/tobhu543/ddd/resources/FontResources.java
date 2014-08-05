@@ -4,6 +4,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 
 import java.awt.Color;
+import java.io.File;
 
 
 /**
@@ -18,13 +19,13 @@ public class FontResources extends ResourceManager<Font> {
     //Suppressing... something was probably wrong with the library
     @SuppressWarnings("unchecked") public FontResources() {
 	try {
-            UnicodeFont menuFont = new UnicodeFont("res/fonts/sketchedcassiusbroken.ttf", SMALL_FONT_SIZE, false, false);
+            UnicodeFont menuFont = new UnicodeFont("res" + File.separator + "fonts" + File.separator + "sketchedcassiusbroken.ttf", SMALL_FONT_SIZE, false, false);
             menuFont.addAsciiGlyphs();
             menuFont.getEffects().add(new ColorEffect(Color.WHITE));
             menuFont.loadGlyphs();
             resources.put(MENU_FONT, menuFont);
 
-            UnicodeFont ingameFont = new UnicodeFont("res/fonts/sketchedcassiusbroken.ttf", MEDIUM_FONT_SIZE, false, false);
+            UnicodeFont ingameFont = new UnicodeFont("res" + File.separator + "fonts" + File.separator + "sketchedcassiusbroken.ttf", MEDIUM_FONT_SIZE, false, false);
             ingameFont.addAsciiGlyphs();
             ingameFont.getEffects().add(new ColorEffect(Color.WHITE));
             ingameFont.loadGlyphs();

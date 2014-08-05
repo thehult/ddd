@@ -3,6 +3,8 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import java.io.File;
+
 /**
  * Resources.
  */
@@ -17,13 +19,13 @@ public class TileResources extends ResourceManager<Image> {
 
     public TileResources() {
 	try {
-            resources.put(CBBLE_FLOOR_1, new Image("res/tiles/floor/cbblefloor1.gif"));
-            resources.put(BRICK_WALL_1_TOP, new Image("res/tiles/wall/brickwall1_top.gif"));
-            resources.put(BRICK_WALL_1_BOT, new Image("res/tiles/wall/brickwall1_bot.gif"));
-            resources.put(BRICK_WALL_1_LEFT, new Image("res/tiles/wall/brickwall1_left.gif"));
-            resources.put(BRICK_WALL_1_RIGHT, new Image("res/tiles/wall/brickwall1_right.gif"));
-            resources.put(STAIRS_START, new Image("res/tiles/stairs/staircase_start.png"));
-            resources.put(STAIRS_GOAL, new Image("res/tiles/stairs/staircase_goal.png"));
+            resources.put(CBBLE_FLOOR_1, new Image("res" + File.separator + "tiles" + File.separator + "floor" + File.separator + "cbblefloor1.gif"));
+            resources.put(BRICK_WALL_1_TOP, new Image("res" + File.separator + "tiles" + File.separator + "wall" + File.separator + "brickwall1_top.gif"));
+            resources.put(BRICK_WALL_1_BOT, new Image("res" + File.separator + "tiles" + File.separator + "wall" + File.separator + "brickwall1_bot.gif"));
+            resources.put(BRICK_WALL_1_LEFT, new Image("res" + File.separator + "tiles" + File.separator + "wall/brickwall1_left.gif"));
+            resources.put(BRICK_WALL_1_RIGHT, new Image("res" + File.separator + "tiles" + File.separator + "wall" + File.separator + "brickwall1_right.gif"));
+            resources.put(STAIRS_START, new Image("res" + File.separator + "tiles" + File.separator + "stairs" + File.separator + "staircase_start.png"));
+            resources.put(STAIRS_GOAL, new Image("res" + File.separator + "tiles" + File.separator + "stairs" + File.separator + "staircase_goal.png"));
         } catch (SlickException e) {
             e.printStackTrace();
             System.exit(1);

@@ -3,6 +3,8 @@ package se.sebpa096.tobhu543.ddd.resources;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import java.io.File;
+
 /**
  * Resources.
  */
@@ -17,13 +19,13 @@ public class UnitResources extends ResourceManager<Image> {
 
     public UnitResources() {
 	try {
-            resources.put(PLAYER_DOWN, new Image("res/units/player_down.png"));
-            resources.put(ORC_DOWN, new Image("res/units/orc_down.png"));
-            resources.put(WIZARD_DOWN, new Image("res/units/wizard_down.png"));
-            resources.put(NECROMANCER_DOWN, new Image("res/units/necromancer_down.png"));
-            resources.put(SKELETON_DOWN, new Image("res/units/skeleton_down.png"));
-            resources.put(CHEST_DOWN, new Image("res/units/chest_down.png"));
-            resources.put(LE_BOSS_DOWN, new Image("res/units/le_boss_down.png"));
+            resources.put(PLAYER_DOWN, new Image("res" + File.separator + "units" + File.separator + "player_down.png"));
+            resources.put(ORC_DOWN, new Image("res" + File.separator + "units" + File.separator + "orc_down.png"));
+            resources.put(WIZARD_DOWN, new Image("res" + File.separator + "units" + File.separator + "wizard_down.png"));
+            resources.put(NECROMANCER_DOWN, new Image("res" + File.separator + "units" + File.separator + "necromancer_down.png"));
+            resources.put(SKELETON_DOWN, new Image("res" + File.separator + "units" + File.separator + "skeleton_down.png"));
+            resources.put(CHEST_DOWN, new Image("res" + File.separator + "units" + File.separator + "chest_down.png"));
+            resources.put(LE_BOSS_DOWN, new Image("res" + File.separator + "units" + File.separator + "le_boss_down.png"));
 
         } catch (SlickException e) {
             e.printStackTrace();
