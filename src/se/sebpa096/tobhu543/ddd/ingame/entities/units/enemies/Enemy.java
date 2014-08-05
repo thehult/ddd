@@ -17,6 +17,9 @@ public class Enemy extends Unit {
         this.setMaxNoItems(1);
 
     }
+
+
+
     public void gameUpdate(GameContainer gameContainer, int delta) {
         Player closestPlayer = null;
         float closestDistance = Float.MAX_VALUE;
