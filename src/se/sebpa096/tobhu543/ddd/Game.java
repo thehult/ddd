@@ -21,7 +21,7 @@ public class Game extends BasicGame {
     public static final int WINDOW_HEIGHT = 600;
     public static final float MILLISEC_PER_SEC = 1000.0f;
 
-    public static final boolean TEST = false;
+    public static final boolean TEST = true;
 
     @SuppressWarnings("UnusedDeclaration") public static void main(String[] args) {
         try {

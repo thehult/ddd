@@ -21,13 +21,15 @@ public class Enemy extends Unit {
         Player closestPlayer = null;
         float closestDistance = Float.MAX_VALUE;
         for(Player player : Game.GAME_STATE.getPlayers()) {
-            float connectAdds = ((player.getCurrentRoom().getX() - getCurrentRoom().getX()) + (player.getCurrentRoom().getY() - getCurrentRoom().getY())) * TILE_WIDTH_IN_PX;
-            float playerDist = (float)Math.hypot(((player.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + player.getX()) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX())),
-                    ((player.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + player.getY() + connectAdds) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY())));
-            if(playerDist < closestDistance) {
-                closestDistance = playerDist;
-                closestPlayer = player;
-            }
+	    if(player.getCurrentRoom() != null) {
+		float connectAdds = ((player.getCurrentRoom().getX() - getCurrentRoom().getX()) + (player.getCurrentRoom().getY() - getCurrentRoom().getY())) * TILE_WIDTH_IN_PX;
+		float playerDist = (float)Math.hypot(((player.getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + player.getX()) - (getCurrentRoom().getX() * Room.ROOM_WIDTH_IN_PX + getX())),
+			((player.getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + player.getY() + connectAdds) - (getCurrentRoom().getY() * Room.ROOM_HEIGHT_IN_PX + getY())));
+		if(playerDist < closestDistance) {
+		    closestDistance = playerDist;
+		    closestPlayer = player;
+		}
+	    }
         }
         if(closestPlayer != null) {
             float connectAddsX = (closestPlayer.getCurrentRoom().getX() - getCurrentRoom().getX()) * TILE_WIDTH_IN_PX;
