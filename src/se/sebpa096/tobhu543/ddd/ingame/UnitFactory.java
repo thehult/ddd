@@ -26,11 +26,6 @@ public final class UnitFactory {
     //Inspector believes we have too many referenced classes here. Could be split up into different methods, but I believe it would be harder to find and edit everything then (the layout is so simple.)
     @SuppressWarnings("OverlyCoupledMethod") public static void init() {
         rarities.add(EnemyOrc.class, 30);
-        RarityHandler orcHandler = new RarityHandler();
-        orcHandler.add(ESword.class, 70);
-        orcHandler.add(EFireSword.class, 8);
-        orcHandler.add(EBow.class, 22);
-        itemRarities.put(EnemyOrc.class, orcHandler);
 
         rarities.add(EnemySkeleton.class, 10);
         RarityHandler skeletonHandler = new RarityHandler();

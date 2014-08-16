@@ -14,7 +14,7 @@ public class EnemyOrc extends Enemy {
     public static final int ORC_STANDARD_MAX_HEALTH = 60;
 
     public EnemyOrc() {
-	this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.ORC_DOWN));
+	    this.setSprite((Image) GlobalResources.getResource(GlobalResources.UNIT_RESOURCES, UnitResources.ORC_DOWN));
         this.setMaxVelocity(ORC_STANDARD_VELOCITY);
         this.setRandomHealthMin(ORC_STANDARD_MIN_HEALTH);
         this.setRandomHealthMax(ORC_STANDARD_MAX_HEALTH);

@@ -212,4 +212,9 @@ public class Unit extends MovingEntity {
     public void setRandomHealthMin(int randomHealthMin) {
         this.randomHealthMin = randomHealthMin;
     }
+
+    public void setRandomHealth() {
+        this.setMaxHealth((int)(Math.random() * this.getRandomHealthMax() + this.getRandomHealthMin()));
+        this.setHealth(this.getMaxHealth());
+    }
 }
